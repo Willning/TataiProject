@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="500.0" prefWidth="575.0" styleClass="normalBackground" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <stylesheets>
+      <URL value="@help.css" />
+      <URL value="@../style.css" />
+   </stylesheets>
+   <top>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Help" wrappingWidth="89.47006225585938">
+               <font>
+                  <Font name="Arial" size="35.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label prefHeight="321.0" prefWidth="461.0" text="This is a software that helps people learn Maori numbers.&#10;&#10;Press &quot;Play&quot; button to start the game.&#10;The game has 2 levels: &#10;      In level 1, you need to pronounce maori number from 1 to 9&#10;      In level 2, you need to pronounce maori number from 10 to 99&#10;      You can unlock level 2 if you pass level 1 with score of 8 or above&#10;      You will be prompted in the in game screen to tell you that you can&#10;      now play the second level.&#10;You can choose between two modes.&#10;      &quot;Single Number&quot;: the question would be just a number&#10;      &quot;Simple Equation&quot;: the question would a equation&#10;&#10;Each game contains 10 numbers you need to pronounce&#10;Press the &quot;Record&quot; button to start the recording, and you have 2 attempt&#10; for each number." textFill="WHITE">
+               <font>
+                  <Font name="Calibri" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </center>
+</BorderPane>
