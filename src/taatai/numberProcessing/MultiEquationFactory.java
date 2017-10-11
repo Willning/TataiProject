@@ -24,7 +24,7 @@ public class MultiEquationFactory implements EquationFactory{
 
 	@Override
 	public Equation generate() {
-		CreateMultiEquation();		
+		CreateMultiEquation();
 
 		return new Equation("("+partOne+")"+InitialOperator.toString()+"("+partTwo+")",answer);
 	}
@@ -47,8 +47,7 @@ public class MultiEquationFactory implements EquationFactory{
 			firstNumber = componentMaker.getFirstNumber();
 			secondNumber = componentMaker.getSecondNumner();
 
-			System.out.println(firstNumber);
-			System.out.println(secondNumber);
+
 		}
 
 		//from these two ints, spawn two more equations.
@@ -58,9 +57,10 @@ public class MultiEquationFactory implements EquationFactory{
 		partOne = firstEq.toString();
 		partTwo= secondEq.toString();
 
-		answer = initial.answer();
+		System.out.println(firstEq.answer());
+		System.out.println(secondEq.answer());
 
-		System.out.println(answer);
+		answer = initial.answer();
 
 	}
 
@@ -70,8 +70,8 @@ public class MultiEquationFactory implements EquationFactory{
 
 	private Equation questionFromAnswer(int answer){
 		Operator operator = componentMaker.generateOperator();
-		int operandOne = 0;
-		int operandTwo = 0;
+		int operandOne = 100;
+		int operandTwo = 100;
 
 
 		if (operator == Operator.ADD) {
@@ -79,7 +79,6 @@ public class MultiEquationFactory implements EquationFactory{
 			operandTwo = answer - operandOne;
 
 		} else if (operator == Operator.DIVIDE) {
-
 				//get multiples of the answer that are under the max, then choose one at random then algebra the other.
 				ArrayList<Integer> multiple = getMultiples(answer);
 				int multipleSeed = componentMaker.randomNumber(0, multiple.size() - 1);
@@ -87,15 +86,19 @@ public class MultiEquationFactory implements EquationFactory{
 				operandTwo = operandOne/answer;
 
 		} else if (operator == Operator.MINUS) {
+
 			operandOne = componentMaker.randomNumber(answer, max); 
 			operandTwo = operandOne - answer;
 
 		} else if (operator == Operator.MULTIPLY) {
+			//WRONG
 				ArrayList<Integer> factors = componentMaker.getFactors(answer);
-				int factorSeed = componentMaker.randomNumber(0, factors.size()-1);
-				operandOne = factors.get(factorSeed);
 
-				operandTwo = operandOne/answer;
+				int factorSeed = componentMaker.randomNumber(0, factors.size()-1);
+
+				
+				operandOne = factors.get(factorSeed);
+				operandTwo = answer/operandOne;
 		}	
 
 		return new Equation(operandOne + operator.toString() + operandTwo, answer);
@@ -103,22 +106,20 @@ public class MultiEquationFactory implements EquationFactory{
 
 	private ArrayList<Integer> getMultiples(int number){
 		ArrayList<Integer> factors = new ArrayList<Integer>();
-		int multiple = 1;
+		int multiple = number;
 		int factor = 1;
 
 		while (multiple < max){
 			multiple = factor*number;
 			factors.add(multiple);
 			factor++;
-		}		
-
+		}
 		return factors;
-
 	}
 
 	@Override
 	public String asString() {
-		return "Complex Equations";		
+		return "Complex Equations";
 	}
 
 	@Override
@@ -130,7 +131,6 @@ public class MultiEquationFactory implements EquationFactory{
 	@Override
 	public void setMin(int min) {
 		this.min= min;
-
 	}
 
 }
