@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="550.0" prefWidth="550.0" styleClass="backgroundOne" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label alignment="CENTER" layoutX="87.0" layoutY="139.0" text="Who Are You?" textFill="#d00000">
+         <font>
+            <Font name="DejaVu Sans Bold" size="48.0" />
+         </font>
+      </Label>
+      <ChoiceBox layoutX="120.0" layoutY="231.0" prefHeight="59.0" prefWidth="310.0" style="-fx-border-color: #D00000; -fx-border-radius: 5; -fx-background-color: WHITE;" />
+      <Button layoutX="212.0" layoutY="357.0" mnemonicParsing="false" styleClass="userSelectButtons" text="New player" textFill="#646464">
+         <font>
+            <Font name="DejaVu Sans" size="18.0" />
+         </font>
+      </Button>
+      <Button disable="true" layoutX="42.0" layoutY="357.0" mnemonicParsing="false" style=": ;" styleClass="userSelectButtons" text="Select player">
+         <font>
+            <Font name="DejaVu Sans" size="18.0" />
+         </font>
+      </Button>
+      <Button disable="true" layoutX="384.0" layoutY="357.0" mnemonicParsing="false" styleClass="userSelectButtons" text="Goodbye">
+         <font>
+            <Font name="DejaVu Sans" size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
