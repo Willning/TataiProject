@@ -70,7 +70,6 @@ public class SequenceEquationFactory implements EquationFactory {
             //descending sequence;
             for (int i = 0; i < 3; i++) {
 
-
                 sequence.add(answer + (3 - i) * stepSize);
             }
 
