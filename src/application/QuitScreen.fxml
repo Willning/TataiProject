@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.octicons.OctIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="550.0" prefWidth="550.0" styleClass="greyBackground" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="128.0" layoutY="53.0" styleClass="titleText" text="EXIT GAME" textFill="#d00000">
+         <font>
+            <Font name="DejaVu Sans" size="36.0" />
+         </font>
+      </Label>
+      <Button layoutX="173.0" layoutY="442.0" mnemonicParsing="false" prefHeight="65.0" styleClass="userSelectButtons" text="My Dashboard" textFill="#646464">
+         <font>
+            <Font name="DejaVu Sans" size="18.0" />
+         </font>
+         <graphic>
+            <OctIconView glyphName="TELESCOPE" size="50" />
+         </graphic>
+      </Button>
+      <Button layoutX="300.0" layoutY="261.0" mnemonicParsing="false" prefHeight="65.0" styleClass="userSelectButtons" text=" Restart" textFill="#646464">
+         <font>
+            <Font name="DejaVu Sans" size="18.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIconView glyphName="REPEAT" size="50" text="" />
+         </graphic>
+      </Button>
+      <Button layoutX="72.0" layoutY="261.0" mnemonicParsing="false" prefHeight="65.0" styleClass="userSelectButtons" text=" New Game" textFill="#646464">
+         <font>
+            <Font name="DejaVu Sans" size="18.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIconView glyphName="PLUS" size="50" styleClass="greyIcon" />
+         </graphic>
+      </Button>
+      <Label layoutX="167.0" layoutY="147.0" styleClass="headingText" text="Be careful:" />
+      <Button layoutX="34.0" layoutY="53.0" mnemonicParsing="false" prefHeight="65.0" styleClass="invisibleButton" textFill="#646464">
+         <font>
+            <Font name="DejaVu Sans" size="18.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIconView glyphName="REPLY" size="50" styleClass="greyIcon" />
+         </graphic>
+      </Button>
+      <Label layoutX="85.0" layoutY="382.0" styleClass="headingText" text="Or save your game!" />
+      <Label layoutX="32.0" layoutY="191.0" styleClass="headingText" text="Your progress will be lost!" />
+   </children>
+</AnchorPane>

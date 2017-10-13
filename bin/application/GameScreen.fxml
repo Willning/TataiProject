@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="550.0" prefWidth="550.0" styleClass="greyBackground" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="173.0" layoutY="44.0" text="QUESTION 1" textFill="#d00000">
+      <Label layoutX="170.0" layoutY="45.0" styleClass="headingText" text="RAPANGA 1" textFill="#d00000">
          <font>
             <Font name="DejaVu Sans" size="36.0" />
          </font>
@@ -47,21 +47,21 @@
             </AnchorPane>
          </children>
       </Pane>
-      <Button layoutX="20.0" layoutY="395.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="81.0" styleClass="userSelectButtons">
+      <Button layoutX="91.0" layoutY="410.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="81.0" styleClass="userSelectButtons">
          <graphic>
             <FontAwesomeIconView glyphName="REPLY" size="50" styleClass="greyIcon" />
          </graphic>
       </Button>
-      <Button layoutX="195.0" layoutY="395.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="81.0" styleClass="userSelectButtons">
+      <Button layoutX="235.0" layoutY="410.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="81.0" styleClass="userSelectButtons">
          <graphic>
             <FontAwesomeIconView glyphName="PLAY" size="50" styleClass="redIcon" />
          </graphic>
       </Button>
-      <Button layoutX="195.0" layoutY="395.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="81.0" styleClass="userSelectButtons">
+      <Button layoutX="235.0" layoutY="410.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="81.0" styleClass="userSelectButtons">
          <graphic>
             <FontAwesomeIconView glyphName="MICROPHONE" size="50" styleClass="redIcon" />
          </graphic></Button>
-      <Button disable="true" layoutX="371.0" layoutY="395.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="81.0" styleClass="userSelectButtons">
+      <Button disable="true" layoutX="380.0" layoutY="410.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="81.0" styleClass="userSelectButtons">
          <graphic>
             <FontAwesomeIconView glyphName="ARROW_RIGHT" size="50" styleClass="greyIcon" />
          </graphic>

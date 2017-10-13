@@ -18,9 +18,7 @@
       </Label>
       <AnchorPane layoutX="13.0" layoutY="294.0" prefHeight="100.0" prefWidth="525.0" style=": ;" styleClass="boxRedOutline">
          <children>
-            <MaterialDesignIconView glyphName="LOCK_OUTLINE" layoutX="143.0" layoutY="63.0" size="25" text="" />
-            <MaterialDesignIconView glyphName="LOCK_OUTLINE" layoutX="280.0" layoutY="63.0" size="25" text="" />
-            <RadioButton layoutX="30.0" layoutY="40.0" mnemonicParsing="false" text="Easy" textFill="#646464">
+            <RadioButton layoutX="62.0" layoutY="24.0" mnemonicParsing="false" text="Easy" textFill="#646464">
                <font>
                   <Font name="DejaVu Sans" size="16.0" />
                </font>
@@ -28,17 +26,24 @@
                   <ToggleGroup fx:id="gameDifficultyButtons" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton disable="true" layoutX="280.0" layoutY="40.0" mnemonicParsing="false" text="Hard" textFill="#646464" toggleGroup="$gameDifficultyButtons">
+            <RadioButton disable="true" layoutX="377.0" layoutY="24.0" mnemonicParsing="false" text="Hard" textFill="#646464" toggleGroup="$gameDifficultyButtons">
                <font>
                   <Font name="DejaVu Sans" size="16.0" />
                </font>
             </RadioButton>
-            <RadioButton disable="true" layoutX="143.0" layoutY="40.0" mnemonicParsing="false" text="Medium" textFill="#646464" toggleGroup="$gameDifficultyButtons">
+            <RadioButton disable="true" layoutX="214.0" layoutY="24.0" mnemonicParsing="false" text="Medium" textFill="#646464" toggleGroup="$gameDifficultyButtons">
                <font>
                   <Font name="DejaVu Sans" size="16.0" />
                </font>
             </RadioButton>
-            <RadioButton layoutX="407.0" layoutY="40.0" mnemonicParsing="false" text="Custom" textFill="#646464" toggleGroup="$gameDifficultyButtons">
+            <MaterialDesignIconView glyphName="LOCK_OUTLINE" layoutX="380.0" layoutY="46.0" size="25" text="" />
+            <MaterialDesignIconView glyphName="LOCK_OUTLINE" layoutX="219.0" layoutY="46.0" size="25" text="" />
+            <RadioButton layoutX="305.0" layoutY="60.0" mnemonicParsing="false" text="Custom" textFill="#646464" toggleGroup="$gameDifficultyButtons">
+               <font>
+                  <Font name="DejaVu Sans" size="16.0" />
+               </font>
+            </RadioButton>
+            <RadioButton layoutX="133.0" layoutY="60.0" mnemonicParsing="false" text="Practice" textFill="#646464" toggleGroup="$gameDifficultyButtons">
                <font>
                   <Font name="DejaVu Sans" size="16.0" />
                </font>
@@ -72,15 +77,15 @@
             <Font name="DejaVu Sans" size="36.0" />
          </font>
       </Label>
-      <Button alignment="CENTER" layoutX="14.0" layoutY="403.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="278.0" styleClass="greyBackground" textFill="#646464">
+      <Button alignment="CENTER" layoutX="14.0" layoutY="403.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="181.0" styleClass="invisibleButton" textFill="#646464">
          <font>
             <Font name="DejaVu Sans" size="16.0" />
          </font>
          <graphic>
             <AnchorPane prefHeight="55.0" prefWidth="126.0">
                <children>
-                  <FontAwesomeIconView glyphName="PLUS_SQUARE_ALT" layoutY="57.0" size="60" styleClass="greyIcon" wrappingWidth="49.14285659790039" />
-                  <Label layoutX="57.0" layoutY="24.0" text="New Custom Question" textFill="#646464">
+                  <FontAwesomeIconView glyphName="EDIT" layoutY="57.0" size="60" styleClass="greyIcon" wrappingWidth="49.14285659790039" />
+                  <Label layoutX="65.0" layoutY="24.0" text="Edit Custom Lists" textFill="#646464">
                      <font>
                         <Font name="DejaVu Sans" size="16.0" />
                      </font>
@@ -89,15 +94,18 @@
             </AnchorPane>
          </graphic>
       </Button>
-      <Button layoutX="310.0" layoutY="483.0" mnemonicParsing="false" styleClass="userSelectButtons" text="Start" textFill="#646464">
+      <Button layoutX="311.0" layoutY="471.0" mnemonicParsing="false" prefHeight="60.0" text="Start" textFill="#646464">
          <font>
-            <Font name="DejaVu Sans" size="16.0" />
+            <Font name="DejaVu Sans" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="108.0" layoutY="483.0" mnemonicParsing="false" styleClass="userSelectButtons" text="Back" textFill="#646464">
+      <Button layoutX="161.0" layoutY="468.0" mnemonicParsing="false" textFill="#646464">
          <font>
-            <Font name="DejaVu Sans" size="16.0" />
+            <Font name="DejaVu Sans" size="18.0" />
          </font>
+         <graphic>
+            <FontAwesomeIconView glyphName="REPLY" size="50" />
+         </graphic>
       </Button>
    </children>
 </AnchorPane>
