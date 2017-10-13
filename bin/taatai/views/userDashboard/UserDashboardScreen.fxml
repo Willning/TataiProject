@@ -3,6 +3,7 @@
 <?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <?import de.jensd.fx.glyphs.octicons.OctIconView?>
 <?import java.lang.Double?>
+<?import java.net.URL?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
@@ -20,7 +21,7 @@
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="550.0" prefWidth="550.0" styleClass="backgroundOne" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="550.0" prefWidth="550.0" styleClass="greyBackground" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="149.0" layoutY="37.0" text="Haere Mai, Zob!" textFill="#d00000">
          <font>
@@ -111,4 +112,8 @@
         </yAxis>
       </BarChart>
    </children>
+   <stylesheets>
+      <URL value="@application.css" />
+      <URL value="@../taatai/views/application.css" />
+   </stylesheets>
 </AnchorPane>

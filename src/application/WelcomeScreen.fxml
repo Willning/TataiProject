@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.effect.Shadow?>
@@ -8,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="550.0" prefWidth="550.0" styleClass="greyBackground" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="550.0" prefWidth="550.0" styleClass="greyBackground" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="550.0" fitWidth="562.0" layoutX="21.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" styleClass="backgroundImage">
          <image>
@@ -32,4 +33,8 @@
          </font>
       </Label>
    </children>
+   <stylesheets>
+      <URL value="@application.css" />
+      <URL value="@../taatai/views/application.css" />
+   </stylesheets>
 </AnchorPane>
