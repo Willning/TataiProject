@@ -113,7 +113,7 @@
       </BarChart>
    </children>
    <stylesheets>
-      <URL value="@application.css" />
-      <URL value="@../taatai/views/application.css" />
+      <URL value="@f" />
+      <URL value="@../application.css" />
    </stylesheets>
 </AnchorPane>

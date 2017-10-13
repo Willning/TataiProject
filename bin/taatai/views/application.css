@@ -232,7 +232,7 @@
     -fx-border-width: 3px;
     -fx-border-color: #ffffff;
     -fx-border-insets: -2;
-    -fx-background-color: #ccddff;
+    -fx-background-color: #ffcccccc;
     -fx-background-image: null;
     -fx-border-radius: 15px;
     -fx-padding: 4px;
@@ -244,7 +244,7 @@
 }
 
 .radio-button:selected .radio {
-    -fx-background-color: #3578ff;
+    -fx-background-color: #d00000;
     -fx-background-image: null;
 }
 

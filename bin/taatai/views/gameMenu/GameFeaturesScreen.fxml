@@ -17,7 +17,7 @@
    <children>
       <ImageView fitHeight="550.0" fitWidth="562.0" layoutX="10.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" styleClass="backgroundImage">
          <image>
-            <Image url="@../resources/images/taniwha2.png" />
+            <Image url="@../../../resources/images/taniwha2.png" />
          </image>
          <effect>
             <Shadow color="#aaaaaa85" />
@@ -121,7 +121,7 @@
       </Button>
    </children>
    <stylesheets>
-      <URL value="@application.css" />
-      <URL value="@../taatai/views/application.css" />
+      <URL value="@j" />
+      <URL value="@../application.css" />
    </stylesheets>
 </AnchorPane>
