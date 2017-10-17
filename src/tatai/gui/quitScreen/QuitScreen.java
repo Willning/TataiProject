@@ -38,7 +38,7 @@ public class QuitScreen implements Initializable{
 
     @FXML
     public void restartHit() {
-        Game game = new Game(previousGame.getGameType(), previousGame.getEquationFactory(), previousGame.getTotalRounds());
+        Game game = new Game(previousGame.getGameType(), previousGame.getEquationFactory(), previousGame.getTotalRounds(), previousGame.getGameDifficulty());
         LevelView levelView = new LevelView();
         StateSingleton.instance().changeCenter(levelView);
         Level level = (Level)levelView.controller();

@@ -278,4 +278,8 @@ public class Game {
     public int getTotalRounds() {
         return totalRounds;
     }
+
+    public GameDifficulty getGameDifficulty() {
+        return gameDifficulty;
+    }
 }

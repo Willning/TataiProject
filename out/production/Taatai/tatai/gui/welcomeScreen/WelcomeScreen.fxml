@@ -9,28 +9,30 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="550.0" styleClass="redBackground" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatai.gui.welcomeScreen.WelcomeScreen">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" styleClass="redBackground" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatai.gui.welcomeScreen.WelcomeScreen">
    <center>
       <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="550.0" fitWidth="550.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="430.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.5;">
                <image>
                   <Image url="@../../../resources/images/taniwha2.png" />
                </image>
                <effect>
-                  <ColorAdjust brightness="0.84" />
+                  <ColorAdjust brightness="1.0" />
                </effect>
             </ImageView>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Text fill="#c30000" strokeType="OUTSIDE" strokeWidth="0.0" text="Tatai!">
-                     <font>
-                        <Font size="200.0" />
-                     </font>
-                  </Text>
-               </children>
-            </HBox>
          </children>
       </StackPane>
    </center>
+   <top>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Tatai!">
+               <font>
+                  <Font size="200.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+   </top>
 </BorderPane>

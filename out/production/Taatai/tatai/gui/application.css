@@ -3,13 +3,12 @@
 /* BUTTONS */
 
 .button:hover .glyph-icon {
-	-fx-fill: black;
+	-fx-fill: #000000;
 }
 
 .button {
-	-fx-border-color: #646464;
-	-fx-border-radius: 3;
-	-fx-background-color: WHITE;
+    -fx-background-radius: 5;
+	-fx-background-color: #ffffff;
 }
 
 .userSelectButton {
@@ -21,7 +20,7 @@
 	/*-fx-padding: -10 -10 -25 -10;
     -fx-border-insets: -10 -10 -25 -10;
     -fx-background-insets: -10 -10 -25 -10;*/
-    -fx-background-color: #eeffee;
+    -fx-background-color: #d5d5d5;
 }
 
 .invisibleButton {
@@ -251,20 +250,20 @@
 }
 
 .redBackground {
-    -fx-background-color: #ffffff;
+    -fx-background-color: #790009;
 }
 
 .combo-box .list-cell
 {
-    -fx-background-color: #ffffff;
-    -fx-text-fill: #a0a0a0;
+    -fx-background-color: #790009;
+    -fx-text-fill: #3b3b3b;
     -fx-padding: 3 0 2 7;
     -fx-cell-size: 2em;
 }
 
 .combo-box-popup .list-view
 {
-    -fx-background-color: #810300;
+    -fx-background-color: #ffffff;
     -fx-background-insets: 0, 1;
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 0 );
 }
@@ -274,25 +273,25 @@
     -fx-padding: 4 0 4 5;
 
     /* No alternate highlighting */
-    -fx-background-color: #810300;
+    -fx-background-color: #ffffff;
 }
 
 .combo-box-popup .list-view .list-cell:filled:selected, .combo-box-popup .list-view .list-cell:filled:selected:hover
 {
     -fx-background: -fx-accent;
-    -fx-background-color: #810300;
+    -fx-background-color: #ffffff;
     -fx-text-fill: #ffffff;
 }
 
 .combo-box-popup .list-view .list-cell:filled:hover
 {
-    -fx-background-color: #810300;
-    -fx-text-fill: #ffffff;
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #000000;
 }
 
 .combo-box-base
 {
-    -fx-background-color: #810300;
+    -fx-background-color: #ffffff;
     -fx-background-radius: 3;
     -fx-background-insets: 0 0 -1 0, 0, 1, 2;
     -fx-padding: 0;
@@ -300,21 +299,30 @@
 
 .combo-box-base:hover
 {
-    -fx-background-color: #c80400;
+    -fx-background-color: #6d0300;
 }
 
 .combo-box-base:showing
 {
-    -fx-background-color: #810300;
+    -fx-background-color: #ffffff;
 }
 
 .combo-box-base:focused {
-    -fx-background-color: #810300;
+    -fx-background-color: #ffffff;
     -fx-background-radius: 0;
     -fx-background-insets: -1.4, 0, 1, 2;
 }
 
 .combo-box-base:disabled {
     -fx-opacity: .4;
+}
+
+.backgroundPattern {
+    -fx-background-image: url("../../resources/images/pattern.png");
+    -fx-opacity: 1;
+    -fx-border-color: #6d0300;
+    -fx-border-width: 30;
+    -fx-background-repeat: stretch;
+
 }
 
