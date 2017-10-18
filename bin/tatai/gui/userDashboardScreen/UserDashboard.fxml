@@ -21,44 +21,43 @@
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="550.0" prefWidth="550.0" styleClass="greyBackground" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatai.gui.userDashboardScreen.UserDashboard">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" styleClass="greyBackground" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatai.gui.userDashboardScreen.UserDashboard">
    <children>
-      <Label fx:id="welcomeLabel" layoutX="149.0" layoutY="37.0" text="Haere Mai, Zob!" textFill="#d00000">
+      <Label fx:id="welcomeLabel" layoutX="371.0" layoutY="37.0" text="Haere Mai, Zob!" textFill="#d00000">
          <font>
             <Font name="DejaVu Sans" size="36.0" />
          </font>
       </Label>
-      <Label layoutX="123.0" layoutY="101.0" text="You last played Tātai: ">
+      <Label layoutX="239.0" layoutY="107.0" text="You last played Tātai: ">
          <font>
-            <Font name="DejaVu Sans" size="16.0" />
+            <Font name="DejaVu Sans" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="lastPlayedLabel" layoutX="319.0" layoutY="101.0" text="3 days ago" textFill="#d00000">
+      <Label fx:id="lastPlayedLabel" layoutX="523.0" layoutY="106.0" text="3 days ago" textFill="#d00000">
          <font>
-            <Font name="DejaVu Sans" size="16.0" />
+            <Font name="DejaVu Sans" size="24.0" />
          </font>
       </Label>
-      <Button alignment="CENTER" layoutX="302.0" layoutY="499.0" mnemonicParsing="false" onAction="#playHit" style="-fx-border-color: #D00000;" text=" Start Learning!" textFill="#d00000">
+      <Button alignment="CENTER" layoutX="519.0" layoutY="635.0" mnemonicParsing="false" onAction="#playHit" style="-fx-border-color: #D00000;" text=" Start Learning!" textFill="#d00000">
          <font>
             <Font name="DejaVu Sans" size="18.0" />
          </font>
       </Button>
-      <HBox alignment="CENTER" layoutX="20.0" layoutY="29.0" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #d00000; -fx-background-insets: -4; -fx-background-radius: 1000; -fx-border-color: #646464; -fx-border-width: 2; -fx-border-insets: -5; -fx-border-radius: 10000;">
+      <HBox alignment="CENTER" layoutX="33.0" layoutY="28.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #d00000; -fx-background-insets: -4; -fx-background-radius: 1000; -fx-border-color: #646464; -fx-border-width: 2; -fx-border-insets: -5; -fx-border-radius: 10000;">
          <children>
-            <OctIconView glyphName="TELESCOPE" size="50" style="-fx-fill: WHITE;" wrappingWidth="45.5">
+            <OctIconView glyphName="TELESCOPE" size="100" style="-fx-fill: WHITE;" wrappingWidth="83.5">
                <effect>
                   <DropShadow />
                </effect></OctIconView>
          </children>
       </HBox>
-      <TableView fx:id="gamesTable" layoutX="294.0" layoutY="207.0" prefHeight="268.0" prefWidth="225.0" style="-fx-background-color: WHITE; -fx-border-color: #646464; -fx-border-radius: 3;" />
-      <Label fx:id="gamesPlayedLabel" alignment="CENTER" layoutX="294.0" layoutY="170.0" prefHeight="34.0" prefWidth="225.0" style="-fx-background-color: WHITE; -fx-border-color: #646464; -fx-border-radius: 3;" text="Games Played:" textFill="#646464">
+      <TableView fx:id="gamesTable" layoutX="544.0" layoutY="204.0" prefHeight="400.0" prefWidth="397.0" style="-fx-background-color: WHITE; -fx-border-color: #646464; -fx-border-radius: 3;" />
+      <Label fx:id="gamesPlayedLabel" alignment="CENTER" layoutX="545.0" layoutY="160.0" prefHeight="34.0" prefWidth="397.0" style="-fx-background-color: WHITE; -fx-border-color: #646464; -fx-border-radius: 3;" text="Games Played:" textFill="#646464">
          <font>
             <Font name="DejaVu Sans" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="50.0" layoutY="325.0" prefHeight="150.0" prefWidth="225.0" style="-fx-background-color: WHITE; -fx-border-color: #646464; -fx-border-radius: 3;" />
-      <ScrollPane layoutX="50.0" layoutY="170.0" prefHeight="136.0" prefWidth="225.0" style="-fx-background-radius: 3;">
+      <ScrollPane layoutX="42.0" layoutY="198.0" prefHeight="125.0" prefWidth="439.0" style="-fx-background-radius: 3;">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="197.0" prefWidth="203.0">
                <children>
@@ -87,7 +86,7 @@
             </AnchorPane>
         </content>
       </ScrollPane>
-      <Button alignment="CENTER" layoutX="98.0" layoutY="499.0" mnemonicParsing="false" onAction="#logoutHit" prefHeight="20.0" prefWidth="168.0" style="-fx-border-color: #D00000;" text="Log Out" textFill="#d00000">
+      <Button alignment="CENTER" layoutX="275.0" layoutY="635.0" mnemonicParsing="false" onAction="#logoutHit" prefHeight="20.0" prefWidth="168.0" style="-fx-border-color: #D00000;" text="Log Out" textFill="#d00000">
          <font>
             <Font name="DejaVu Sans" size="18.0" />
          </font>
@@ -102,15 +101,24 @@
           <Double fx:value="55.0" />
         </points>
       </Polygon>
-      <MaterialDesignIconView glyphName="TROPHY" layoutX="66.0" layoutY="165.0" size="40" stroke="BLACK" strokeWidth="0.0" styleClass="glowIcon" text="" />
-      <BarChart layoutX="41.0" layoutY="328.0" prefHeight="30.0" prefWidth="225.0">
-        <xAxis>
-          <CategoryAxis side="BOTTOM" />
-        </xAxis>
-        <yAxis>
-          <NumberAxis side="LEFT" />
-        </yAxis>
-      </BarChart>
+      <MaterialDesignIconView glyphName="TROPHY" layoutX="43.0" layoutY="191.0" size="40" stroke="BLACK" strokeWidth="0.0" styleClass="glowIcon" text="" />
+      <AnchorPane layoutX="41.0" layoutY="333.0" prefHeight="270.0" prefWidth="439.0" styleClass="boxGreyOutline">
+         <children>
+            <BarChart layoutX="25.0" layoutY="13.0" prefHeight="243.0" prefWidth="397.0">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </BarChart>
+         </children>
+      </AnchorPane>
+      <Label layoutX="98.0" layoutY="156.0" text="Trophy Cabinet" textFill="#646464">
+         <font>
+            <Font name="DejaVu Sans" size="24.0" />
+         </font>
+      </Label>
    </children>
    <stylesheets>
       <URL value="@../application.css" />

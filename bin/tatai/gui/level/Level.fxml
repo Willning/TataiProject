@@ -29,7 +29,7 @@
             <FontAwesomeIconView glyphName="ARROW_RIGHT" size="50" styleClass="greyIcon" />
          </graphic>
       </Button>
-      <HBox alignment="CENTER" layoutX="202.0" layoutY="150.0" prefHeight="133.0" prefWidth="688.0">
+      <HBox alignment="CENTER" layoutX="152.0" layoutY="150.0" prefHeight="133.0" prefWidth="688.0">
          <children>
             <Label fx:id="equationText" prefHeight="127.0" prefWidth="382.0" text="10 - 10" textFill="#646464">
                <font>

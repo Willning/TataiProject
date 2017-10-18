@@ -85,19 +85,16 @@
 .redText {
 	-fx-text-fill: #D00000;
 	-fx-font-size: 16px;
-	-fx-font-style: Book;
 }
 
 .greyText {
 	-fx-text-fill: #646464;
 	-fx-font-size: 16px;
-	-fx-font-style: Book;
 }
 
 .headingText {
 	-fx-text-fill: #D00000;
 	-fx-font-size: 36px;
-	-fx-font-style: Book;
 }
 
 .titleText {
@@ -157,10 +154,9 @@
 {
     -fx-text-fill: #646464;
     -fx-padding: 3 0 2 7;
-    -fx-font: 100px;
 }
 
-/* 
+/*
 
 .combo-box-popup .list-view
 {
