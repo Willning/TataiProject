@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" styleClass="redBackground" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatai.gui.welcomeScreen.WelcomeScreen">
+   <children>
+      <ImageView fitHeight="753.0" fitWidth="682.0" layoutX="159.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.3;">
+         <image>
+            <Image url="@../../../resources/images/taniwha2.png" />
+         </image>
+         <effect>
+            <ColorAdjust brightness="1.0" />
+         </effect>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="243.0" layoutY="190.0" maxHeight="-Infinity" prefHeight="309.0" prefWidth="521.0" style=": ;" text="Tātai!" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Sans Bold" size="84.0" />
+         </font>
+      </Label>
+   </children>
+   <stylesheets>
+      <URL value="@application.css" />
+      <URL value="@../application.css" />
+   </stylesheets>
+</AnchorPane>
