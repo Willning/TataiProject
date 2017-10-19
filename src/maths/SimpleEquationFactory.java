@@ -85,7 +85,7 @@ public class SimpleEquationFactory implements EquationFactory {
 	 */
 	public Equation generate() {
 		createEquation();
-		return new Equation(firstNumber + operator.toString() + secondNumber, answer);
+		return new Equation(firstNumber + operator.toString() + secondNumber +"=?", answer);
 	}
 
 	/**

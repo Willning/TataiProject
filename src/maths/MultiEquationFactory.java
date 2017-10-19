@@ -101,7 +101,7 @@ public class MultiEquationFactory implements EquationFactory{
 				operandTwo = answer/operandOne;
 		}	
 
-		return new Equation(operandOne + operator.toString() + operandTwo, answer);
+		return new Equation(operandOne + operator.toString() + operandTwo + "=?", answer);
 	}
 
 	private ArrayList<Integer> getMultiples(int number){

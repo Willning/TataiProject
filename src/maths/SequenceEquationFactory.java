@@ -24,7 +24,7 @@ public class SequenceEquationFactory implements EquationFactory {
         String output = "";
         //parse out the individual numbers into a string.
         if (!sequence.isEmpty()){
-            output = String.format("%d, %d, %d", sequence.get(0), sequence.get(1), sequence.get(2));
+            output = String.format("%d, %d, %d, ?", sequence.get(0), sequence.get(1), sequence.get(2));
         }
 
         System.out.println(output);
