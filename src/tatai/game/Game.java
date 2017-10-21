@@ -80,7 +80,7 @@ public class Game {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            wordsSpoken.add("Nothing heard");
         }
         return wordsSpoken;
     }
