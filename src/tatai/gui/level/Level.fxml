@@ -12,18 +12,18 @@
 
 <AnchorPane fx:id="anchorPane" prefHeight="700.0" prefWidth="1000.0" styleClass="greyBackground" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatai.gui.level.Level">
    <children>
-      <Label fx:id="roundText" layoutX="404.0" layoutY="48.0" styleClass="headingText" text="RAPANGA 1" textFill="#d00000">
-         <font>
-            <Font name="DejaVu Sans" size="36.0" />
-         </font>
-      </Label>
-      <HBox alignment="CENTER" layoutX="152.0" layoutY="150.0" prefHeight="133.0" prefWidth="688.0">
+      <HBox alignment="CENTER" layoutX="153.0" layoutY="190.0" prefHeight="133.0" prefWidth="688.0">
          <children>
-            <Label fx:id="equationText" alignment="CENTER" prefHeight="127.0" prefWidth="382.0" text="10 - 10" textFill="#646464">
-               <font>
-                  <Font name="DejaVu Sans Bold" size="96.0" />
-               </font>
-            </Label>
+            <VBox alignment="CENTER" prefHeight="141.0" prefWidth="425.0">
+               <children>
+                  <Label fx:id="equationText" alignment="CENTER" prefHeight="141.0" prefWidth="325.0" text="10 - 10" textFill="#646464">
+                     <font>
+                        <Font name="DejaVu Sans Bold" size="96.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="statusLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="321.0" styleClass="greyText" text="Press the Microphone to record you answer" />
+               </children>
+            </VBox>
          </children></HBox>
       <Button fx:id="recordButton1" disable="true" layoutX="378.0" layoutY="465.0" mnemonicParsing="false" onAction="#recordHit" prefHeight="65.0" prefWidth="237.0" styleClass="userSelectButtons">
          <graphic>
@@ -52,18 +52,41 @@
             </Button>
          </children>
       </HBox>
-      <VBox layoutX="648.0" layoutY="35.0" prefHeight="80.0" prefWidth="134.0">
+      <VBox alignment="CENTER" layoutX="374.0" layoutY="43.0" prefHeight="129.0" prefWidth="258.0">
          <children>
-            <Label prefHeight="33.0" prefWidth="158.0" text="Current Score:">
+            <Label fx:id="roundText" alignment="CENTER" styleClass="headingText" text="RAPANGA 1" textFill="#d00000">
                <font>
-                  <Font size="18.0" />
+                  <Font name="DejaVu Sans" size="36.0" />
                </font>
             </Label>
-            <Label prefHeight="27.0" prefWidth="143.0" text="Questions Left:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="33.0" prefWidth="140.0" text="Current Score:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="currentScore" contentDisplay="CENTER" text="0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="27.0" prefWidth="140.0" text="Questions Left:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="questionsLeft" alignment="CENTER" contentDisplay="CENTER" text="10">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
          </children>
       </VBox>
    </children>
