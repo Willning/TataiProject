@@ -1,0 +1,4 @@
+#! /bin/bash
+
+javac -cp src src/tatai/Main.java -d bin &&
+java -ea -classpath fontawesomefx-8.9.jar bin/tatai.Main

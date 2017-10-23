@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_taatai" default="compile.module.taatai">
+  <dirname property="module.taatai.basedir" file="${ant.file.module_taatai}"/>
+  
+  <property name="module.jdk.home.taatai" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.taatai" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.taatai" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.taatai" value="-encoding UTF-8 -source 1.8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="taatai.output.dir" value="${module.taatai.basedir}/out/production/Taatai"/>
+  <property name="taatai.testoutput.dir" value="${module.taatai.basedir}/out/test/Taatai"/>
+  
+  <path id="taatai.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="taatai.module.production.classpath">
+    <path refid="${module.jdk.classpath.taatai}"/>
+    <path refid="library.fontawesomefx-8.9.classpath"/>
+  </path>
+  
+  <path id="taatai.runtime.production.module.classpath">
+    <pathelement location="${taatai.output.dir}"/>
+    <path refid="library.fontawesomefx-8.9.classpath"/>
+  </path>
+  
+  <path id="taatai.module.classpath">
+    <path refid="${module.jdk.classpath.taatai}"/>
+    <pathelement location="${taatai.output.dir}"/>
+    <path refid="library.fontawesomefx-8.9.classpath"/>
+  </path>
+  
+  <path id="taatai.runtime.module.classpath">
+    <pathelement location="${taatai.testoutput.dir}"/>
+    <pathelement location="${taatai.output.dir}"/>
+    <path refid="library.fontawesomefx-8.9.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.taatai">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.taatai">
+    <patternset refid="excluded.from.module.taatai"/>
+  </patternset>
+  
+  <path id="taatai.module.sourcepath">
+    <dirset dir="${module.taatai.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.taatai" depends="compile.module.taatai.production,compile.module.taatai.tests" description="Compile module Taatai"/>
+  
+  <target name="compile.module.taatai.production" depends="register.custom.compilers" description="Compile module Taatai; production classes">
+    <mkdir dir="${taatai.output.dir}"/>
+    <javac2 destdir="${taatai.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.taatai}/javac">
+      <compilerarg line="${compiler.args.taatai}"/>
+      <bootclasspath refid="taatai.module.bootclasspath"/>
+      <classpath refid="taatai.module.production.classpath"/>
+      <src refid="taatai.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.taatai"/>
+    </javac2>
+    
+    <copy todir="${taatai.output.dir}">
+      <fileset dir="${module.taatai.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.taatai.tests" depends="register.custom.compilers,compile.module.taatai.production" description="compile module Taatai; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.taatai" description="cleanup module">
+    <delete dir="${taatai.output.dir}"/>
+    <delete dir="${taatai.testoutput.dir}"/>
+  </target>
+</project>

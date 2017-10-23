@@ -15,6 +15,13 @@ public class SimpleEquationFactory implements EquationFactory {
 	private int min;
 
 	/**
+	 * return the string "Simple Equations"
+	 */
+	public String asString() {
+		return "Simple Equations";
+	}
+
+	/**
 	 * default constructor
 	 */
 	public SimpleEquationFactory() {
@@ -47,7 +54,8 @@ public class SimpleEquationFactory implements EquationFactory {
 	private void createEquation() {
 		operator = generateOperator();
 
-		
+		operator = Operator.DIVIDE;
+
 		if (operator == Operator.ADD) {
 			firstNumber = randomNumber(1, max);
 			answer = randomNumber(firstNumber, max);
