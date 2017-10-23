@@ -28,7 +28,7 @@
       </Text>
       <Button fx:id="newPlayerButton" layoutX="143.0" layoutY="470.0" mnemonicParsing="false" onAction="#newPlayerHit" prefHeight="100.0" prefWidth="200.0" styleClass="userSelectButtons" text="New Player" textFill="#646464">
          <font>
-            <Font name="DejaVu Sans" size="18.0" />
+            <Font size="16.0" />
          </font>
          <graphic>
             <FontAwesomeIconView glyphName="USER_PLUS" size="50" text="" />
@@ -36,7 +36,7 @@
       </Button>
       <Button fx:id="selectPlayerButton" disable="true" layoutX="402.0" layoutY="470.0" mnemonicParsing="false" onAction="#selectPlayerHit" prefHeight="100.0" prefWidth="200.0" style=": ;" styleClass="userSelectButtons" text="Select Player">
          <font>
-            <Font name="DejaVu Sans" size="18.0" />
+            <Font size="16.0" />
          </font>
          <graphic>
             <FontAwesomeIconView glyphName="USER_PLUS" size="50" text="" />
@@ -44,7 +44,7 @@
       </Button>
       <Button fx:id="removePlayerButton" disable="true" layoutX="666.0" layoutY="470.0" mnemonicParsing="false" onAction="#removePlayerHit" prefHeight="100.0" prefWidth="200.0" styleClass="userSelectButtons" text="Remove Player">
          <font>
-            <Font name="DejaVu Sans" size="18.0" />
+            <Font size="16.0" />
          </font>
          <graphic>
             <FontAwesomeIconView glyphName="USER_PLUS" size="50" text="" />

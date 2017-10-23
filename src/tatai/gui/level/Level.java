@@ -1,18 +1,15 @@
 package tatai.gui.level;
 
 
-import javafx.animation.Animation;
-import javafx.animation.Interpolator;
-import javafx.animation.Transition;
+import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import tatai.StateSingleton;
@@ -20,7 +17,9 @@ import tatai.game.Game;
 import tatai.gui.userDashboardScreen.UserDashboardView;
 
 
+
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 /**
@@ -32,12 +31,18 @@ public class Level implements Initializable{
     AnchorPane anchorPane;
 
     @FXML
-    Label equationText, roundText;
+    Label equationText, roundText, statusText, scoreText;
 
     @FXML
-    Button backButton, recordButton, continueButton;
+    Button backButton, recordButton, continueButton, playButton;
+
+    @FXML
+    HBox questionBox;
 
     private Game game;
+
+    private Integer RECORDSTART = 3;
+    private Integer timerStart =RECORDSTART;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -53,6 +58,17 @@ public class Level implements Initializable{
 
     @FXML
     public void backHit() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("Exiting will not save any of your progress");
+        alert.setContentText(null);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            //Here we take the user back to the User Dashboard.
+            StateSingleton.instance().changeCenter(new UserDashboardView());
+        } else {
+            // ... user chose CANCEL or closed the dialog
+        }
 
     }
 
@@ -60,12 +76,33 @@ public class Level implements Initializable{
     public void recordHit() {
         recordButton.setDisable(true);
         System.out.println("recording....");
+        timerCount();
         game.record();
+
     }
 
     public void recordingDone() {
         System.out.println("processing...");
         game.process();
+    }
+
+    private void  timerCount(){
+        statusText.setText("Recording in Progress: " + timerStart);
+        Timeline timeline = new Timeline();
+        timeline.setCycleCount(3);
+        timeline.getKeyFrames().add(
+                new KeyFrame(Duration.seconds(1),e->{
+                    timerStart--;
+                    statusText.setText("Recording in Progress " +timerStart);
+
+                    if(timerStart<=0){
+                        timeline.stop();
+                        timerStart = RECORDSTART;
+                    }
+                }
+        ));
+        timeline.playFromStart();
+
     }
 
     public void processingDone() {
@@ -89,11 +126,18 @@ public class Level implements Initializable{
 
             @Override
             protected void interpolate(double frac) {
-                Color vColor = new Color(0.5, 1, 0, 1 - frac);
-                anchorPane.setBackground(new Background(new BackgroundFill(vColor, CornerRadii.EMPTY, Insets.EMPTY)));
+                Color vColor = new Color(0.3059, 0.7294, 0.1529, 1);
+                questionBox.setBackground(new Background(new BackgroundFill(vColor, CornerRadii.EMPTY, Insets.EMPTY)));
             }
         };
         animation.play();
+
+        animation.setOnFinished(e ->flickBack());
+
+        statusText.setText("Ka pai, you got " + game.getReceivedAnswer() +" correct");
+
+        scoreText.setText("Score: " + game.getScore());
+
         System.out.println("Correct");
         System.out.println("We received: " + game.getReceivedAnswer());
     }
@@ -108,14 +152,40 @@ public class Level implements Initializable{
 
             @Override
             protected void interpolate(double frac) {
-                Color vColor = new Color(1, 0, 0, 1 - frac);
-                anchorPane.setBackground(new Background(new BackgroundFill(vColor, CornerRadii.EMPTY, Insets.EMPTY)));
+                Color vColor = new Color(1, 1 - frac, 1 - frac, 1);
+                questionBox.setBackground(new Background(new BackgroundFill(vColor, CornerRadii.EMPTY, Insets.EMPTY)));
+
             }
         };
         animation.play();
+
+        animation.setOnFinished(e ->flickBack());
+
+        if (game.getReceivedAnswer().equals("")){
+            statusText.setText("Pouri, nothing was heard");
+        } else {
+            statusText.setText("Pouri," + game.getReceivedAnswer() + " is not correct.");
+        }
+
         System.out.println("Incorrect");
         System.out.println("We received: " + game.getReceivedAnswer());
     }
+
+    private void flickBack(){
+        final Animation animation = new Transition() {
+            {
+                setCycleDuration(Duration.millis(300));
+                setInterpolator(Interpolator.EASE_IN);
+            }
+            @Override
+            protected void interpolate(double frac) {
+                Color vColor = new Color(0.94,0.94,0.94,1);
+                questionBox.setBackground(new Background(new BackgroundFill(vColor,CornerRadii.EMPTY,Insets.EMPTY)));
+            }
+        };
+        animation.play();
+    }
+
 
     @FXML
     public void continueHit() {
@@ -124,6 +194,11 @@ public class Level implements Initializable{
         StateSingleton.instance().changeCenter(levelView);
         Level level = (Level)levelView.controller();
         level.setGame(game);
+    }
+
+    @FXML
+    public void playHit(){
+
     }
 
     public void nextLevel() {
