@@ -26,7 +26,7 @@ public class MultiEquationFactory implements EquationFactory{
 	public Equation generate() {
 		CreateMultiEquation();
 
-		return new Equation("("+partOne+")"+InitialOperator.toString()+"("+partTwo+")",answer);
+		return new Equation("("+partOne+")"+InitialOperator.toString()+"("+partTwo+")  =?",answer);
 	}
 
 	/**
@@ -57,8 +57,6 @@ public class MultiEquationFactory implements EquationFactory{
 		partOne = firstEq.toString();
 		partTwo= secondEq.toString();
 
-		System.out.println(firstEq.answer());
-		System.out.println(secondEq.answer());
 
 		answer = initial.answer();
 
@@ -92,10 +90,9 @@ public class MultiEquationFactory implements EquationFactory{
 
 		} else if (operator == Operator.MULTIPLY) {
 			//WRONG
-				ArrayList<Integer> factors = componentMaker.getFactors(answer);
+				ArrayList<Integer> factors = getFactors(answer);
 
 				int factorSeed = componentMaker.randomNumber(0, factors.size()-1);
-
 				
 				operandOne = factors.get(factorSeed);
 				operandTwo = answer/operandOne;
@@ -104,6 +101,10 @@ public class MultiEquationFactory implements EquationFactory{
 		return new Equation(operandOne + operator.toString() + operandTwo, answer);
 	}
 
+	/**
+	*Private method used to get the Multiples of a number,
+	*@param number, the number you wish to find the multiples of.
+	 */
 	private ArrayList<Integer> getMultiples(int number){
 		ArrayList<Integer> factors = new ArrayList<Integer>();
 		int multiple = number;
@@ -113,6 +114,23 @@ public class MultiEquationFactory implements EquationFactory{
 			multiple = factor*number;
 			factors.add(multiple);
 			factor++;
+		}
+		return factors;
+	}
+
+	/**
+	 * calculate all the factors of a number
+	 *
+	 * @param n
+	 *            the number that wants to find factors from
+	 * @return the factor of the number
+	 */
+	public ArrayList<Integer> getFactors(int n) {
+		ArrayList<Integer> factors = new ArrayList<>();
+		for (int i = 1; i <= n; i++) {
+			if (n % i == 0) {
+				factors.add(i);
+			}
 		}
 		return factors;
 	}

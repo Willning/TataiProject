@@ -16,4 +16,3 @@ hs_err_pid*
 .settings
 .idea/*
 *.iml
-*.fxbuild

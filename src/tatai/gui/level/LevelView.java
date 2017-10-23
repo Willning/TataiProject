@@ -2,6 +2,8 @@ package tatai.gui.level;
 
 import tatai.gui.View;
 
+import java.util.logging.Level;
+
 /**
  * Created by Winston on 10/16/2017.
  */
