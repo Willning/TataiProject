@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="700.0" prefWidth="1000.0" styleClass="greyBackground" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatai.gui.level.Level">
+   <children>
+      <Label fx:id="roundText" layoutX="395.0" layoutY="48.0" styleClass="headingText" text="RAPANGA 1" textFill="#d00000">
+         <font>
+            <Font name="DejaVu Sans" size="36.0" />
+         </font>
+      </Label>
+      <Button fx:id="backButton" layoutX="101.0" layoutY="415.0" mnemonicParsing="false" onAction="#backHit" prefHeight="65.0" prefWidth="100.0" styleClass="userSelectButtons">
+         <graphic>
+            <FontAwesomeIconView glyphName="REPLY" size="50" styleClass="greyIcon" />
+         </graphic>
+      </Button>
+      <Button fx:id="recordButton" layoutX="234.0" layoutY="415.0" mnemonicParsing="false" onAction="#recordHit" prefHeight="65.0" prefWidth="500.0" styleClass="userSelectButtons">
+         <graphic>
+            <FontAwesomeIconView glyphName="MICROPHONE" size="50" styleClass="redIcon" />
+         </graphic></Button>
+      <Button fx:id="continueButton" disable="true" layoutX="766.0" layoutY="415.0" mnemonicParsing="false" onAction="#continueHit" prefHeight="65.0" prefWidth="100.0" styleClass="userSelectButtons">
+         <graphic>
+            <FontAwesomeIconView glyphName="ARROW_RIGHT" size="50" styleClass="greyIcon" />
+         </graphic>
+      </Button>
+      <HBox alignment="CENTER" layoutX="152.0" layoutY="150.0" prefHeight="133.0" prefWidth="688.0">
+         <children>
+            <Label fx:id="equationText" prefHeight="127.0" prefWidth="382.0" text="10 - 10" textFill="#646464">
+               <font>
+                  <Font name="DejaVu Sans Bold" size="96.0" />
+               </font>
+            </Label>
+         </children></HBox>
+      <Button fx:id="recordButton1" disable="true" layoutX="373.0" layoutY="509.0" mnemonicParsing="false" onAction="#recordHit" prefHeight="65.0" prefWidth="237.0" styleClass="userSelectButtons">
+         <graphic>
+            <FontAwesomeIconView glyphName="PLAY" size="50" styleClass="redIcon" />
+         </graphic>
+      </Button>
+   </children>
+   <stylesheets>
+      <URL value="@../application.css" />
+   </stylesheets>
+</AnchorPane>

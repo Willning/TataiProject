@@ -19,13 +19,17 @@
 	-fx-border-width: 2;
 }
 
+.userSelectButton {
+	-fx-pref-height: 20;
+	-fx-pref-width: 140;
+}
+
 .button:hover {
 	/*-fx-padding: -10 -10 -25 -10;
     -fx-border-insets: -10 -10 -25 -10;
     -fx-background-insets: -10 -10 -25 -10;*/
-    -fx-background-color: #ffcccc;
+    -fx-background-color: #eeffee;
     -fx-text-fill: black;
-    -fx-border-color: black;
 }
 
 .invisibleButton {
@@ -38,15 +42,14 @@
     -fx-border-insets: -10 -10 -25 -10;
     -fx-background-insets: -10 -10 -25 -10;*/
     -fx-background-color: transparent;
-    -fx-border-color: transparent;
 }
 
 .invisibleButton:hover .label {
-	-fx-text-fill: #ffcccc;
+	-fx-text-fill: #eeffee;
 }
 
 .invisibleButton:hover .glyph-icon {
-	-fx-fill: #ffcccc;
+	-fx-fill: #eeffee;
 }
 
 .invisibleFlashButton {
@@ -57,9 +60,7 @@
 /* BACKGROUNDS */
 
 .greyBackground {
-	-fx-background-radius: 3;
-	-fx-background-color: #eeeeee;
-	-fx-background-insets:1 1 2 1;
+	-fx-background-color: #EEEEEE;
 }
 
 .whiteBackground {
@@ -70,12 +71,13 @@
     -fx-background-color: #790009;
 }
 
-.boxGreyOutline {
-	-fx-border-color: #646464;
-	-fx-border-radius: 3;
-	-fx-border-width: 2;
-	-fx-background-color: white;
-	-fx-background-insets:1 1 2 1;
+.backgroundPattern {
+    -fx-background-image: url("../../resources/images/pattern.png");
+    -fx-opacity: 1;
+    -fx-border-color: #6d0300;
+    -fx-border-width: 30;
+    -fx-background-repeat: stretch;
+
 }
 
 /* TEXT */
@@ -95,19 +97,8 @@
 	-fx-font-size: 36px;
 }
 
-.whiteHeadingText {
-	-fx-text-fill: white;
-	-fx-font-size: 36px;
-}
-
 .titleText {
 	-fx-text-fill: #D00000;
-	-fx-font-size: 48px;
-	-fx-font-weight: Bold;
-}
-
-.whiteTitleText {
-	-fx-text-fill: white;
 	-fx-font-size: 48px;
 	-fx-font-weight: Bold;
 }
@@ -129,6 +120,16 @@
 .glowIcon {
 	-fx-fill: #FFD700;
 	-fx-effect: dropshadow(one-pass-box, #444444, 10, 0.5, 0, 0);
+}
+
+/* PANELS */
+
+.boxGreyOutline {
+	-fx-background-color: WHITE;
+	-fx-border-color: #646464;
+	-fx-border-radius: 3;
+	-fx-border-width: 2;
+	-fx-background-color: white;
 }
 
 /* COMBO BOXES */

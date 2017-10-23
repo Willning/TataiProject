@@ -4,7 +4,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import tatai.gui.View;
-import tatai.gui.gameFeaturesScreen.GameFeaturesView;
 import tatai.gui.userDashboardScreen.UserDashboardView;
 import tatai.gui.userSelectScreen.UserSelectScreenView;
 import tatai.user.User;
