@@ -14,6 +14,7 @@ import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import tatai.StateSingleton;
 import tatai.game.Game;
+import tatai.gui.endGameScreen.EndGameView;
 import tatai.gui.userDashboardScreen.UserDashboardView;
 
 
@@ -42,9 +43,9 @@ public class Level implements Initializable{
     private Game game;
 
     private Integer RECORDSTART = 3;
-    private Integer timerStart =RECORDSTART;
-
+    private Integer timerStart = RECORDSTART;
     private Integer attempts;
+    private boolean correct =false;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -60,6 +61,7 @@ public class Level implements Initializable{
         lifeText.setText("Attempts: " + (3 - game.getCurrentAttempt()));
 
         playButton.setDisable(true);
+        statusText.setBackground(new Background(new BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)));
 
         attempts = 2;
     }
@@ -149,6 +151,7 @@ public class Level implements Initializable{
 
         scoreText.setText("Score: " + game.getScore());
 
+        correct = true;
         System.out.println("Correct");
         System.out.println("We received: " + game.getReceivedAnswer());
     }
@@ -204,8 +207,9 @@ public class Level implements Initializable{
     @FXML
     public void continueHit() {
         // Create a new level and pass the game into it.
+
+        //delete all created sound files before moving on to the next level.
         game.deleteSound();
-        
         LevelView levelView = new LevelView();
         StateSingleton.instance().changeCenter(levelView);
         Level level = (Level)levelView.controller();
@@ -215,15 +219,22 @@ public class Level implements Initializable{
     @FXML
     public void playHit(){
         game.play();
+
         playButton.setDisable(true);
         recordButton.setDisable(true);
+        continueButton.setDisable(true);
     }
 
     public void playEnd(){
         playButton.setDisable(false);
+        System.out.println(attempts);
 
-        if (attempts > 0) {
+        if (attempts > 0 && !correct) {
             recordButton.setDisable(false);
+        }
+
+        if (attempts == 0 || correct){
+            continueButton.setDisable(false);
         }
     }
 
@@ -235,6 +246,6 @@ public class Level implements Initializable{
     public void endGame() {
         // Create a end game screen and pass the game into it.
         StateSingleton.instance().getUser().addGame(game.gameData());
-        StateSingleton.instance().changeCenter(new UserDashboardView());
+        StateSingleton.instance().changeCenter(new EndGameView());
     }
 }

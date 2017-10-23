@@ -137,7 +137,6 @@ public class Game {
             loseRound();
         } else {
             currentAttempt++;
-
             level.failedAttempt();
         }
 
@@ -205,7 +204,7 @@ public class Game {
         currentAttempt = 1;
         currentRound++;
         currentEquation = equationFactory.generate();
-        deleteSound();
+
         if (currentRound <= totalRounds) {
             level.nextLevel();
         } else {

@@ -8,6 +8,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import tatai.StateSingleton;
+import tatai.gui.endGameScreen.EndGameView;
 import tatai.gui.gameFeaturesScreen.GameFeaturesView;
 import tatai.user.GameData;
 import tatai.user.User;
