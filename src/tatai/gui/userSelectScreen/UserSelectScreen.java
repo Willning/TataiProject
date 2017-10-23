@@ -60,8 +60,28 @@ public class UserSelectScreen implements Initializable{
         dialog.setHeaderText("Create a new User:");
         dialog.setContentText("Please enter your username:");
         Optional<String> result = dialog.showAndWait();
+        //check cases for case sensitivity.
+
         if (result.isPresent()) {
-            if (users.contains(result.get()) || result.get().equals("")) {
+            String lowerResult = result.get().toLowerCase();
+            boolean exists = false;
+            for (String name : users) {
+                if (name.toLowerCase().equals(lowerResult)) {
+                    exists = true;
+                }
+            }
+
+            boolean hasNonAlpha = result.get().matches("^.*[^a-zA-Z0-9 ].*$");
+
+            if( hasNonAlpha){
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Username invalid!");
+                alert.setHeaderText("Please enter a different username");
+                alert.setContentText("This username contains invalid characters");
+                alert.showAndWait();
+                return;
+            }
+            if (exists || result.get().equals("")) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Username invalid!");
                 alert.setHeaderText("Please enter a different username!");

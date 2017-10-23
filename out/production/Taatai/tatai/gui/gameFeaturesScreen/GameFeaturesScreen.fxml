@@ -119,7 +119,7 @@
             <Font name="DejaVu Sans" size="18.0" />
          </font>
          <graphic>
-            <FontAwesomeIconView glyphName="REPLY" size="60" />
+            <FontAwesomeIconView glyphName="REPLY" size="60" style="-fx-fill: #eeeeee;" />
          </graphic>
       </Button>
       <Label layoutX="362.0" layoutY="52.0" styleClass="whiteTitleText" text="New Game" />

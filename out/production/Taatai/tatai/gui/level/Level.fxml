@@ -74,7 +74,7 @@
          </children>
       </HBox>
       <Label fx:id="scoreText" layoutX="186.0" layoutY="168.0" styleClass="whiteHeadingText" text="Score: 0" />
-      <Label layoutX="589.0" layoutY="168.0" styleClass="whiteHeadingText" text="Lives Left: 0" />
+      <Label fx:id="lifeText" layoutX="589.0" layoutY="168.0" styleClass="whiteHeadingText" text="Lives Left: 0" />
    </children>
    <stylesheets>
       <URL value="@../application.css" />

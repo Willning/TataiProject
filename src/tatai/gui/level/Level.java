@@ -31,7 +31,7 @@ public class Level implements Initializable{
     AnchorPane anchorPane;
 
     @FXML
-    Label equationText, roundText, statusText, scoreText;
+    Label equationText, roundText, statusText, scoreText, lifeText;
 
     @FXML
     Button backButton, recordButton, continueButton, playButton;
@@ -44,6 +44,8 @@ public class Level implements Initializable{
     private Integer RECORDSTART = 3;
     private Integer timerStart =RECORDSTART;
 
+    private Integer attempts = 2;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -54,6 +56,8 @@ public class Level implements Initializable{
         game.setLevel(this);
         equationText.setText(game.equationText());
         roundText.setText("Round " + game.getCurrentRound());
+        scoreText.setText("Score: " + game.getScore());
+        lifeText.setText("Attempts: " + (3 - game.getCurrentAttempt()));
     }
 
     @FXML
@@ -78,7 +82,6 @@ public class Level implements Initializable{
         System.out.println("recording....");
         timerCount();
         game.record();
-
     }
 
     public void recordingDone() {
@@ -112,6 +115,7 @@ public class Level implements Initializable{
     public void failedAttempt() {
         recordButton.setDisable(false);
         System.out.println("Attempt: " + game.getCurrentAttempt());
+
         System.out.println("Press the button to record...");
         answerWrong();
     }
@@ -167,6 +171,7 @@ public class Level implements Initializable{
             statusText.setText("Pouri," + game.getReceivedAnswer() + " is not correct.");
         }
 
+        lifeText.setText("Attempts: " + (3 - game.getCurrentAttempt()));
         System.out.println("Incorrect");
         System.out.println("We received: " + game.getReceivedAnswer());
     }

@@ -117,12 +117,14 @@ public class Game {
      */
     private void processingDone() {
         boolean answerCorrect = checkAnswer();
+
         if (answerCorrect) {
             winRound();
         } else if (currentAttempt >= 2) {
             loseRound();
         } else {
             currentAttempt++;
+
             level.failedAttempt();
         }
 

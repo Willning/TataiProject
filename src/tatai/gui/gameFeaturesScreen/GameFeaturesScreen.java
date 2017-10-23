@@ -15,6 +15,7 @@ import tatai.game.GameDifficulty;
 import tatai.game.GameType;
 import tatai.gui.level.Level;
 import tatai.gui.level.LevelView;
+import tatai.gui.userDashboardScreen.UserDashboardView;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -48,7 +49,7 @@ public class GameFeaturesScreen implements Initializable{
 
     @FXML
     public void backHit() {
-
+        StateSingleton.instance().changeCenter(new UserDashboardView());
     }
 
     @FXML
