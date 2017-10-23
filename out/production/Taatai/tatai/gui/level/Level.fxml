@@ -41,7 +41,7 @@
                         <FontAwesomeIconView glyphName="MICROPHONE" size="100" styleClass="redIcon" />
                      </graphic>
                   </Button>
-                  <Button fx:id="playButton" disable="true" mnemonicParsing="false" onAction="#playHit" prefHeight="116.0" prefWidth="117.0" styleClass="invisibleButton">
+                  <Button fx:id="playButton" mnemonicParsing="false" onAction="#playHit" prefHeight="116.0" prefWidth="117.0" styleClass="invisibleButton">
                      <graphic>
                         <FontAwesomeIconView glyphName="PLAY" size="100" styleClass="redIcon" />
                      </graphic>

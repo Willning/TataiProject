@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import maths.Equation;
 import maths.EquationFactory;
 import maths.Pronunciation;
+import processBuilder.Process;
 import processBuilder.ProcessOutput;
 import tatai.SpeechRecognitionServiceFactory;
 import tatai.gui.level.Level;
@@ -112,6 +113,18 @@ public class Game {
     }
 
     /**
+    * Process that is called and will try to play the created file.
+    */
+
+    public void play() {
+        Service<ProcessOutput> playService = serviceFactory.makeService(SOUND_DIR, SpeechRecognitionServiceFactory.PLAY, new EventHandler<WorkerStateEvent>() {
+            @Override
+            public void handle(WorkerStateEvent event) { level.playEnd(); }
+        });
+        playService.start();
+    }
+
+    /**
      * Process that is called when processing (creation of MLF file) is finished. It checks the MLF file and decides on the next action based of whether
      * the user answer the question correctly and the current state of the game.
      */
@@ -128,6 +141,12 @@ public class Game {
             level.failedAttempt();
         }
 
+
+        // Tell the controller that processing is now done.
+        level.processingDone();
+    }
+
+    public void deleteSound(){
         // Delete the created files.
         File soundDir = new File(SOUND_DIR);
         for (File file : soundDir.listFiles()) {
@@ -135,9 +154,6 @@ public class Game {
                 file.delete();
             }
         }
-
-        // Tell the controller that processing is now done.
-        level.processingDone();
     }
 
     /**
@@ -189,6 +205,7 @@ public class Game {
         currentAttempt = 1;
         currentRound++;
         currentEquation = equationFactory.generate();
+        deleteSound();
         if (currentRound <= totalRounds) {
             level.nextLevel();
         } else {

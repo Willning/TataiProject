@@ -44,7 +44,7 @@ public class Level implements Initializable{
     private Integer RECORDSTART = 3;
     private Integer timerStart =RECORDSTART;
 
-    private Integer attempts = 2;
+    private Integer attempts;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -58,6 +58,10 @@ public class Level implements Initializable{
         roundText.setText("Round " + game.getCurrentRound());
         scoreText.setText("Score: " + game.getScore());
         lifeText.setText("Attempts: " + (3 - game.getCurrentAttempt()));
+
+        playButton.setDisable(true);
+
+        attempts = 2;
     }
 
     @FXML
@@ -79,6 +83,8 @@ public class Level implements Initializable{
     @FXML
     public void recordHit() {
         recordButton.setDisable(true);
+        playButton.setDisable(true);
+
         System.out.println("recording....");
         timerCount();
         game.record();
@@ -87,6 +93,7 @@ public class Level implements Initializable{
     public void recordingDone() {
         System.out.println("processing...");
         game.process();
+        playButton.setDisable(false);
     }
 
     private void  timerCount(){
@@ -171,7 +178,9 @@ public class Level implements Initializable{
             statusText.setText("Pouri," + game.getReceivedAnswer() + " is not correct.");
         }
 
-        lifeText.setText("Attempts: " + (3 - game.getCurrentAttempt()));
+        attempts--;
+        lifeText.setText("Attempts: " + (attempts));
+
         System.out.println("Incorrect");
         System.out.println("We received: " + game.getReceivedAnswer());
     }
@@ -195,6 +204,8 @@ public class Level implements Initializable{
     @FXML
     public void continueHit() {
         // Create a new level and pass the game into it.
+        game.deleteSound();
+        
         LevelView levelView = new LevelView();
         StateSingleton.instance().changeCenter(levelView);
         Level level = (Level)levelView.controller();
@@ -203,11 +214,22 @@ public class Level implements Initializable{
 
     @FXML
     public void playHit(){
+        game.play();
+        playButton.setDisable(true);
+        recordButton.setDisable(true);
+    }
 
+    public void playEnd(){
+        playButton.setDisable(false);
+
+        if (attempts > 0) {
+            recordButton.setDisable(false);
+        }
     }
 
     public void nextLevel() {
         continueButton.setDisable(false);
+
     }
 
     public void endGame() {
