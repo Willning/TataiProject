@@ -87,7 +87,7 @@ public class UserSelectScreen implements Initializable{
             return;
         }
 
-        // If he has selected a user
+        // If they have selected a user
         String username = nameBox.getSelectionModel().getSelectedItem();
         User user = null;
         // Create the user object by parsing the output serialization file.

@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" styleClass="redBackground" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatai.gui.userSelectScreen.UserSelectScreen">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" styleClass="redBackground" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatai.gui.customListSelect.CustomListController">
    <children>
       <ImageView fitHeight="750.0" fitWidth="750.0" layoutX="140.0" layoutY="-40.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.2;">
          <image>
@@ -26,7 +26,7 @@
             <Font name="DejaVu Sans Bold" size="82.0" />
          </font>
       </Text>
-      <Button fx:id="newPlayerButton" layoutX="142.0" layoutY="470.0" mnemonicParsing="false" onAction="#newPlayerHit" prefHeight="100.0" prefWidth="200.0" styleClass="userSelectButtons" text="New List" textFill="#646464">
+      <Button fx:id="newListButton" layoutX="142.0" layoutY="470.0" mnemonicParsing="false" onAction="#newListHit" prefHeight="100.0" prefWidth="200.0" text="New List" textFill="#646464">
          <font>
             <Font name="DejaVu Sans" size="18.0" />
          </font>
@@ -34,8 +34,8 @@
             <FontAwesomeIconView glyphName="USER_PLUS" size="50" text="" />
          </graphic>
       </Button>
-      <ComboBox fx:id="nameBox" layoutX="300.0" layoutY="300.0" prefHeight="80.0" prefWidth="400.0" />
-      <Button fx:id="newPlayerButton1" disable="true" layoutX="398.0" layoutY="470.0" mnemonicParsing="false" onAction="#newPlayerHit" prefHeight="100.0" prefWidth="200.0" styleClass="userSelectButtons" text="Edit List" textFill="#646464">
+      <ComboBox fx:id="listSelectBox" layoutX="300.0" layoutY="300.0" prefHeight="80.0" prefWidth="400.0" onAction="#listSelected" />
+      <Button fx:id="editListButton" disable="true" layoutX="398.0" layoutY="470.0" mnemonicParsing="false" onAction="#editListHit" prefHeight="100.0" prefWidth="200.0" text="Edit List" textFill="#646464">
          <font>
             <Font name="DejaVu Sans" size="18.0" />
          </font>
@@ -43,7 +43,7 @@
             <FontAwesomeIconView size="50" text="" />
          </graphic>
       </Button>
-      <Button fx:id="newPlayerButton11" disable="true" layoutX="656.0" layoutY="470.0" mnemonicParsing="false" onAction="#newPlayerHit" prefHeight="100.0" prefWidth="200.0" styleClass="userSelectButtons" text="Edit List" textFill="#646464">
+      <Button fx:id="removeListButton" disable="true" layoutX="656.0" layoutY="470.0" mnemonicParsing="false" onAction="#removeListHit" prefHeight="100.0" prefWidth="216.0" text="Remove List" textFill="#646464">
          <font>
             <Font name="DejaVu Sans" size="18.0" />
          </font>
