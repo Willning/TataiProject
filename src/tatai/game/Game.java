@@ -208,7 +208,8 @@ public class Game {
         if (currentRound <= totalRounds) {
             level.nextLevel();
         } else {
-            level.endGame();
+            level.nextLevel();
+            level.setLastTurn();
         }
     }
 

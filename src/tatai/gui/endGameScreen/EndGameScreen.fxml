@@ -51,10 +51,11 @@
               <children>
                   <TableView fx:id="statsTable" prefHeight="200.0" prefWidth="479.0" style="-fx-background-color: WHITE; -fx-border-color: #646464; -fx-border-radius: 3;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <columns>
-                  <TableColumn fx:id="roundNumber" prefWidth="110.0" text="Round" />
+                  <TableColumn fx:id="roundNumber" text="Round" />
                   <TableColumn fx:id="question" prefWidth="150.0" text="Question" />
-                  <TableColumn fx:id="correctAnswer" prefWidth="150.0" text="Correct Answer" />
-                  <TableColumn fx:id="correct" prefWidth="150.0" text="Correct" />
+                  <TableColumn fx:id="correctAnswer" prefWidth="120.0" text="Correct Answer" />
+                  <TableColumn fx:id="userAnswer" prefWidth="120.0" text="Your answer" />
+                  <TableColumn fx:id="correct" minWidth="2.0" text="Correct" />
                </columns>
             </TableView>
               </children>

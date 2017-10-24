@@ -93,5 +93,6 @@ public class UserDashboard implements Initializable{
     @FXML
     public void playHit() {
         StateSingleton.instance().changeCenter(new GameFeaturesView());
+
     }
 }

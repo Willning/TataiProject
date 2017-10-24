@@ -47,6 +47,8 @@ public class Level implements Initializable{
     private Integer attempts;
     private boolean correct =false;
 
+    private boolean lastTurn = false;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -207,13 +209,17 @@ public class Level implements Initializable{
     @FXML
     public void continueHit() {
         // Create a new level and pass the game into it.
+        if (lastTurn){
+            endGame();
 
-        //delete all created sound files before moving on to the next level.
-        game.deleteSound();
-        LevelView levelView = new LevelView();
-        StateSingleton.instance().changeCenter(levelView);
-        Level level = (Level)levelView.controller();
-        level.setGame(game);
+        } else {
+            //delete all created sound files before moving on to the next level.
+            game.deleteSound();
+            LevelView levelView = new LevelView();
+            StateSingleton.instance().changeCenter(levelView);
+            Level level = (Level) levelView.controller();
+            level.setGame(game);
+        }
     }
 
     @FXML
@@ -247,5 +253,9 @@ public class Level implements Initializable{
         // Create a end game screen and pass the game into it.
         StateSingleton.instance().getUser().addGame(game.gameData());
         StateSingleton.instance().changeCenter(new EndGameView());
+    }
+
+    public void setLastTurn(){
+        lastTurn = true;
     }
 }

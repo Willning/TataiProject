@@ -1,15 +1,19 @@
 package tatai.gui.endGameScreen;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+import com.sun.prism.paint.Color;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.geometry.Insets;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.paint.Paint;
+import javafx.util.Callback;
 import tatai.StateSingleton;
-import tatai.game.Game;
 import tatai.gui.gameFeaturesScreen.GameFeaturesView;
 import tatai.gui.userDashboardScreen.UserDashboardView;
 import tatai.user.GameData;
@@ -17,9 +21,7 @@ import tatai.user.RoundData;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.ResourceBundle;
-import java.util.Set;
 
 /**
  * Controller for the end gamme screen which will pop up after a game is finished.
@@ -37,7 +39,10 @@ public class EndGameScreen implements Initializable{
     TableView statsTable;
 
     @FXML
-    TableColumn<RoundData,String> roundNumber, question, correctAnswer,correct;
+    TableColumn<RoundData,String> roundNumber, question, correctAnswer, userAnswer;
+
+    @FXML
+    TableColumn<RoundData,Boolean> correct;
 
     private GameData data;
 
@@ -79,7 +84,29 @@ public class EndGameScreen implements Initializable{
         roundNumber.setCellValueFactory(new PropertyValueFactory<>("roundNumber"));
         question.setCellValueFactory(new PropertyValueFactory<>("equation"));
         correctAnswer.setCellValueFactory(new PropertyValueFactory<>("correctAnswer"));
+        userAnswer.setCellValueFactory(new PropertyValueFactory<>("userAnswer"));
+
         correct.setCellValueFactory(new PropertyValueFactory<>("correct"));
+
+        correct.setCellFactory(col -> new TableCell<RoundData,Boolean>(){
+            @Override
+            protected void updateItem(Boolean item, boolean empty) {
+                TableRow<RoundData> currentRow = getTableRow();
+                if (empty || item == null) {
+                } else {
+                    if(item){
+                        setText("Correct");
+                        //currentRow.setStyle("-fx-background-color: #80ff78");
+                        //throws a lot of exceptions.
+
+                    }else{
+                        setText("Incorrect");
+                        //currentRow.setStyle("-fx-background-color: #ff8077");
+                        //throws a lot of exceptions.
+                    }
+                }
+            }
+        });
 
         statsTable.setItems(FXCollections.observableList(roundInfo));
         statsTable.getSortOrder().add(roundNumber);
