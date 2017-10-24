@@ -101,7 +101,7 @@ public class EndGameScreen implements Initializable{
                         setText("Correct");
                         if (currentRow!= null) {
                             Color vColor= new Color(0.6588, 1, 0.5725, 1);
-                            setBackground(new Background(new BackgroundFill(vColor, CornerRadii.EMPTY, Insets.EMPTY)));
+                            currentRow.setBackground(new Background(new BackgroundFill(vColor, CornerRadii.EMPTY, Insets.EMPTY)));
                         }
                         //throws a lot of exceptions.
                     }else{
