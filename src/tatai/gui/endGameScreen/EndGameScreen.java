@@ -1,7 +1,7 @@
 package tatai.gui.endGameScreen;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
-import com.sun.prism.paint.Color;
+
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,6 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.util.Callback;
 import tatai.StateSingleton;
@@ -85,24 +86,32 @@ public class EndGameScreen implements Initializable{
         question.setCellValueFactory(new PropertyValueFactory<>("equation"));
         correctAnswer.setCellValueFactory(new PropertyValueFactory<>("correctAnswer"));
         userAnswer.setCellValueFactory(new PropertyValueFactory<>("userAnswer"));
-
         correct.setCellValueFactory(new PropertyValueFactory<>("correct"));
 
         correct.setCellFactory(col -> new TableCell<RoundData,Boolean>(){
             @Override
             protected void updateItem(Boolean item, boolean empty) {
-                TableRow<RoundData> currentRow = getTableRow();
+
+                TableRow<RoundData> currentRow = this.getTableRow();
+
+
                 if (empty || item == null) {
                 } else {
                     if(item){
                         setText("Correct");
-                        //currentRow.setStyle("-fx-background-color: #80ff78");
+                        if (currentRow!= null) {
+                            Color vColor= new Color(0.6588, 1, 0.5725, 1);
+                            setBackground(new Background(new BackgroundFill(vColor, CornerRadii.EMPTY, Insets.EMPTY)));
+                        }
                         //throws a lot of exceptions.
-
                     }else{
                         setText("Incorrect");
-                        //currentRow.setStyle("-fx-background-color: #ff8077");
-                        //throws a lot of exceptions.
+                        if (currentRow!= null){
+                            Color vColor= new Color(1, 0.1098, 0.3451, 1);
+                            currentRow.setBackground(new Background(new BackgroundFill(vColor, CornerRadii.EMPTY,Insets.EMPTY)));
+                            //throws a lot of exceptions.
+                        }
+
                     }
                 }
             }
