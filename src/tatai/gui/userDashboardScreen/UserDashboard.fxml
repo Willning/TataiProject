@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <?import de.jensd.fx.glyphs.octicons.OctIconView?>
 <?import java.lang.Double?>
@@ -11,6 +10,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Reflection?>
@@ -105,24 +106,74 @@
       <MaterialDesignIconView glyphName="TROPHY" layoutX="43.0" layoutY="191.0" size="40" stroke="BLACK" strokeWidth="0.0" styleClass="glowIcon" text="" />
       <AnchorPane layoutX="41.0" layoutY="333.0" prefHeight="270.0" prefWidth="439.0" styleClass="boxGreyOutline">
          <children>
-            <BarChart layoutX="43.0" layoutY="23.0" prefHeight="241.0" prefWidth="357.0">
-              <xAxis>
-                <CategoryAxis side="BOTTOM" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis side="LEFT" />
-              </yAxis>
-            </BarChart>
-            <Button layoutX="7.0" layoutY="113.0" mnemonicParsing="false" prefWidth="34.0" styleClass="invisibleButton">
-               <graphic>
-                  <FontAwesomeIconView glyphName="REVERSE" size="30" />
-               </graphic>
-            </Button>
-            <Button layoutX="387.0" layoutY="113.0" mnemonicParsing="false" styleClass="invisibleButton">
-               <graphic>
-                  <FontAwesomeIconView glyphName="PLAY" size="30" />
-               </graphic>
-            </Button>
+            <TabPane layoutX="5.0" layoutY="4.0" prefHeight="266.0" prefWidth="439.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Easy">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <BarChart fx:id="easyChart" layoutX="37.0" prefHeight="241.0" prefWidth="357.0">
+                                <xAxis>
+                                  <CategoryAxis fx:id="axis" side="BOTTOM" />
+                                </xAxis>
+                                <yAxis>
+                                  <NumberAxis fx:id="scoreAxis" side="LEFT" />
+                                </yAxis>
+                              </BarChart>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Medium">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <BarChart fx:id="mediumChart" layoutX="37.0" prefHeight="241.0" prefWidth="357.0">
+                                 <xAxis>
+                                    <CategoryAxis fx:id="axis1" side="BOTTOM" />
+                                 </xAxis>
+                                 <yAxis>
+                                    <NumberAxis fx:id="scoreAxis1" side="LEFT" />
+                                 </yAxis>
+                              </BarChart>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab text="Hard">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <BarChart fx:id="hardChart" layoutX="37.0" prefHeight="241.0" prefWidth="357.0">
+                                 <xAxis>
+                                    <CategoryAxis fx:id="axis2" side="BOTTOM" />
+                                 </xAxis>
+                                 <yAxis>
+                                    <NumberAxis fx:id="scoreAxis2" side="LEFT" />
+                                 </yAxis>
+                              </BarChart>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Custom">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <BarChart fx:id="customChart" layoutX="37.0" prefHeight="241.0" prefWidth="357.0">
+                                 <xAxis>
+                                    <CategoryAxis fx:id="axis3" side="BOTTOM" />
+                                 </xAxis>
+                                 <yAxis>
+                                    <NumberAxis fx:id="scoreAxis3" side="LEFT" />
+                                 </yAxis>
+                              </BarChart>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
          </children>
       </AnchorPane>
       <Label layoutX="98.0" layoutY="156.0" text="Trophy Cabinet" textFill="#646464">
