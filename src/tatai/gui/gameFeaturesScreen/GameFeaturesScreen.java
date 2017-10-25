@@ -98,6 +98,9 @@ public class GameFeaturesScreen implements Initializable{
         } else if (hardRadio.isSelected()) {
             equationFactory = new HardEquationFactory();
             gameDifficulty = GameDifficulty.HARD;
+        } else if (customRadio.isSelected()) {
+            equationFactory = new CustomEquationFactory();
+            gameDifficulty = GameDifficulty.CUSTOM;
         }
 
         Game game = new Game(gameType, equationFactory, 10, gameDifficulty);

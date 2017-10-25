@@ -71,10 +71,10 @@ public class UserDashboard implements Initializable{
         setNumberAxis(scoreAxis2);
         setNumberAxis(scoreAxis3);
 
-        axis.setLabel("Last 5 scores, (most to least Recent)");
-        axis1.setLabel("Last 5 scores, (most to least Recent)");
-        axis2.setLabel("Last 5 scores, (most to least Recent)");
-        axis3.setLabel("Last 5 scores, (most to least Recent)");
+        axis.setLabel("Last 5 scores, (Most to least Recent)");
+        axis1.setLabel("Last 5 scores, (Most to least Recent)");
+        axis2.setLabel("Last 5 scores, (Most to least Recent)");
+        axis3.setLabel("Last 5 scores, (Most to least Recent)");
 
         setupTable();
 
