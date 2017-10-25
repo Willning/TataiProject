@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -11,74 +13,91 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="550.0" prefWidth="550.0" styleClass="greyBackground" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" styleClass="greyBackground" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatai.gui.customSelectScreen.CustomSelectController">
    <children>
-      <AnchorPane layoutX="19.0" layoutY="66.0" prefHeight="124.0" prefWidth="509.0" styleClass="boxRedOutline">
+      <AnchorPane layoutX="33.0" layoutY="130.0" prefHeight="541.0" prefWidth="585.0" styleClass="boxGreyOutline">
          <children>
-            <ChoiceBox layoutX="151.0" layoutY="39.0" prefHeight="20.0" prefWidth="209.0" />
-            <Label layoutX="177.0" layoutY="14.0" styleClass="greyText" text="Select an equation:" />
-            <Button disable="true" layoutX="163.0" layoutY="78.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="184.0" styleClass="greyText" text="Remove" textFill="#646464">
-               <font>
-                  <Font name="DejaVu Sans" size="1.0" />
-               </font>
-            </Button>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="19.0" layoutY="267.0" prefHeight="269.0" prefWidth="509.0" styleClass="boxRedOutline">
-         <children>
-            <Label layoutX="65.0" layoutY="14.0" styleClass="greyText" text="Choose a random equation from the following:" />
-            <AnchorPane layoutX="9.0" layoutY="34.0" prefHeight="127.0" prefWidth="487.0" styleClass="boxGreyOutline">
+            <AnchorPane layoutX="38.0" layoutY="145.0" prefHeight="193.0" prefWidth="518.0" styleClass="boxRedOutline">
                <children>
-                  <GridPane layoutX="12.0" layoutY="2.0" prefHeight="125.0" prefWidth="499.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="78.0" minWidth="10.0" prefWidth="61.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="96.0" minWidth="10.0" prefWidth="78.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="91.0" minWidth="10.0" prefWidth="83.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="101.0" minWidth="10.0" prefWidth="90.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="109.0" minWidth="10.0" prefWidth="93.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="111.0" minWidth="10.0" prefWidth="110.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
+                  <AnchorPane layoutX="-5.0" layoutY="34.0" prefHeight="159.0" prefWidth="521.0" styleClass="boxGreyOutline">
                      <children>
-                        <Label alignment="CENTER" prefHeight="51.0" prefWidth="102.0" styleClass="redText" text="1-10" GridPane.rowIndex="1" />
-                        <Label alignment="CENTER" layoutX="10.0" layoutY="52.0" prefHeight="51.0" prefWidth="102.0" styleClass="redText" text="1-99" GridPane.rowIndex="2" />
-                        <Label alignment="CENTER" layoutX="10.0" layoutY="52.0" prefHeight="51.0" prefWidth="102.0" styleClass="redText" text="Plus" GridPane.columnIndex="1" />
-                        <Label alignment="CENTER" layoutX="94.0" layoutY="10.0" prefHeight="51.0" prefWidth="102.0" styleClass="redText" text="Minus" GridPane.columnIndex="2" />
-                        <Label alignment="CENTER" layoutX="179.0" layoutY="10.0" prefHeight="51.0" prefWidth="102.0" styleClass="redText" text="Times" GridPane.columnIndex="3" />
-                        <Label alignment="CENTER" layoutX="264.0" layoutY="10.0" prefHeight="51.0" prefWidth="102.0" styleClass="redText" text="Division" GridPane.columnIndex="4" />
-                        <Label alignment="CENTER" layoutX="349.0" layoutY="10.0" prefHeight="51.0" prefWidth="102.0" styleClass="redText" text="Sequences" GridPane.columnIndex="5" />
-                        <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="77.0" styleClass="invisibleFlashButton" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Button layoutX="70.0" layoutY="59.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="77.0" styleClass="invisibleFlashButton" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Button layoutX="70.0" layoutY="101.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="82.0" styleClass="invisibleFlashButton" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <Button layoutX="147.0" layoutY="59.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="82.0" styleClass="invisibleFlashButton" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                        <Button layoutX="147.0" layoutY="59.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="89.0" styleClass="invisibleFlashButton" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                        <Button layoutX="147.0" layoutY="59.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="89.0" styleClass="invisibleFlashButton" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                        <Button layoutX="147.0" layoutY="59.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="92.0" styleClass="invisibleFlashButton" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                        <Button layoutX="229.0" layoutY="59.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="92.0" styleClass="invisibleFlashButton" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                        <Button layoutX="229.0" layoutY="59.0" mnemonicParsing="false" prefHeight="107.0" prefWidth="107.0" styleClass="invisibleFlashButton" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-                        <Button layoutX="229.0" layoutY="59.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="109.0" styleClass="invisibleFlashButton" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                        <GridPane layoutX="15.0" layoutY="5.0" prefHeight="159.0" prefWidth="521.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="78.0" minWidth="10.0" prefWidth="61.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="96.0" minWidth="10.0" prefWidth="78.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="91.0" minWidth="10.0" prefWidth="83.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="101.0" minWidth="10.0" prefWidth="90.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="109.0" minWidth="10.0" prefWidth="93.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="111.0" minWidth="10.0" prefWidth="110.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label alignment="CENTER" prefHeight="51.0" prefWidth="102.0" styleClass="redText" text="1-10" GridPane.rowIndex="1" />
+                              <Label alignment="CENTER" layoutX="10.0" layoutY="52.0" prefHeight="51.0" prefWidth="102.0" styleClass="redText" text="1-99" GridPane.rowIndex="2" />
+                              <Label alignment="CENTER" layoutX="10.0" layoutY="52.0" prefHeight="51.0" prefWidth="102.0" styleClass="redText" text="Plus" GridPane.columnIndex="1" />
+                              <Label alignment="CENTER" layoutX="94.0" layoutY="10.0" prefHeight="51.0" prefWidth="102.0" styleClass="redText" text="Minus" GridPane.columnIndex="2" />
+                              <Label alignment="CENTER" layoutX="179.0" layoutY="10.0" prefHeight="51.0" prefWidth="102.0" styleClass="redText" text="Times" GridPane.columnIndex="3" />
+                              <Label alignment="CENTER" layoutX="264.0" layoutY="10.0" prefHeight="51.0" prefWidth="102.0" styleClass="redText" text="Division" GridPane.columnIndex="4" />
+                              <Label alignment="CENTER" layoutX="349.0" layoutY="10.0" prefHeight="51.0" prefWidth="102.0" styleClass="redText" text="Sequences" GridPane.columnIndex="5" />
+                              <Button mnemonicParsing="false" onAction="#easyAdditionHit" prefHeight="52.0" prefWidth="87.0" styleClass="invisibleFlashButton" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Button layoutX="70.0" layoutY="59.0" mnemonicParsing="false" onAction="#hardAdditionHit" prefHeight="51.0" prefWidth="97.0" styleClass="invisibleFlashButton" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Button layoutX="70.0" layoutY="101.0" mnemonicParsing="false" onAction="#easySubtractionHit" prefHeight="51.0" prefWidth="82.0" styleClass="invisibleFlashButton" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <Button layoutX="147.0" layoutY="59.0" mnemonicParsing="false" onAction="#hardSubtractionHit" prefHeight="53.0" prefWidth="82.0" styleClass="invisibleFlashButton" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <Button layoutX="147.0" layoutY="59.0" mnemonicParsing="false" onAction="#easyMultiplicationHit" prefHeight="63.0" prefWidth="89.0" styleClass="invisibleFlashButton" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                              <Button layoutX="147.0" layoutY="59.0" mnemonicParsing="false" onAction="#hardMultiplicationHit" prefHeight="53.0" prefWidth="89.0" styleClass="invisibleFlashButton" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                              <Button layoutX="147.0" layoutY="59.0" mnemonicParsing="false" onAction="#easyDivisionHit" prefHeight="51.0" prefWidth="92.0" styleClass="invisibleFlashButton" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                              <Button layoutX="229.0" layoutY="59.0" mnemonicParsing="false" onAction="#hardDivisionHit" prefHeight="57.0" prefWidth="92.0" styleClass="invisibleFlashButton" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                              <Button layoutX="229.0" layoutY="59.0" mnemonicParsing="false" onAction="#easySequencesHit" prefHeight="107.0" prefWidth="107.0" styleClass="invisibleFlashButton" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                              <Button layoutX="229.0" layoutY="59.0" mnemonicParsing="false" onAction="#hardSequencesHit" prefHeight="55.0" prefWidth="109.0" styleClass="invisibleFlashButton" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                           </children>
+                        </GridPane>
                      </children>
-                  </GridPane>
+                  </AnchorPane>
+                  <Label layoutX="65.0" layoutY="4.0" styleClass="greyText" text="Choose a random equation from the following:" />
                </children>
             </AnchorPane>
-            <Label layoutX="138.0" layoutY="161.0" styleClass="greyText" text="Or enter your own equation:" />
-            <TextField layoutX="167.0" layoutY="187.0" />
-            <Button disable="true" layoutX="189.0" layoutY="225.0" mnemonicParsing="false" styleClass="greyText" text="Add Equation" textFill="#646464">
+            <Label layoutX="170.0" layoutY="20.0" styleClass="headingText" text="Add Equation" />
+            <Label layoutX="191.0" layoutY="101.0" styleClass="blackMediumText" text="Random Equation" />
+            <Label layoutX="23.0" layoutY="412.0" styleClass="greyText" text="Or enter your own equation:" />
+            <TextField fx:id="customEquationTextField" layoutX="365.0" layoutY="409.0" />
+            <Button fx:id="addEquationButton" disable="true" layoutX="231.0" layoutY="491.0" mnemonicParsing="false" onAction="#addEquationHit" styleClass="greyText" text="Add Equation" textFill="#646464">
                <font>
                   <Font name="DejaVu Sans" size="1.0" />
                </font>
             </Button>
+            <Label alignment="CENTER" layoutX="195.0" layoutY="362.0" styleClass="blackMediumText" text="Custom Equation" />
+            <Label layoutX="23.0" layoutY="449.0" styleClass="greyText" text="Enter a solution (between 1 and 99):" />
+            <TextField fx:id="customSolutionTextField" layoutX="365.0" layoutY="446.0" />
          </children>
       </AnchorPane>
-      <Label layoutX="114.0" layoutY="14.0" styleClass="headingText" text="Remove Equation" />
-      <Label layoutX="153.0" layoutY="213.0" styleClass="headingText" text="Add Equation" />
+      <Label layoutX="675.0" layoutY="143.0" styleClass="headingText" text="Your Equations" />
+      <Button fx:id="removeEquationButton" disable="true" layoutX="722.0" layoutY="623.0" mnemonicParsing="false" onAction="#removeEquationHit" prefHeight="34.0" prefWidth="184.0" styleClass="greyText" text="Remove Equation">
+         <font>
+            <Font name="DejaVu Sans" size="1.0" />
+         </font>
+      </Button>
+      <Button alignment="CENTER" layoutX="53.0" layoutY="37.0" mnemonicParsing="false" onAction="#backHit" styleClass="invisibleButton">
+         <graphic>
+            <FontAwesomeIconView glyphName="REPLY" size="60" />
+         </graphic>
+      </Button>
+      <TextField fx:id="listNameTextField" alignment="CENTER" layoutX="199.0" layoutY="21.0" prefHeight="79.0" prefWidth="622.0" promptText="Jed's List" styleClass="titleText">
+         <font>
+            <Font name="DejaVu Sans Bold" size="13.0" />
+         </font>
+      </TextField>
+      <TableView fx:id="customEquationTable" layoutX="667.0" layoutY="214.0" prefHeight="395.0" prefWidth="286.0">
+        <columns>
+          <TableColumn fx:id="equationColumn" prefWidth="143.0" text="Equation" />
+          <TableColumn fx:id="solutionColumn" prefWidth="142.0" text="Solution" />
+        </columns>
+      </TableView>
    </children>
    <stylesheets>
-      <URL value="@application.css" />
       <URL value="@../application.css" />
    </stylesheets>
 </AnchorPane>

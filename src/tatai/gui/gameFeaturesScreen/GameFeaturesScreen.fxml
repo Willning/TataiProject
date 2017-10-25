@@ -12,7 +12,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+<<<<<<< HEAD
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" styleClass="redBackground" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatai.gui.gameFeaturesScreen.GameFeaturesScreen">
+=======
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" styleClass="redBackground" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatai.gui.gameFeaturesScreen.GameFeaturesScreen">
+>>>>>>> Victoria
    <children>
       <ImageView fitHeight="750.0" fitWidth="750.0" layoutX="150.0" layoutY="-30.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.2;">
          <image>
@@ -49,8 +53,13 @@
                         <Font name="DejaVu Sans" size="16.0" />
                      </font>
                   </RadioButton>
+<<<<<<< HEAD
                   <MaterialDesignIconView fx:id="hardLock" glyphName="LOCK_OUTLINE" layoutX="380.0" layoutY="46.0" size="25" text="" />
                   <MaterialDesignIconView fx:id="mediumLock" glyphName="LOCK_OUTLINE" layoutX="219.0" layoutY="46.0" size="25" text="" />
+=======
+                  <MaterialDesignIconView glyphName="LOCK_OUTLINE" layoutX="380.0" layoutY="46.0" size="25" text="" />
+                  <MaterialDesignIconView glyphName="LOCK_OUTLINE" layoutX="219.0" layoutY="46.0" size="25" text="" />
+>>>>>>> Victoria
                   <RadioButton fx:id="customRadio" layoutX="305.0" layoutY="60.0" mnemonicParsing="false" text="Custom" textFill="#646464" toggleGroup="$gameDifficultyButtons">
                      <font>
                         <Font name="DejaVu Sans" size="16.0" />

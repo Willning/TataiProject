@@ -15,7 +15,7 @@ import java.util.Comparator;
 /**
  * Object represents a User
  */
-public class User implements Serializable{
+public class User implements Serializable {
 
 	private String username;
 	private ArrayList<GameData> games;
