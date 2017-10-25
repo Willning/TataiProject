@@ -11,7 +11,7 @@ import java.util.HashSet;
 /**
  * Class that represents the saved data of a completed game.
  */
-public class GameData implements Serializable{
+public class GameData implements Serializable {
     private HashSet<RoundData> rounds;
     private LocalDate time;
     private int totalRounds = 0;

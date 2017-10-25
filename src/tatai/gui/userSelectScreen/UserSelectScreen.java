@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
 /**
  * Created by Winston on 10/16/2017.
  */
-public class UserSelectScreen implements Initializable{
+public class UserSelectScreen {
     @FXML
     Button newPlayerButton, selectPlayerButton, removePlayerButton;
     @FXML
@@ -28,8 +28,8 @@ public class UserSelectScreen implements Initializable{
     private ArrayList<String> users;
 
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    @FXML
+    public void initialize() {
         File usersDir = new File("users");
         if (!usersDir.exists()) {
             usersDir.mkdir();
@@ -97,9 +97,9 @@ public class UserSelectScreen implements Initializable{
             user = (User) objectInputStream.readObject();
             objectInputStream.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            // HANDLE ERROR
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            // HANDLE ERROR
         }
         StateSingleton.instance().setUser(user);
     }

@@ -2,18 +2,18 @@ package tatai.gui.customListSelect;
 
 
 import java.io.File;
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.io.FileNotFoundException;
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import tatai.StateSingleton;
 import tatai.gui.customSelectScreen.CustomSelectController;
 import tatai.gui.customSelectScreen.CustomSelectView;
+import tatai.user.CustomList;
+import tatai.user.SerializableHandler;
 
-public class CustomListController implements Initializable {
+public class CustomListController {
 
 	@FXML
 	private ComboBox<String> listSelectBox;
@@ -28,42 +28,43 @@ public class CustomListController implements Initializable {
 	private Button removeListButton;
 	
 	@FXML
-	private String listSelected;
+	private String listSelected = "";
 	
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		File customListDir = new File(StateSingleton.CUSTOM_LIST_DIR);
-        listSelectBox.getItems().removeAll(listSelectBox.getItems());
-        File[] customListFiles = customListDir.listFiles();
-        for (File customListFile : customListFiles) {
-            listSelectBox.getItems().add(customListFile.getName());
-        }
+	@FXML
+	public void initialize() {
+		updateListSelectBox();
 	}
 	
 	@FXML
 	private void newListHit() {
 		CustomSelectView newScreen = new CustomSelectView();
 		CustomSelectController controller = (CustomSelectController) newScreen.controller();
-		controller.setCustomListName(listSelected);
 		StateSingleton.instance().changeCenter(newScreen);
+		
+		controller.setUpNewList();
 	}
 	
 	@FXML
 	private void editListHit() {
-		newListHit();
+		CustomSelectView newScreen = new CustomSelectView();
+		CustomSelectController controller = (CustomSelectController) newScreen.controller();
+		StateSingleton.instance().changeCenter(newScreen);
+		
+		controller.setUpExistingList(listSelected);
 	}
 	
 	@FXML
 	private void removeListHit() {
 		File toDelete = new File(StateSingleton.CUSTOM_LIST_DIR + listSelected);
 		toDelete.delete();
+		updateListSelectBox();
 	}
 	
 	@FXML
 	private void listSelected() {
 		String listSelected = listSelectBox.getSelectionModel().getSelectedItem();
-		
-		if (listSelected.equals("")) {
+
+		if (listSelected == null) {
 			editListButton.setDisable(true);
 			removeListButton.setDisable(true);
 		} else {
@@ -71,6 +72,24 @@ public class CustomListController implements Initializable {
 			editListButton.setDisable(false);
 			removeListButton.setDisable(false);
 		}
+	}
+	
+	private void updateListSelectBox() {
+		File customListDir = new File(StateSingleton.CUSTOM_LIST_DIR);
+		if (!customListDir.exists()) {
+            customListDir.mkdir();    
+        }
+        listSelectBox.getItems().removeAll(listSelectBox.getItems());
+        File[] customListFiles = customListDir.listFiles();
+        for (File customListFile : customListFiles) {
+            try {
+            	String pathToList = StateSingleton.CUSTOM_LIST_DIR + customListFile.getName();
+            	String listName = ((CustomList) new SerializableHandler().loadObject(pathToList)).getListName();
+				listSelectBox.getItems().add(listName);
+			} catch (FileNotFoundException e) {
+				
+			}
+        }
 	}
 
 }

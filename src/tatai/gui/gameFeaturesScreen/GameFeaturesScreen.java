@@ -13,6 +13,7 @@ import tatai.StateSingleton;
 import tatai.game.Game;
 import tatai.game.GameDifficulty;
 import tatai.game.GameType;
+import tatai.gui.customListSelect.CustomListView;
 import tatai.gui.level.Level;
 import tatai.gui.level.LevelView;
 
@@ -48,7 +49,7 @@ public class GameFeaturesScreen implements Initializable{
 
     @FXML
     public void backHit() {
-
+    	
     }
 
     @FXML
@@ -90,7 +91,8 @@ public class GameFeaturesScreen implements Initializable{
 
     @FXML
     public void editCustomListHit() {
-    	
+    	CustomListView newScreen = new CustomListView();		
+		StateSingleton.instance().changeCenter(newScreen);
     }
 
 

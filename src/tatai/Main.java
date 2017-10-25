@@ -5,6 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import tatai.gui.customListSelect.CustomListView;
 import tatai.gui.welcomeScreen.WelcomeScreen;
 import tatai.gui.welcomeScreen.WelcomeScreenView;
 
@@ -15,11 +16,16 @@ public class Main extends Application {
         WelcomeScreenView welcomeScreenView = new WelcomeScreenView();
         Parent root = (Parent)welcomeScreenView.view();
         WelcomeScreen welcomeScreen = (WelcomeScreen)welcomeScreenView.controller();
-        primaryStage.setTitle("Tatai!");
+    	welcomeScreen.setUpStage(primaryStage);
+    	
+    	/*CustomListView view = new CustomListView();
+        Parent root = (Parent)view.view();
+        
+        StateSingleton.instance().setStage(primaryStage);*/
+    	primaryStage.setTitle("Tatai!");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
         primaryStage.getIcons().add(new Image("resources/images/maori.png"));
-        welcomeScreen.setUpStage(primaryStage);
     }
 
 
