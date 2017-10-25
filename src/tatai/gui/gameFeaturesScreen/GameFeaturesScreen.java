@@ -81,15 +81,17 @@ public class GameFeaturesScreen implements Initializable{
         GameDifficulty gameDifficulty = GameDifficulty.EASY;
         if (easyRadio.isSelected()) {
             equationFactory = new SimpleEquationFactory();
+            ((SimpleEquationFactory)equationFactory).setMax(10);
             gameDifficulty = GameDifficulty.EASY;
         } else if (practiceRadio.isSelected()) {
-            equationFactory = new SingleNumberEquationFactory();;
+            equationFactory = new SingleNumberEquationFactory();
+            ((SingleNumberEquationFactory)equationFactory).setMax(10);
             gameDifficulty = GameDifficulty.PRACTICE;
         } else if (mediumRadio.isSelected()) {
-            equationFactory = new SimpleEquationFactory();
+            equationFactory = new MediumEquationFactory();
             gameDifficulty = GameDifficulty.MEDIUM;
         } else if (hardRadio.isSelected()) {
-            equationFactory = new MultiEquationFactory();
+            equationFactory = new HardEquationFactory();
             gameDifficulty = GameDifficulty.HARD;
         }
         GameType gameType = GameType.NORMAL;
