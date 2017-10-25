@@ -60,7 +60,7 @@
             </TableView>
               </children>
           </AnchorPane>
-      <Label fx:id="unlockLabel" alignment="CENTER" layoutX="167.0" layoutY="456.0" prefHeight="50.0" prefWidth="669.0" text="You have unlocked a new level, click new game to try it" visible="false">
+      <Label fx:id="unlockLabel" alignment="CENTER" layoutX="167.0" layoutY="456.0" prefHeight="50.0" prefWidth="669.0" text="Great job, you are now ready for a harder mode." visible="false">
          <font>
             <Font size="16.0" />
          </font>

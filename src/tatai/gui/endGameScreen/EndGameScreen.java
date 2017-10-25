@@ -76,6 +76,8 @@ public class EndGameScreen implements Initializable{
             greetLabel.setText("Ka Pai " +StateSingleton.instance().getUser().getUsername());
 
             if (!data.getGameDifficulty().equals(GameDifficulty.HARD)) {
+                //change the conditions of the unlock label.
+
                 unlockLabel.setVisible(true);
             }
         }
