@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+
 import tatai.StateSingleton;
 import tatai.gui.customSelectScreen.CustomSelectController;
 import tatai.gui.customSelectScreen.CustomSelectView;
@@ -27,7 +28,6 @@ public class CustomListController {
 	@FXML
 	private Button removeListButton;
 	
-	@FXML
 	private String listSelected = "";
 	
 	@FXML
@@ -61,7 +61,7 @@ public class CustomListController {
 	}
 	
 	@FXML
-	private void listSelected() {
+	private void selectList() {
 		String listSelected = listSelectBox.getSelectionModel().getSelectedItem();
 
 		if (listSelected == null) {
@@ -84,10 +84,11 @@ public class CustomListController {
         for (File customListFile : customListFiles) {
             try {
             	String pathToList = StateSingleton.CUSTOM_LIST_DIR + customListFile.getName();
-            	String listName = ((CustomList) new SerializableHandler().loadObject(pathToList)).getListName();
-				listSelectBox.getItems().add(listName);
-			} catch (FileNotFoundException e) {
-				
+            	new SerializableHandler().loadObject(pathToList);
+            	/*String listName = ((CustomList) new SerializableHandler().loadObject(pathToList)).getListName();
+				listSelectBox.getItems().add(listName);*/
+			} catch (/*FileNotFoundException*/Exception e) {
+				e.printStackTrace();
 			}
         }
 	}

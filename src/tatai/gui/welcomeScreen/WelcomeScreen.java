@@ -10,6 +10,8 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import tatai.StateSingleton;
+import tatai.gui.customSelectScreen.CustomSelectController;
+import tatai.gui.customSelectScreen.CustomSelectView;
 import tatai.gui.userSelectScreen.UserSelectScreenView;
 
 import javax.sound.sampled.AudioInputStream;
@@ -75,8 +77,17 @@ public class WelcomeScreen implements Initializable{
         @Override
             public void run() {
             // fade user select screen into the stage
+        	
             UserSelectScreenView userSelectScreenView = new UserSelectScreenView();
             AnchorPane root = (AnchorPane)userSelectScreenView.view();
+            
+            // DELETE THIS AND UNCOMMENT THE ABOVE
+        	/*CustomSelectView view = new CustomSelectView();
+            AnchorPane root = (AnchorPane)view.view();
+            CustomSelectController controller = (CustomSelectController) view.controller();
+            controller.setUpNewList();*/
+            
+            
             FadeTransition fadeIn = new FadeTransition(Duration.millis(3000), root);
             fadeIn.setFromValue(0.0);
             fadeIn.setToValue(1.0);

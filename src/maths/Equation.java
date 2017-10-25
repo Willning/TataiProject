@@ -1,9 +1,12 @@
 package maths;
 
+import java.io.Serializable;
+
 /**
  * Class that represents a question for the game.
  */
-public class Equation {
+public class Equation implements Serializable {
+	
 	String representation;
 	int answer;
 

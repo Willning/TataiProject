@@ -29,11 +29,12 @@ public class SerializableHandler implements Serializable {
 			toLoad = objectInputStream.readObject();
 			objectInputStream.close();
 		} catch (IOException e) {
+			e.printStackTrace();
 			if (e instanceof FileNotFoundException) {
 				throw new FileNotFoundException();
 			}
 		} catch (ClassNotFoundException e) {
-			// HANDLE ERROR
+			e.printStackTrace();
 		}
 		return toLoad;
 	}

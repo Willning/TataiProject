@@ -34,7 +34,7 @@
             <FontAwesomeIconView glyphName="USER_PLUS" size="50" text="" />
          </graphic>
       </Button>
-      <ComboBox fx:id="listSelectBox" layoutX="300.0" layoutY="300.0" prefHeight="80.0" prefWidth="400.0" onAction="#listSelected" />
+      <ComboBox fx:id="listSelectBox" layoutX="300.0" layoutY="300.0" prefHeight="80.0" prefWidth="400.0" onAction="#selectList" />
       <Button fx:id="editListButton" disable="true" layoutX="398.0" layoutY="470.0" mnemonicParsing="false" onAction="#editListHit" prefHeight="100.0" prefWidth="200.0" text="Edit List" textFill="#646464">
          <font>
             <Font name="DejaVu Sans" size="18.0" />

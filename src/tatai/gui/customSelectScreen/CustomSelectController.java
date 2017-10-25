@@ -2,10 +2,15 @@ package tatai.gui.customSelectScreen;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import maths.Equation;
 import tatai.StateSingleton;
@@ -24,7 +29,7 @@ public class CustomSelectController {
 	@FXML
 	private TextField customSolutionTextField;
 	@FXML
-	private ListView<String> customEquationsListView;
+	private TableColumn<String, Void> equationsColumn, solutionsColumn;
 	@FXML
 	private Button addEquationButton;
 	@FXML
@@ -49,6 +54,7 @@ public class CustomSelectController {
 		setUpCustomEquationField();
 		setUpCustomSolutionField();
 		setPromptText();
+		populateTable();
 	}
 	
 	private void loadCustomList(String customListName) {
@@ -63,6 +69,20 @@ public class CustomSelectController {
 	private void createCustomList() {
 		customList = new CustomList(DEFAULT_LIST_NAME);
 		pathToList = StateSingleton.CUSTOM_LIST_DIR + DEFAULT_LIST_NAME;
+	}
+	
+	private void populateTable() { // FIX THIS IMPLEMENTATION. LIST -> TABLE
+		/*List<String> equationsAsString = new ArrayList<String>();
+		for (Equation equation: customList.getEquations()) {
+			equationsAsString.add(equation.fullEquationToString());
+		}
+		
+		ObservableList<String> customEquationsList = FXCollections.observableArrayList(equationsAsString);
+		customEquationsListView.setItems(customEquationsList);
+		
+		firstNameCol.setCellValueFactory(new PropertyValueFactory<Person, String>("firstName"));
+		firstNameCol.setCellValueFactory(new PropertyValueFactory<Person, String>("firstName"));
+		table.setItems(data);*/
 	}
 	
 	private void setUpListNameField() {
@@ -94,9 +114,9 @@ public class CustomSelectController {
 			String equation = customEquationTextField.getText();
 			String solution = customSolutionTextField.getText();
 			try {
-				Integer.parseInt(solution);
+				int numSolution = Integer.parseInt(solution);
 				
-				if (equation.equals("")) {
+				if (equation.equals("") || numSolution <= 0 || numSolution > 99) {
 					addEquationButton.setDisable(true);
 				} else {
 					addEquationButton.setDisable(false);
@@ -166,11 +186,13 @@ public class CustomSelectController {
 		String equation = customEquationTextField.getText();
 		int solution = Integer.parseInt(customSolutionTextField.getText());
 		customList.addEquation(new Equation(equation, solution));
+		
+		populateTable();
 	}
 	
 	@FXML
 	private void removeEquationHit() {
-
+		populateTable();
 	}
 
 	@FXML
