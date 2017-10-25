@@ -61,6 +61,7 @@ public class UserSelectScreen {
         dialog.setContentText("Please enter your username:");
         Optional<String> result = dialog.showAndWait();
         //check cases for case sensitivity.
+        //add character limit?
 
         if (result.isPresent()) {
             String lowerResult = result.get().toLowerCase();
@@ -73,11 +74,22 @@ public class UserSelectScreen {
 
             boolean hasNonAlpha = result.get().matches("^.*[^a-zA-Z0-9 ].*$");
 
+            boolean tooLong = result.get().length()>=20;
+
             if( hasNonAlpha){
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Username invalid!");
                 alert.setHeaderText("Please enter a different username");
                 alert.setContentText("This username contains invalid characters");
+                alert.showAndWait();
+                return;
+            }
+
+            if ( tooLong) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Username invalid!");
+                alert.setHeaderText("Please enter a different username");
+                alert.setContentText("This username is too long. (20 characters max)");
                 alert.showAndWait();
                 return;
             }
@@ -99,11 +111,7 @@ public class UserSelectScreen {
         // If client hasn't selected a user.
         if (nameBox.getSelectionModel().getSelectedItem() == null
                 || nameBox.getSelectionModel().getSelectedItem().equals("")) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("No user selected!");
-            alert.setHeaderText("Please select a user!");
-            alert.setContentText("You not selected a user, please either select a user or create one.");
-            alert.showAndWait();
+            noUserAlert();
             return;
         }
 
@@ -130,11 +138,7 @@ public class UserSelectScreen {
         // If no user was selected.
         if (nameBox.getSelectionModel().getSelectedItem() == null
                 || nameBox.getSelectionModel().getSelectedItem().equals("")) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("No user selected!");
-            alert.setHeaderText("Please select a user!");
-            alert.setContentText("You not selected a user, please either select a user or create one.");
-            alert.showAndWait();
+            noUserAlert();
             return;
         }
 
@@ -160,6 +164,14 @@ public class UserSelectScreen {
 
         selectPlayerButton.setDisable(true);
         removePlayerButton.setDisable(true);
+    }
+
+    private void noUserAlert(){
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("No user selected!");
+        alert.setHeaderText("Please select a user!");
+        alert.setContentText("You not selected a user, please either select a user or create one.");
+        alert.showAndWait();
     }
 
     private void loadNamesIntoComboBox() {

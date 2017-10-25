@@ -10,12 +10,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TablePosition;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import maths.*;
 import tatai.StateSingleton;
@@ -262,14 +257,33 @@ public class CustomSelectController {
 	}
 
 	@FXML
-	private void backHit() {		
-		File oldFile = new File(pathToList);
-		oldFile.delete();
-		
-		String newPathToList = StateSingleton.CUSTOM_LIST_DIR + customList.getListName();
-		new SerializableHandler().saveObject(customList, newPathToList);
-		
-		CustomListView newScreen = new CustomListView();		
-		StateSingleton.instance().changeCenter(newScreen);
+	private void backHit() {
+		if (listNameTextField.getText().length()>=20) {
+			Alert alert = new Alert(Alert.AlertType.WARNING);
+			alert.setTitle("List name invalid!");
+			alert.setHeaderText("Please enter a different list name");
+			alert.setContentText("This list name is too long. (20 characters max)");
+			alert.showAndWait();
+			return;
+
+		}else if (listNameTextField.getText().matches("^.*[^a-zA-Z0-9 ].*$")){
+			Alert alert = new Alert(Alert.AlertType.WARNING);
+			alert.setTitle("List name invalid!");
+			alert.setHeaderText("Please enter a different list name");
+			alert.setContentText("This list name contains invalid characters)");
+			alert.showAndWait();
+			return;
+
+		}else {
+
+			File oldFile = new File(pathToList);
+			oldFile.delete();
+
+			String newPathToList = StateSingleton.CUSTOM_LIST_DIR + customList.getListName();
+			new SerializableHandler().saveObject(customList, newPathToList);
+
+			CustomListView newScreen = new CustomListView();
+			StateSingleton.instance().changeCenter(newScreen);
+		}
 	}
 }

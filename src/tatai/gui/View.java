@@ -21,6 +21,7 @@ public abstract class View {
         loader = new FXMLLoader(viewXML);
         try {
             view = loader.load();
+
         } catch (IOException e) {
             // HANDLE ERROR
         }

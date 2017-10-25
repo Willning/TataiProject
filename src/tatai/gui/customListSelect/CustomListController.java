@@ -2,9 +2,12 @@ package tatai.gui.customListSelect;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Optional;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 
 import tatai.StateSingleton;
@@ -56,9 +59,21 @@ public class CustomListController {
 	
 	@FXML
 	private void removeListHit() {
-		File toDelete = new File(StateSingleton.CUSTOM_LIST_DIR + listSelected);
-		toDelete.delete();
-		updateListSelectBox();
+		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+		alert.setTitle("Really delete " + listSelected.toString());
+		alert.setHeaderText("Do you want to delete this list");
+		alert.setContentText("This cannot be undone once deleted");
+
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == ButtonType.OK){
+
+			File toDelete = new File(StateSingleton.CUSTOM_LIST_DIR + listSelected);
+			toDelete.delete();
+			updateListSelectBox();
+
+		} else {
+			// ... user chose CANCEL or closed the dialog
+		}
 	}
 	
 	@FXML
