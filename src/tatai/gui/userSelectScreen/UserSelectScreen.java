@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
 /**
  * Created by Winston on 10/16/2017.
  */
-public class UserSelectScreen implements Initializable{
+public class UserSelectScreen {
     @FXML
     Button newPlayerButton, selectPlayerButton, removePlayerButton;
     @FXML
@@ -28,8 +28,8 @@ public class UserSelectScreen implements Initializable{
     private ArrayList<String> users;
 
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    @FXML
+    public void initialize() {
         File usersDir = new File("users");
         if (!usersDir.exists()) {
             usersDir.mkdir();
@@ -60,8 +60,40 @@ public class UserSelectScreen implements Initializable{
         dialog.setHeaderText("Create a new User:");
         dialog.setContentText("Please enter your username:");
         Optional<String> result = dialog.showAndWait();
+        //check cases for case sensitivity.
+        //add character limit?
+
         if (result.isPresent()) {
-            if (users.contains(result.get()) || result.get().equals("")) {
+            String lowerResult = result.get().toLowerCase();
+            boolean exists = false;
+            for (String name : users) {
+                if (name.toLowerCase().equals(lowerResult)) {
+                    exists = true;
+                }
+            }
+
+            boolean hasNonAlpha = result.get().matches("^.*[^a-zA-Z0-9 ].*$");
+
+            boolean tooLong = result.get().length()>=20;
+
+            if( hasNonAlpha){
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Username invalid!");
+                alert.setHeaderText("Please enter a different username");
+                alert.setContentText("This username contains invalid characters");
+                alert.showAndWait();
+                return;
+            }
+
+            if ( tooLong) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Username invalid!");
+                alert.setHeaderText("Please enter a different username");
+                alert.setContentText("This username is too long. (20 characters max)");
+                alert.showAndWait();
+                return;
+            }
+            if (exists || result.get().equals("")) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Username invalid!");
                 alert.setHeaderText("Please enter a different username!");
@@ -79,15 +111,11 @@ public class UserSelectScreen implements Initializable{
         // If client hasn't selected a user.
         if (nameBox.getSelectionModel().getSelectedItem() == null
                 || nameBox.getSelectionModel().getSelectedItem().equals("")) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("No user selected!");
-            alert.setHeaderText("Please select a user!");
-            alert.setContentText("You not selected a user, please either select a user or create one.");
-            alert.showAndWait();
+            noUserAlert();
             return;
         }
 
-        // If he has selected a user
+        // If they have selected a user
         String username = nameBox.getSelectionModel().getSelectedItem();
         User user = null;
         // Create the user object by parsing the output serialization file.
@@ -97,9 +125,9 @@ public class UserSelectScreen implements Initializable{
             user = (User) objectInputStream.readObject();
             objectInputStream.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            // HANDLE ERROR
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            // HANDLE ERROR
         }
         StateSingleton.instance().setUser(user);
     }
@@ -110,11 +138,7 @@ public class UserSelectScreen implements Initializable{
         // If no user was selected.
         if (nameBox.getSelectionModel().getSelectedItem() == null
                 || nameBox.getSelectionModel().getSelectedItem().equals("")) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("No user selected!");
-            alert.setHeaderText("Please select a user!");
-            alert.setContentText("You not selected a user, please either select a user or create one.");
-            alert.showAndWait();
+            noUserAlert();
             return;
         }
 
@@ -140,6 +164,14 @@ public class UserSelectScreen implements Initializable{
 
         selectPlayerButton.setDisable(true);
         removePlayerButton.setDisable(true);
+    }
+
+    private void noUserAlert(){
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("No user selected!");
+        alert.setHeaderText("Please select a user!");
+        alert.setContentText("You not selected a user, please either select a user or create one.");
+        alert.showAndWait();
     }
 
     private void loadNamesIntoComboBox() {

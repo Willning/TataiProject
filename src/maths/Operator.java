@@ -4,7 +4,7 @@ package maths;
  * Maths operators
  */
 public enum Operator {
-	MULTIPLY(1, "x"), ADD(2, "+"), MINUS(3, "-"), DIVIDE(4, "/");
+	MULTIPLY(1, "x"), ADD(2, "+"), MINUS(3, "-"), DIVIDE(4, "÷");
 
 	private final int seed;
 	private final String rep;

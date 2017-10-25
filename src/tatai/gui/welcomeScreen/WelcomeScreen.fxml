@@ -1,38 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" styleClass="redBackground" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatai.gui.welcomeScreen.WelcomeScreen">
-   <center>
-      <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fitHeight="430.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.5;">
-               <image>
-                  <Image url="@../../../resources/images/taniwha2.png" />
-               </image>
-               <effect>
-                  <ColorAdjust brightness="1.0" />
-               </effect>
-            </ImageView>
-         </children>
-      </StackPane>
-   </center>
-   <top>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Tatai!">
-               <font>
-                  <Font size="200.0" />
-               </font>
-            </Text>
-         </children>
-      </HBox>
-   </top>
-</BorderPane>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" styleClass="redBackground" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatai.gui.welcomeScreen.WelcomeScreen">
+   <children>
+      <ImageView fitHeight="684.0" fitWidth="663.0" layoutX="178.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.3;">
+         <image>
+            <Image url="@../../../resources/images/taniwha2.png" />
+         </image>
+         <effect>
+            <ColorAdjust brightness="1.0" />
+         </effect>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="243.0" layoutY="190.0" maxHeight="-Infinity" prefHeight="309.0" prefWidth="521.0" style=": ;" text="Tātai!" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Sans Bold" size="84.0" />
+         </font>
+      </Label>
+   </children>
+   <stylesheets>
+      <URL value="@../application.css" />
+   </stylesheets>
+</AnchorPane>

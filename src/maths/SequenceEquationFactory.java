@@ -11,6 +11,7 @@ import java.util.Random;
 public class SequenceEquationFactory implements EquationFactory {
 
     private int max;
+
     private int min;
 
     private int answer;
@@ -20,13 +21,16 @@ public class SequenceEquationFactory implements EquationFactory {
 
     @Override
     public Equation generate() {
+        sequence.clear();
+
         createSequence();
         String output = "";
         //parse out the individual numbers into a string.
         if (!sequence.isEmpty()){
             output = String.format("%d, %d, %d, ?", sequence.get(0), sequence.get(1), sequence.get(2));
         }
-
+        System.out.println(answer);
+        System.out.println(output);
 
         return new Equation(output, answer) ;
     }
@@ -36,12 +40,9 @@ public class SequenceEquationFactory implements EquationFactory {
         Random random = new Random();
         answer  = random.nextInt(max - min) +min;
 
-        answer = 6;
-
         //need to make a better step size generation
         //Maximum step that should be counted is 5. This may change in future.
         int stepSize = 5;
-
 
         while ((answer + stepSize * 3 > max) && (answer - stepSize * 3 <= 0) ){
             //if adventurous, randomise the stepsapce based on a decreasing range.
@@ -59,7 +60,6 @@ public class SequenceEquationFactory implements EquationFactory {
         } else if (answer + stepSize*3 <= max){
             //descending sequence;
             for (int i = 0; i < 3; i++) {
-
                 sequence.add(answer + (3 - i) * stepSize);
             }
 
@@ -67,12 +67,10 @@ public class SequenceEquationFactory implements EquationFactory {
 
     }
 
-    @Override
     public void setMax(int max) {
         this.max = max;
     }
 
-    @Override
     public void setMin(int min) {
         this.min = min;
     }

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class MultiEquationFactory implements EquationFactory{
 
-	private Operator InitialOperator;
+	private Operator initialOperator;
 	private SimpleEquationFactory componentMaker = new SimpleEquationFactory();
 
 	private String partOne;
@@ -21,12 +21,11 @@ public class MultiEquationFactory implements EquationFactory{
 	private int max;
 	private int min;
 
-
 	@Override
 	public Equation generate() {
 		CreateMultiEquation();
 
-		return new Equation("("+partOne+")"+InitialOperator.toString()+"("+partTwo+")  =?",answer);
+		return new Equation("("+partOne+")"+ initialOperator.toString()+"("+partTwo+") =?",answer);
 	}
 
 	/**
@@ -34,7 +33,7 @@ public class MultiEquationFactory implements EquationFactory{
 	 * bugs out if the leading operand is 0. 
 	 */
 	private void CreateMultiEquation(){
-		//why not generate answer first?
+		min = 1;
 		componentMaker.setMax(max);
 		componentMaker.setMin(min);
 		int firstNumber = 0;
@@ -43,10 +42,9 @@ public class MultiEquationFactory implements EquationFactory{
 
 		while (firstNumber == 0 || secondNumber == 0) {
 			initial = componentMaker.generate();
-			InitialOperator = componentMaker.getOperator();
+			initialOperator = componentMaker.getOperator();
 			firstNumber = componentMaker.getFirstNumber();
-			secondNumber = componentMaker.getSecondNumner();
-
+			secondNumber = componentMaker.getSecondNumber();
 
 		}
 
@@ -59,6 +57,8 @@ public class MultiEquationFactory implements EquationFactory{
 
 
 		answer = initial.answer();
+
+		System.out.println(answer);
 
 	}
 
@@ -136,15 +136,13 @@ public class MultiEquationFactory implements EquationFactory{
 	}
 
 
-	@Override
 	public void setMax(int max) {
 		this.max= max;
-
 	}
 
-	@Override
 	public void setMin(int min) {
-		this.min= min;
+		this.min = min;
 	}
+
 
 }

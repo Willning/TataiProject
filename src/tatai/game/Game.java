@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import maths.Equation;
 import maths.EquationFactory;
 import maths.Pronunciation;
+import processBuilder.Process;
 import processBuilder.ProcessOutput;
 import tatai.SpeechRecognitionServiceFactory;
 import tatai.gui.level.Level;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Game {
+public abstract class Game {
     public static final String SOUND_FILE = "foo.wav";
     public static final String RECOUT_FILE = "recout.mlf";
     public static final String SOUND_DIR = ".";
@@ -29,7 +30,6 @@ public class Game {
     private Equation currentEquation;
     private int score = 0;
     private Level level;
-    private int totalRounds;
     private GameData gameData;
     private String receivedAnswer;
     private SpeechRecognitionServiceFactory serviceFactory;
@@ -41,13 +41,11 @@ public class Game {
      * Constructor, it takes the equationFactory that will be used and how many rounds the game will be.
      *
      * @param equationFactory
-     * @param rounds
      */
-    public Game(GameType gameType, EquationFactory equationFactory, int rounds, GameDifficulty gameDifficulty) {
+    public Game(GameType gameType, EquationFactory equationFactory, GameDifficulty gameDifficulty) {
         this.equationFactory = equationFactory;
         this.currentRound = 1;
         this.currentAttempt = 1;
-        this.totalRounds = rounds;
         this.gameData = new GameData(gameType, gameDifficulty);
         this.gameType = gameType;
         this.gameDifficulty = gameDifficulty;
@@ -80,7 +78,7 @@ public class Game {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            wordsSpoken.add("Nothing heard");
         }
         return wordsSpoken;
     }
@@ -112,11 +110,24 @@ public class Game {
     }
 
     /**
+    * Process that is called and will try to play the created file.
+    */
+
+    public void play() {
+        Service<ProcessOutput> playService = serviceFactory.makeService(SOUND_DIR, SpeechRecognitionServiceFactory.PLAY, new EventHandler<WorkerStateEvent>() {
+            @Override
+            public void handle(WorkerStateEvent event) { level.playEnd(); }
+        });
+        playService.start();
+    }
+
+    /**
      * Process that is called when processing (creation of MLF file) is finished. It checks the MLF file and decides on the next action based of whether
      * the user answer the question correctly and the current state of the game.
      */
     private void processingDone() {
         boolean answerCorrect = checkAnswer();
+
         if (answerCorrect) {
             winRound();
         } else if (currentAttempt >= 2) {
@@ -126,6 +137,12 @@ public class Game {
             level.failedAttempt();
         }
 
+
+        // Tell the controller that processing is now done.
+        level.processingDone();
+    }
+
+    public void deleteSound(){
         // Delete the created files.
         File soundDir = new File(SOUND_DIR);
         for (File file : soundDir.listFiles()) {
@@ -133,9 +150,6 @@ public class Game {
                 file.delete();
             }
         }
-
-        // Tell the controller that processing is now done.
-        level.processingDone();
     }
 
     /**
@@ -174,7 +188,7 @@ public class Game {
     /**
      * Method that is called when the user has gotten the wrong answer twice.
      */
-    private void loseRound() {
+    protected void loseRound() {
         gameData.addRound(currentRound, false, receivedAnswer + "", pronunciation.getPronunciation(currentEquation.answer()) + "", currentEquation.toString(), currentAttempt);
         level.answerWrong();
         endRound();
@@ -184,15 +198,18 @@ public class Game {
      * Method that is called when the current round is over.
      */
     private void endRound() {
+        deleteSound();
         currentAttempt = 1;
         currentRound++;
         currentEquation = equationFactory.generate();
-        if (currentRound <= totalRounds) {
+        if (!endGameCondition()) {
             level.nextLevel();
         } else {
             level.endGame();
         }
     }
+
+    abstract boolean endGameCondition();
 
     /**
      * Gets the current round number.
@@ -201,15 +218,6 @@ public class Game {
      */
     public int getCurrentRound() {
         return currentRound;
-    }
-
-    /**
-     * Gets a string representation of the score in the format "SCORE/ROUNDS"
-     *
-     * @return
-     */
-    public String getScoreAsString() {
-        return score + " / " + totalRounds;
     }
 
     /**
@@ -275,11 +283,11 @@ public class Game {
         return gameType;
     }
 
-    public int getTotalRounds() {
-        return totalRounds;
-    }
-
     public GameDifficulty getGameDifficulty() {
         return gameDifficulty;
+    }
+
+    public Level getLevel() {
+        return level;
     }
 }

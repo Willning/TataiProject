@@ -1,20 +1,35 @@
 package tatai.gui.userDashboardScreen;
 
+import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
+import javafx.beans.InvalidationListener;
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.geometry.Pos;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 import tatai.StateSingleton;
+import tatai.game.GameDifficulty;
 import tatai.gui.gameFeaturesScreen.GameFeaturesView;
 import tatai.user.GameData;
+import tatai.user.SerializableHandler;
 import tatai.user.User;
+import tatai.user.trophies.FirstFiveQuestionAnsweredCorrectly;
+import tatai.user.trophies.Trophy;
 
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.ResourceBundle;
+import java.util.*;
 
 /**
  * Created by Winston on 10/16/2017.
@@ -24,9 +39,24 @@ public class UserDashboard implements Initializable{
     @FXML
     Label welcomeLabel, lastPlayedLabel, gamesPlayedLabel;
     @FXML
-    TableView<GameData> gamesTable;
-    private User user;
+    TableView<User> gamesTable;
 
+    @FXML
+    BarChart easyChart, mediumChart, hardChart,customChart;
+
+    @FXML
+    GridPane trophiesGrid;
+
+    private int trophyCount;
+
+    @FXML
+    CategoryAxis axis,axis1,axis2,axis3;
+
+    @FXML
+    NumberAxis scoreAxis, scoreAxis1, scoreAxis2,scoreAxis3;
+
+    private User user;
+    private ArrayList<GameData> games;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -34,8 +64,99 @@ public class UserDashboard implements Initializable{
         welcomeLabel.setText(welcomeMessage());
         lastPlayedLabel.setText(daysPlayedMessage());
         gamesPlayedLabel.setText(gamesPlayedMessage());
+
+        games = user.getGames();
+
+        easyChart.getData().add(populateSeries(GameDifficulty.EASY));
+        easyChart.setLegendVisible(false);
+        mediumChart.getData().add(populateSeries(GameDifficulty.MEDIUM));
+        mediumChart.setLegendVisible(false);
+        hardChart.getData().add(populateSeries(GameDifficulty.HARD));
+        hardChart.setLegendVisible(false);
+        customChart.getData().add(populateSeries(GameDifficulty.CUSTOM));
+        customChart.setLegendVisible(false);
+
+        setNumberAxis(scoreAxis);
+        setNumberAxis(scoreAxis1);
+        setNumberAxis(scoreAxis2);
+        setNumberAxis(scoreAxis3);
+
+        axis.setLabel("Last 5 scores, (Most to least Recent)");
+        axis1.setLabel("Last 5 scores, (Most to least Recent)");
+        axis2.setLabel("Last 5 scores, (Most to least Recent)");
+        axis3.setLabel("Last 5 scores, (Most to least Recent)");
+
+        trophyCount = 0;
         setupTable();
+        checkForTrophies();
     }
+
+    public void checkForTrophies() {
+        Stack<Trophy> trophies = StateSingleton.instance().getUser().checkTrophies();
+        trophies.forEach(t -> alertUserOfNewTrophy(t));
+        StateSingleton.instance().getUser().getTrophies().forEach(t -> addTrophyToCase(t));
+        user.save();
+    }
+
+    private void alertUserOfNewTrophy(Trophy trophy) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText(trophy.toolTip());
+        alert.setTitle("Well done you got a new trophy!");
+        MaterialDesignIconView materialDesignIconView = new MaterialDesignIconView(trophy.representation());
+        materialDesignIconView.setSize("4em");
+        materialDesignIconView.setFill(trophy.color());
+        alert.setHeaderText(trophy.getName());
+        alert.setGraphic(materialDesignIconView);
+        alert.showAndWait();
+    }
+
+    private void addTrophyToCase(Trophy trophy) {
+        int x = trophyCount % 4;
+        int y = trophyCount / 4;
+        HBox hbox = new HBox();
+        hbox.setAlignment(Pos.CENTER);
+        MaterialDesignIconView materialDesignIconView = new MaterialDesignIconView(trophy.representation());
+        materialDesignIconView.setSize("4em");
+        materialDesignIconView.setFill(trophy.color());
+        hbox.getChildren().add(materialDesignIconView);
+        Tooltip t= new Tooltip(trophy.toolTip());
+        Tooltip.install(hbox, t);
+        trophiesGrid.add(hbox, x, y);
+        trophyCount++;
+    }
+
+    /**
+     * Takes an axis and sets the correct parameters to it, QOL method
+     * @param axis
+     */
+    private void setNumberAxis(NumberAxis axis){
+        axis.setLabel("Score");
+        axis.setMinorTickVisible(false);
+        axis.setAutoRanging(false);
+        axis.setLowerBound(0);
+        axis.setTickUnit(1);
+        axis.setUpperBound(10);
+    }
+
+    /**
+     * Takes a difficulty and populates it with 5 scores.
+     * @param difficulty
+     * @return
+     */
+    private XYChart.Series populateSeries (GameDifficulty difficulty){
+        XYChart.Series series = new XYChart.Series<>();
+        Integer i =1;
+        for (GameData game: games){
+            if (i <=5 ) {
+                if (game.getGameDifficulty().equals(difficulty)) {
+                    series.getData().add(new XYChart.Data(i.toString(), game.getScore()));
+                    i++;
+                }
+            } else { break;}
+        }
+        return series;
+    }
+
 
     private String welcomeMessage() {
         return "Haere Mai, " + user.getUsername() + "!";
@@ -54,34 +175,64 @@ public class UserDashboard implements Initializable{
     }
 
     private void setupTable() {
+        // Get users
+        SerializableHandler handler = new SerializableHandler();
+        List<Object> usersAsObjects = handler.loadObjectsInDirectory(StateSingleton.USERS_DIR);
+        List<User> users = new ArrayList<>();
+
+        for (Object user: usersAsObjects) {
+            users.add((User)user);
+        }
+
         // Create Columns
-        TableColumn<GameData, LocalDate> dateColumn = new TableColumn<>("Date");
-        dateColumn.setMinWidth(100);
-        dateColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
+        TableColumn<User, Number> rankColumn = new TableColumn<>("Rank");
+        rankColumn.setCellValueFactory(column-> new ReadOnlyObjectWrapper<Number>(gamesTable.getItems().indexOf(column.getValue())+1));
+        rankColumn.setMinWidth(100);
 
-        TableColumn<GameData, String> gameTypeColumn = new TableColumn<>("Game Type");
-        gameTypeColumn.setMinWidth(100);
-        gameTypeColumn.setCellValueFactory(new PropertyValueFactory<>("gameType"));
+        TableColumn<User, String> usernameColumn = new TableColumn<>("Player");
+        usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
+        usernameColumn.setMinWidth(150);
 
-        TableColumn<GameData, Integer> maxNumberColumn = new TableColumn<>("Max");
-        maxNumberColumn.setMinWidth(75);
-        maxNumberColumn.setCellValueFactory(new PropertyValueFactory<>("maxNumber"));
+        TableColumn<User, Integer> gamesPlayedColumn = new TableColumn<>("Games Played");
+        gamesPlayedColumn.setCellValueFactory(u -> new ObservableValue<Integer>() {
+            @Override
+            public void addListener(ChangeListener<? super Integer> listener) {
 
-        TableColumn<GameData, Double> scorePercentageColumn = new TableColumn<>("%");
-        scorePercentageColumn.setMinWidth(50);
-        scorePercentageColumn.setCellValueFactory(new PropertyValueFactory<>("scoreAsPercentage"));
+            }
 
-        TableColumn<GameData, Integer> scoreColumn = new TableColumn<>("Score");
-        scoreColumn.setMinWidth(50);
-        scoreColumn.setCellValueFactory(new PropertyValueFactory<>("score"));
+            @Override
+            public void removeListener(ChangeListener<? super Integer> listener) {
 
-        TableColumn<GameData, Integer> roundsColumn = new TableColumn<>("Rounds");
-        roundsColumn.setMinWidth(50);
-        roundsColumn.setCellValueFactory(new PropertyValueFactory<>("totalRounds"));
+            }
 
-        gamesTable.setItems(FXCollections.observableList(user.getGames()));
-        gamesTable.getColumns().addAll(dateColumn, gameTypeColumn, maxNumberColumn, scorePercentageColumn, scoreColumn, roundsColumn);
-        gamesTable.getSortOrder().add(dateColumn);
+            @Override
+            public Integer getValue() {
+                return u.getValue().getGames().size();
+            }
+
+            @Override
+            public void addListener(InvalidationListener listener) {
+
+            }
+
+            @Override
+            public void removeListener(InvalidationListener listener) {
+
+            }
+        });
+        gamesPlayedColumn.setComparator(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o2.compareTo(o1);
+            }
+        });
+        gamesPlayedColumn.setMinWidth(150);
+
+        gamesTable.setItems(FXCollections.observableList(users));
+        gamesTable.getColumns().addAll(rankColumn, usernameColumn, gamesPlayedColumn);
+        gamesTable.getSortOrder().add(gamesPlayedColumn);
+        gamesTable.getColumns().forEach(tc -> tc.setSortable(false));
+
     }
 
     @FXML
@@ -92,5 +243,8 @@ public class UserDashboard implements Initializable{
     @FXML
     public void playHit() {
         StateSingleton.instance().changeCenter(new GameFeaturesView());
+
+
     }
+
 }

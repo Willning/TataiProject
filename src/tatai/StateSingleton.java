@@ -4,7 +4,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import tatai.gui.View;
-import tatai.gui.gameFeaturesScreen.GameFeaturesView;
 import tatai.gui.userDashboardScreen.UserDashboardView;
 import tatai.gui.userSelectScreen.UserSelectScreenView;
 import tatai.user.User;
@@ -14,6 +13,7 @@ import tatai.user.User;
  */
 public class StateSingleton {
     public static final String USERS_DIR = "users/";
+    public static final String CUSTOM_LIST_DIR = "custom/";
     public static final String SOUND_DIR = "";
     private static StateSingleton stateSingleton;
     private User user;

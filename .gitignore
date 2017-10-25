@@ -4,7 +4,6 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.ear
 
@@ -16,3 +15,6 @@ hs_err_pid*
 .settings
 .idea/*
 *.iml
+*.fxbuild
+out/*
+bin/*

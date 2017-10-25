@@ -11,6 +11,7 @@ import java.net.URL;
  */
 public abstract class View {
     private FXMLLoader loader;
+    private Node view;
 
     /**
      * Constructor
@@ -18,6 +19,12 @@ public abstract class View {
      */
     public View(URL viewXML) {
         loader = new FXMLLoader(viewXML);
+        try {
+            view = loader.load();
+
+        } catch (IOException e) {
+            // HANDLE ERROR
+        }
     }
 
     /**
@@ -25,12 +32,7 @@ public abstract class View {
      * @return
      */
     public Node view() {
-        try {
-            return loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
+    	return view;
     }
 
     /**

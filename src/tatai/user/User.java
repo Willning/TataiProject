@@ -3,6 +3,8 @@ package tatai.user;
 import tatai.StateSingleton;
 import tatai.game.GameDifficulty;
 import tatai.game.GameType;
+import tatai.user.trophies.Trophy;
+import tatai.user.trophies.TrophyManager;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -11,14 +13,16 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Stack;
 
 /**
  * Object represents a User
  */
-public class User implements Serializable{
+public class User implements Serializable {
 
 	private String username;
 	private ArrayList<GameData> games;
+	private Stack<Trophy> trophies;
 
 	/**
 	 * Constructor called
@@ -26,7 +30,15 @@ public class User implements Serializable{
 	 */
 	public User(String username){
 		this.username = username;
+		trophies = new Stack<>();
 		games = new ArrayList<>();
+	}
+
+	public Stack<Trophy> checkTrophies() {
+		TrophyManager trophyManager = new TrophyManager();
+		Stack<Trophy> newTrophies = trophyManager.checkUser(this);
+		trophies.addAll(newTrophies);
+		return newTrophies;
 	}
 
 	/**
@@ -97,5 +109,9 @@ public class User implements Serializable{
 			}
 		});
 		return java.time.temporal.ChronoUnit.DAYS.between(games.get(0).getTime(), LocalDate.now());
+	}
+
+	public Stack<Trophy> getTrophies() {
+		return trophies;
 	}
 }

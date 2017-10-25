@@ -2,66 +2,105 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.net.URL?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="550.0" prefWidth="550.0" styleClass="greyBackground" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatai.gui.level.Level">
+<AnchorPane fx:id="anchorPane" prefHeight="700.0" prefWidth="1000.0" styleClass="redBackground" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatai.gui.level.Level">
    <children>
-      <Label fx:id="roundText" layoutX="170.0" layoutY="45.0" styleClass="headingText" text="RAPANGA 1" textFill="#d00000">
+      <ImageView fitHeight="750.0" fitWidth="750.0" layoutX="160.0" layoutY="-20.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.2;">
+         <image>
+            <Image url="@../../../resources/images/taniwha2.png" />
+         </image>
+         <effect>
+            <ColorAdjust brightness="0.84" />
+         </effect>
+      </ImageView>
+      <Label fx:id="roundText" layoutX="362.0" layoutY="74.0" styleClass="whiteTitleText" text="RAPANGA 1" textFill="#d00000">
          <font>
             <Font name="DejaVu Sans" size="36.0" />
          </font>
       </Label>
-      <Label fx:id="equationText" layoutX="131.0" layoutY="126.0" text="10 - 10 = ?" textFill="#646464">
-         <font>
-            <Font name="DejaVu Sans Bold" size="48.0" />
-         </font>
-      </Label>
-      <Pane layoutX="20.0" layoutY="217.0" prefHeight="134.0" prefWidth="511.0" styleClass="boxRedOutline">
+      <AnchorPane layoutX="123.0" layoutY="546.0" styleClass="greyBackground">
          <children>
-            <AnchorPane prefHeight="129.0" prefWidth="511.0">
+            <HBox alignment="CENTER" layoutX="54.0" layoutY="10.0" prefHeight="126.0" prefWidth="742.0" spacing="80.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <FontAwesomeIconView glyphName="GIFT" layoutX="64.0" layoutY="45.0" size="36" styleClass="glowIcon" />
-                  <FontAwesomeIconView glyphName="GIFT" layoutX="114.0" layoutY="45.0" size="36" styleClass="glowIcon" />
-                  <FontAwesomeIconView glyphName="GIFT" layoutX="164.0" layoutY="45.0" size="36" styleClass="glowIcon" />
-                  <FontAwesomeIconView glyphName="GIFT" layoutX="214.0" layoutY="45.0" size="36" styleClass="glowIcon" />
-                  <FontAwesomeIconView glyphName="GIFT" layoutX="264.0" layoutY="45.0" size="36" styleClass="glowIcon" />
-                  <FontAwesomeIconView glyphName="GIFT" layoutX="314.0" layoutY="45.0" size="36" styleClass="glowIcon" />
-                  <FontAwesomeIconView glyphName="GIFT" layoutX="364.0" layoutY="45.0" size="36" styleClass="glowIcon" />
-                  <FontAwesomeIconView glyphName="GIFT" layoutX="14.0" layoutY="45.0" size="36" styleClass="glowIcon" />
-                  <FontAwesomeIconView glyphName="GIFT" layoutX="414.0" layoutY="45.0" size="36" styleClass="glowIcon" />
-                  <FontAwesomeIconView glyphName="GIFT" layoutX="464.0" layoutY="45.0" size="36" styleClass="glowIcon" />
-                  <FontAwesomeIconView glyphName="MALE" layoutX="70.0" layoutY="109.0" size="36" styleClass="greyIcon" />
-                  <FontAwesomeIconView glyphName="MALE" layoutX="120.0" layoutY="109.0" size="36" styleClass="greyIcon" />
-                  <FontAwesomeIconView glyphName="MALE" layoutX="170.0" layoutY="109.0" size="36" styleClass="greyIcon" />
-                  <FontAwesomeIconView glyphName="MALE" layoutX="220.0" layoutY="109.0" size="36" styleClass="greyIcon" />
-                  <FontAwesomeIconView glyphName="MALE" layoutX="270.0" layoutY="109.0" size="36" styleClass="greyIcon" />
-                  <FontAwesomeIconView glyphName="MALE" layoutX="320.0" layoutY="109.0" size="36" styleClass="greyIcon" />
-                  <FontAwesomeIconView glyphName="MALE" layoutX="370.0" layoutY="109.0" size="36" styleClass="greyIcon" />
-                  <FontAwesomeIconView glyphName="MALE" layoutX="20.0" layoutY="109.0" size="36" styleClass="greyIcon" />
-                  <FontAwesomeIconView glyphName="MALE" layoutX="420.0" layoutY="109.0" size="36" styleClass="greyIcon" />
-                  <FontAwesomeIconView glyphName="MALE" layoutX="470.0" layoutY="109.0" size="36" styleClass="greyIcon" />
+                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#backHit" prefHeight="65.0" prefWidth="100.0" styleClass="invisibleButton">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="REPLY" size="100" styleClass="greyIcon" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="recordButton" mnemonicParsing="false" onAction="#recordHit" prefHeight="116.0" prefWidth="105.0" styleClass="invisibleButton">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="MICROPHONE" size="100" styleClass="redIcon" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="playButton" mnemonicParsing="false" onAction="#playHit" prefHeight="116.0" prefWidth="117.0" styleClass="invisibleButton">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="PLAY" size="100" styleClass="redIcon" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="continueButton" disable="true" mnemonicParsing="false" onAction="#continueHit" prefHeight="65.0" prefWidth="100.0" styleClass="invisibleButton">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="ARROW_RIGHT" size="100" styleClass="greyIcon" />
+                     </graphic>
+                  </Button>
                </children>
-            </AnchorPane>
+            </HBox>
          </children>
-      </Pane>
-      <Button fx:id="backButton" layoutX="91.0" layoutY="410.0" mnemonicParsing="false" onAction="#backHit" prefHeight="63.0" prefWidth="81.0" styleClass="userSelectButtons">
-         <graphic>
-            <FontAwesomeIconView glyphName="REPLY" size="50" styleClass="greyIcon" />
-         </graphic>
-      </Button>
-      <Button fx:id="recordButton" layoutX="235.0" layoutY="410.0" mnemonicParsing="false" onAction="#recordHit" prefHeight="63.0" prefWidth="81.0" styleClass="userSelectButtons">
-         <graphic>
-            <FontAwesomeIconView glyphName="MICROPHONE" size="50" styleClass="redIcon" />
-         </graphic></Button>
-      <Button fx:id="continueButton" disable="true" layoutX="380.0" layoutY="410.0" mnemonicParsing="false" onAction="#continueHit" prefHeight="63.0" prefWidth="81.0" styleClass="userSelectButtons">
-         <graphic>
-            <FontAwesomeIconView glyphName="ARROW_RIGHT" size="50" styleClass="greyIcon" />
-         </graphic>
-      </Button>
+      </AnchorPane>
+      <HBox fx:id="questionBox" alignment="CENTER" layoutX="85.0" layoutY="230.0" prefHeight="271.0" prefWidth="818.0" styleClass="greyBackground">
+         <children>
+            <VBox alignment="BOTTOM_CENTER" prefHeight="271.0" prefWidth="817.0">
+               <children>
+                  <Label fx:id="equationText" alignment="CENTER" prefHeight="166.0" prefWidth="826.0" text="10 - 10" textFill="#646464">
+                     <font>
+                        <Font size="78.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="statusText" alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="419.0" styleClass="greyBackground" text="Press the microphone to begin recording">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Label fx:id="scoreText" layoutX="186.0" layoutY="168.0" styleClass="whiteHeadingText" text="Score: 0" />
+      <Label fx:id="lifeText" layoutX="589.0" layoutY="168.0" styleClass="whiteHeadingText" text="Lives Left: 0" />
+      <HBox alignment="CENTER" layoutX="810.0" layoutY="19.0" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Text fx:id="timeText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="0:00">
+               <font>
+                  <Font size="61.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <HBox fx:id="lifeBox" alignment="CENTER" layoutX="784.0" layoutY="24.0" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <FontAwesomeIconView fx:id="lifeOne" glyphName="HEART" size="50" styleClass="lifeHeart">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </FontAwesomeIconView>
+            <FontAwesomeIconView fx:id="lifeTwo" glyphName="HEART" size="50" styleClass="lifeHeart" />
+            <FontAwesomeIconView fx:id="lifeThree" glyphName="HEART" size="50" styleClass="lifeHeart">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </FontAwesomeIconView>
+         </children>
+      </HBox>
    </children>
    <stylesheets>
       <URL value="@../application.css" />

@@ -3,8 +3,12 @@ package tatai.gui.quitScreen;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import maths.EquationFactory;
+import maths.MultiEquationFactory;
+import maths.SimpleEquationFactory;
+import maths.SingleNumberEquationFactory;
 import tatai.StateSingleton;
-import tatai.game.Game;
+import tatai.game.*;
 import tatai.gui.gameFeaturesScreen.GameFeaturesView;
 import tatai.gui.level.Level;
 import tatai.gui.level.LevelView;
@@ -38,7 +42,26 @@ public class QuitScreen implements Initializable{
 
     @FXML
     public void restartHit() {
-        Game game = new Game(previousGame.getGameType(), previousGame.getEquationFactory(), previousGame.getTotalRounds(), previousGame.getGameDifficulty());
+        GameDifficulty gameDifficulty = previousGame.getGameDifficulty();
+        GameType gameType = previousGame.getGameType();
+        EquationFactory equationFactory = null;
+        if (gameDifficulty.equals(GameDifficulty.EASY)) {
+            equationFactory = new SimpleEquationFactory();
+        } else if (gameDifficulty.equals(GameDifficulty.PRACTICE)) {
+            equationFactory = new SingleNumberEquationFactory();
+        } else if (gameDifficulty.equals(GameDifficulty.MEDIUM)) {
+            equationFactory = new SimpleEquationFactory();
+        } else if (gameDifficulty.equals(GameDifficulty.HARD)) {
+            equationFactory = new MultiEquationFactory();
+        }
+        Game game = null;
+        if (gameType.equals(GameType.NORMAL)) {
+            game = new NormalGame(gameType, equationFactory, gameDifficulty);
+        } else if (gameType.equals(GameType.TIME_LIMIT)) {
+            game = new TimedGame(gameType, equationFactory, gameDifficulty);
+        } else if (gameType.equals(GameType.SURVIVAL)) {
+            game = new SurvivalGame(gameType, equationFactory, gameDifficulty);
+        }
         LevelView levelView = new LevelView();
         StateSingleton.instance().changeCenter(levelView);
         Level level = (Level)levelView.controller();

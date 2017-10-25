@@ -11,12 +11,13 @@ public class SingleNumberEquationFactory implements EquationFactory {
 	private int max;
 	private int min;
 
+
+
 	public SingleNumberEquationFactory() {
 		max = 9;
 		min = 1;
 	}
 
-	@Override
 	public void setMax(int max) {
 		this.max = max;
 	}
@@ -47,8 +48,8 @@ public class SingleNumberEquationFactory implements EquationFactory {
 		return r.nextInt((max - min) + 1) + min;
 	}
 
-	@Override
 	public void setMin(int min) {
 		this.min = min;
 	}
+
 }
