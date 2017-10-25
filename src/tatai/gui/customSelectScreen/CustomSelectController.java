@@ -17,7 +17,7 @@ import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import maths.Equation;
+import maths.*;
 import tatai.StateSingleton;
 import tatai.gui.customListSelect.CustomListView;
 import tatai.user.CustomList;
@@ -25,7 +25,7 @@ import tatai.user.SerializableHandler;
 
 public class CustomSelectController {
 
-	private static final String DEFAULT_LIST_NAME = "Jed's List";
+	private static final String DEFAULT_LIST_NAME = "My Custom List";
 	
 	@FXML
 	private TextField listNameTextField;
@@ -45,6 +45,10 @@ public class CustomSelectController {
 	private CustomList customList;
 	private String pathToList;
 	private Equation equationSelected;
+
+	private EquationFactory simple = new SimpleEquationFactory();
+
+	private EquationFactory sequences = new SequenceEquationFactory();
 	
 	
 	public void setUpExistingList(String customListName) {	
@@ -149,52 +153,92 @@ public class CustomSelectController {
 
 	@FXML
 	private void easyAdditionHit() {
-		
+		simple.setMax(10);
+		Equation addition = simple.generate(Operator.ADD);
+		customList.addEquation(addition);
+		equationChanged();
 	}
 	
 	@FXML
 	private void hardAdditionHit() {
-		
+		simple.setMax(100);
+		Equation addition = simple.generate(Operator.ADD);
+		customList.addEquation(addition);
+		equationChanged();
 	}
 	
 	@FXML
 	private void easySubtractionHit() {
+		simple.setMax(10);
+		Equation e = simple.generate(Operator.MINUS);
+		customList.addEquation(e);
+		equationChanged();
 		
 	}
 	
 	@FXML
 	private void hardSubtractionHit() {
+		simple.setMax(100);
+		Equation e = simple.generate(Operator.MINUS);
+		customList.addEquation(e);
+		equationChanged();
 		
 	}
 	
 	@FXML
 	private void easyMultiplicationHit() {
+		simple.setMax(10);
+		Equation e = simple.generate(Operator.MULTIPLY);
+		customList.addEquation(e);
+		equationChanged();
 		
 	}
 	
 	@FXML
 	private void hardMultiplicationHit() {
-		
+		simple.setMax(100);
+		Equation e = simple.generate(Operator.MULTIPLY);
+		customList.addEquation(e);
+		equationChanged();
+
 	}
 	
 	@FXML
 	private void easyDivisionHit() {
+		simple.setMax(10);
+		Equation e = simple.generate(Operator.DIVIDE);
+		customList.addEquation(e);
+		equationChanged();
 		
 	}
 	
 	@FXML
 	private void hardDivisionHit() {
+		simple.setMax(100);
+		Equation e= simple.generate(Operator.DIVIDE);
+		customList.addEquation(e);
+
+		equationChanged();
 		
 	}
 	
 	@FXML
 	private void easySequencesHit() {
+		sequences.setMax(10);
+		Equation e = sequences.generate();
+		customList.addEquation(e);
+
+		equationChanged();
 		
 	}
 	
 	@FXML
 	private void hardSequencesHit() {
-		
+		sequences.setMax(100);
+		Equation e = sequences.generate();
+		customList.addEquation(e);
+
+		equationChanged();
 	}
 	
 	@FXML

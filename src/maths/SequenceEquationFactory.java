@@ -27,14 +27,16 @@ public class SequenceEquationFactory implements EquationFactory {
 
     @Override
     public Equation generate() {
+        sequence.clear();
+
         createSequence();
         String output = "";
         //parse out the individual numbers into a string.
         if (!sequence.isEmpty()){
             output = String.format("%d, %d, %d, ?", sequence.get(0), sequence.get(1), sequence.get(2));
         }
-
         System.out.println(answer);
+        System.out.println(output);
 
         return new Equation(output, answer) ;
     }
@@ -47,7 +49,6 @@ public class SequenceEquationFactory implements EquationFactory {
         //need to make a better step size generation
         //Maximum step that should be counted is 5. This may change in future.
         int stepSize = 5;
-
 
         while ((answer + stepSize * 3 > max) && (answer - stepSize * 3 <= 0) ){
             //if adventurous, randomise the stepsapce based on a decreasing range.
@@ -65,7 +66,6 @@ public class SequenceEquationFactory implements EquationFactory {
         } else if (answer + stepSize*3 <= max){
             //descending sequence;
             for (int i = 0; i < 3; i++) {
-
                 sequence.add(answer + (3 - i) * stepSize);
             }
 

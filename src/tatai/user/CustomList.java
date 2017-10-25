@@ -11,7 +11,7 @@ public class CustomList implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private String listName;
-	private List<Equation> equations = new ArrayList<Equation>();
+	private ArrayList<Equation> equations = new ArrayList<Equation>();
 	
 	public CustomList(String listName) {
 		this.listName = listName;
@@ -42,7 +42,7 @@ public class CustomList implements Serializable {
 		equations.remove(equation);
 	}
 	
-	public List<Equation> getEquations() {
+	public ArrayList<Equation> getEquations() {
 		return equations;
 	}
 	

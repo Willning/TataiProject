@@ -23,19 +23,19 @@
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" styleClass="greyBackground" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatai.gui.userDashboardScreen.UserDashboard">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" styleClass="greyBackground" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatai.gui.userDashboardScreen.UserDashboard">
    <children>
-      <Label fx:id="welcomeLabel" layoutX="371.0" layoutY="37.0" text="Haere Mai, Zob!" textFill="#d00000">
+      <Label fx:id="welcomeLabel" layoutX="263.0" layoutY="39.0" styleClass="titleText" text="Haere Mai, Zob!" textFill="#d00000">
          <font>
             <Font name="DejaVu Sans" size="36.0" />
          </font>
       </Label>
-      <Label layoutX="239.0" layoutY="107.0" text="You last played Tātai: ">
+      <Label layoutX="239.0" layoutY="107.0" styleClass="blackMediumText" text="You last played Tātai: ">
          <font>
             <Font name="DejaVu Sans" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="lastPlayedLabel" layoutX="523.0" layoutY="106.0" text="3 days ago" textFill="#d00000">
+      <Label fx:id="lastPlayedLabel" layoutX="523.0" layoutY="106.0" styleClass="blackMediumText" text="3 days ago" textFill="#d00000">
          <font>
             <Font name="DejaVu Sans" size="24.0" />
          </font>

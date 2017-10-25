@@ -1,5 +1,7 @@
 package maths;
 
+import tatai.user.CustomList;
+
 public interface EquationFactory {
 
 	/**
@@ -14,6 +16,11 @@ public interface EquationFactory {
 	 * this method is a dummy
 	 */
 	Equation generate(Operator operator);
+
+	/**
+	 * used for custom list loading, pipe in a custom list to the factory
+	 */
+	//void setList(CustomList list);
 
 	/**
 	 * Max number allowed to be answer.

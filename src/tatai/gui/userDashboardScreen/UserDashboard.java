@@ -12,9 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import tatai.StateSingleton;
-import tatai.game.Game;
 import tatai.game.GameDifficulty;
-import tatai.gui.endGameScreen.EndGameView;
 import tatai.gui.gameFeaturesScreen.GameFeaturesView;
 import tatai.user.GameData;
 import tatai.user.User;
@@ -22,8 +20,6 @@ import tatai.user.User;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.ResourceBundle;
 
 /**
@@ -168,6 +164,7 @@ public class UserDashboard implements Initializable{
     @FXML
     public void playHit() {
         StateSingleton.instance().changeCenter(new GameFeaturesView());
+
 
     }
 

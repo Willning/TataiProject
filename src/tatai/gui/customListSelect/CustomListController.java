@@ -10,6 +10,8 @@ import javafx.scene.control.ComboBox;
 import tatai.StateSingleton;
 import tatai.gui.customSelectScreen.CustomSelectController;
 import tatai.gui.customSelectScreen.CustomSelectView;
+import tatai.gui.gameFeaturesScreen.GameFeaturesView;
+import tatai.gui.userDashboardScreen.UserDashboardView;
 import tatai.user.CustomList;
 import tatai.user.SerializableHandler;
 
@@ -71,6 +73,11 @@ public class CustomListController {
 			editListButton.setDisable(false);
 			removeListButton.setDisable(false);
 		}
+	}
+
+	@FXML
+	public void backHit() {
+		StateSingleton.instance().changeCenter(new GameFeaturesView());
 	}
 	
 	private void updateListSelectBox() {

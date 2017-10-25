@@ -14,6 +14,8 @@ import tatai.game.GameType;
 import tatai.gui.customListSelect.CustomListView;
 import tatai.gui.level.Level;
 import tatai.gui.level.LevelView;
+import tatai.gui.playCustomList.PlayCustomListController;
+import tatai.gui.playCustomList.PlayCustomListView;
 import tatai.gui.userDashboardScreen.UserDashboardView;
 
 import java.net.URL;
@@ -101,16 +103,27 @@ public class GameFeaturesScreen implements Initializable{
             equationFactory = new HardEquationFactory();
             gameDifficulty = GameDifficulty.HARD;
         } else if (customRadio.isSelected()) {
+            //clicking start on this will open a custom list select screen
             equationFactory = new CustomEquationFactory();
+
+            PlayCustomListView playCustom = new PlayCustomListView();
+            PlayCustomListController controller= (PlayCustomListController) playCustom.controller();
+            controller.setGameType(gameType);
+            StateSingleton.instance().changeCenter(playCustom);
+
+            //Neccessary?
             gameDifficulty = GameDifficulty.CUSTOM;
         }
 
-        Game game = new Game(gameType, equationFactory, 10, gameDifficulty);
-        LevelView levelView = new LevelView();
-        StateSingleton.instance().changeCenter(levelView);
-        Level level = (Level)levelView.controller();
-        level.setGame(game);
+        if (!gameDifficulty.equals(GameDifficulty.CUSTOM)) {
+            Game game = new Game(gameType, equationFactory, 10, gameDifficulty);
+            LevelView levelView = new LevelView();
+            StateSingleton.instance().changeCenter(levelView);
+            Level level = (Level) levelView.controller();
+            level.setGame(game);
+        }
     }
+
 
     @FXML
     public void editCustomListHit() {
