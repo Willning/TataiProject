@@ -5,13 +5,18 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TablePosition;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import maths.Equation;
 import tatai.StateSingleton;
 import tatai.gui.customListSelect.CustomListView;
@@ -29,7 +34,9 @@ public class CustomSelectController {
 	@FXML
 	private TextField customSolutionTextField;
 	@FXML
-	private TableColumn<String, Void> equationsColumn, solutionsColumn;
+	private TableView<Equation> customEquationTable;
+	@FXML
+	private TableColumn<Equation, String> equationColumn, solutionColumn;
 	@FXML
 	private Button addEquationButton;
 	@FXML
@@ -37,6 +44,7 @@ public class CustomSelectController {
 	
 	private CustomList customList;
 	private String pathToList;
+	private Equation equationSelected;
 	
 	
 	public void setUpExistingList(String customListName) {	
@@ -53,6 +61,7 @@ public class CustomSelectController {
 		setUpListNameField();
 		setUpCustomEquationField();
 		setUpCustomSolutionField();
+		setUpCustomEquationTable();
 		setPromptText();
 		populateTable();
 	}
@@ -71,18 +80,14 @@ public class CustomSelectController {
 		pathToList = StateSingleton.CUSTOM_LIST_DIR + DEFAULT_LIST_NAME;
 	}
 	
-	private void populateTable() { // FIX THIS IMPLEMENTATION. LIST -> TABLE
-		/*List<String> equationsAsString = new ArrayList<String>();
-		for (Equation equation: customList.getEquations()) {
-			equationsAsString.add(equation.fullEquationToString());
-		}
+	private void populateTable() { 
 		
-		ObservableList<String> customEquationsList = FXCollections.observableArrayList(equationsAsString);
-		customEquationsListView.setItems(customEquationsList);
+		ObservableList<Equation> customEquations =
+	            FXCollections.observableArrayList(customList.getEquations());
 		
-		firstNameCol.setCellValueFactory(new PropertyValueFactory<Person, String>("firstName"));
-		firstNameCol.setCellValueFactory(new PropertyValueFactory<Person, String>("firstName"));
-		table.setItems(data);*/
+		equationColumn.setCellValueFactory(new PropertyValueFactory<Equation, String>("representationView"));
+		solutionColumn.setCellValueFactory(new PropertyValueFactory<Equation, String>("answerView"));
+		customEquationTable.setItems(customEquations);
 	}
 	
 	private void setUpListNameField() {
@@ -99,38 +104,49 @@ public class CustomSelectController {
 	
 	private void setUpCustomEquationField() {
 		customEquationTextField.textProperty().addListener((observable, oldValue, newValue) -> {
-			String equation = customEquationTextField.getText();
-			String solution = customSolutionTextField.getText();
-			if (equation.equals("") || solution.equals("")) {
-				addEquationButton.setDisable(true);
-			} else {
-				addEquationButton.setDisable(false);
-			}
+			checkEquationIsValid();
 		});
 	}
 
 	private void setUpCustomSolutionField() {
 		customSolutionTextField.textProperty().addListener((observable, oldValue, newValue) -> {
-			String equation = customEquationTextField.getText();
-			String solution = customSolutionTextField.getText();
-			try {
-				int numSolution = Integer.parseInt(solution);
-				
-				if (equation.equals("") || numSolution <= 0 || numSolution > 99) {
-					addEquationButton.setDisable(true);
-				} else {
-					addEquationButton.setDisable(false);
-				}
-			} catch (NumberFormatException e){
-				addEquationButton.setDisable(true);
-			}
+			checkEquationIsValid();
 		});
 	}
 	
+	private void setUpCustomEquationTable() {
+		customEquationTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+		    if (newSelection == null) {
+		    	removeEquationButton.setDisable(true);
+		    } else {
+		    	equationSelected = customEquationTable.getSelectionModel().getSelectedItem();
+		    	removeEquationButton.setDisable(false);
+		    }
+		});
+	}
+
+	private void checkEquationIsValid() {
+		String equation = customEquationTextField.getText();
+		String solution = customSolutionTextField.getText();
+		try {
+			int numSolution = Integer.parseInt(solution);
+			Equation testEquation = new Equation(equation, numSolution);
+			boolean isValid = customList.equationCanBeAdded(testEquation);
+
+			if (equation.equals("") || numSolution <= 0 || numSolution > 99 || !isValid) {
+				addEquationButton.setDisable(true);
+			} else {
+				addEquationButton.setDisable(false);
+			}
+		} catch (NumberFormatException e){
+			addEquationButton.setDisable(true);
+		}
+	}
+
 	private void setPromptText() {
 		listNameTextField.setPromptText(customList.getListName());
 	}
-	
+
 	@FXML
 	private void easyAdditionHit() {
 		
@@ -186,13 +202,19 @@ public class CustomSelectController {
 		String equation = customEquationTextField.getText();
 		int solution = Integer.parseInt(customSolutionTextField.getText());
 		customList.addEquation(new Equation(equation, solution));
-		
-		populateTable();
+	
+		equationChanged();	
 	}
 	
 	@FXML
 	private void removeEquationHit() {
+		customList.removeEquation(equationSelected);
+		equationChanged();		
+	}
+	
+	private void equationChanged() {
 		populateTable();
+		checkEquationIsValid();
 	}
 
 	@FXML

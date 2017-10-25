@@ -22,7 +22,20 @@ public class CustomList implements Serializable {
 	}
 	
 	public void addEquation(Equation equation) {
-		equations.add(equation);
+		
+		if (equationCanBeAdded(equation)) {
+			equations.add(equation);
+		}
+	}
+	
+	public boolean equationCanBeAdded(Equation equation) {
+		
+		for (Equation checkEquation: equations) {
+			if (equation.hasSameQuestion(checkEquation)) {
+				return false;
+			}
+		}
+		return true;
 	}
 	
 	public void removeEquation(Equation equation) {

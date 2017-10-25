@@ -2,13 +2,17 @@ package maths;
 
 import java.io.Serializable;
 
+import javafx.beans.property.SimpleStringProperty;
+
 /**
  * Class that represents a question for the game.
  */
 public class Equation implements Serializable {
 	
-	String representation;
-	int answer;
+	private static final long serialVersionUID = 1L;
+	
+	private String representation;
+	private int answer;
 
 	/**
 	 * @param representation
@@ -38,5 +42,29 @@ public class Equation implements Serializable {
 	 */
 	public int answer() {
 		return answer;
+	}
+	
+	public boolean hasSameQuestion(Equation equation) {
+		if (equation.toString().equals(toString())) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	/**
+	 * For use in a table view
+	 * @return
+	 */
+	public String getRepresentationView() {
+		return toString();
+	}
+	
+	/**
+	 * For use in a table view
+	 * @return
+	 */
+	public String getAnswerView() {
+		return "" + answer();
 	}
 }

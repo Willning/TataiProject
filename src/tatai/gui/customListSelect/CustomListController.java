@@ -1,6 +1,5 @@
 package tatai.gui.customListSelect;
 
-
 import java.io.File;
 import java.io.FileNotFoundException;
 
@@ -83,11 +82,11 @@ public class CustomListController {
         File[] customListFiles = customListDir.listFiles();
         for (File customListFile : customListFiles) {
             try {
+            	//customListFile.delete();
             	String pathToList = StateSingleton.CUSTOM_LIST_DIR + customListFile.getName();
-            	new SerializableHandler().loadObject(pathToList);
-            	/*String listName = ((CustomList) new SerializableHandler().loadObject(pathToList)).getListName();
-				listSelectBox.getItems().add(listName);*/
-			} catch (/*FileNotFoundException*/Exception e) {
+            	String listName = ((CustomList) new SerializableHandler().loadObject(pathToList)).getListName();
+				listSelectBox.getItems().add(listName);
+			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
         }
