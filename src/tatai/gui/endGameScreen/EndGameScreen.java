@@ -1,7 +1,5 @@
 package tatai.gui.endGameScreen;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,9 +10,8 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
-import javafx.util.Callback;
 import tatai.StateSingleton;
+import tatai.game.GameDifficulty;
 import tatai.gui.gameFeaturesScreen.GameFeaturesView;
 import tatai.gui.userDashboardScreen.UserDashboardView;
 import tatai.user.GameData;
@@ -77,9 +74,11 @@ public class EndGameScreen implements Initializable{
             greetLabel.setText("Good job, keep it up " +StateSingleton.instance().getUser().getUsername());
         }else if (data.getScore() >= 8){
             greetLabel.setText("Ka Pai " +StateSingleton.instance().getUser().getUsername());
-            unlockLabel.setVisible(true);
-        }
 
+            if (!data.getGameDifficulty().equals(GameDifficulty.HARD)) {
+                unlockLabel.setVisible(true);
+            }
+        }
 
     }
 
@@ -104,13 +103,13 @@ public class EndGameScreen implements Initializable{
                             Color vColor= new Color(0.6588, 1, 0.5725, 1);
                             currentRow.setBackground(new Background(new BackgroundFill(vColor, CornerRadii.EMPTY, Insets.EMPTY)));
                         }
-                        //throws a lot of exceptions.
+
                     }else{
                         setText("Incorrect");
                         if (currentRow!= null){
                             Color vColor= new Color(1, 0.4667, 0.5529, 1);
                             currentRow.setBackground(new Background(new BackgroundFill(vColor, CornerRadii.EMPTY,Insets.EMPTY)));
-                            //throws a lot of exceptions.
+
                         }
 
                     }
