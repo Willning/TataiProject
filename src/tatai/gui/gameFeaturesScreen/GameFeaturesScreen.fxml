@@ -49,8 +49,8 @@
                         <Font name="DejaVu Sans" size="16.0" />
                      </font>
                   </RadioButton>
-                  <MaterialDesignIconView glyphName="LOCK_OUTLINE" layoutX="380.0" layoutY="46.0" size="25" text="" />
-                  <MaterialDesignIconView glyphName="LOCK_OUTLINE" layoutX="219.0" layoutY="46.0" size="25" text="" />
+                  <MaterialDesignIconView fx:id="hardLock" glyphName="LOCK_OUTLINE" layoutX="380.0" layoutY="46.0" size="25" text="" />
+                  <MaterialDesignIconView fx:id="mediumLock" glyphName="LOCK_OUTLINE" layoutX="219.0" layoutY="46.0" size="25" text="" />
                   <RadioButton fx:id="customRadio" layoutX="305.0" layoutY="60.0" mnemonicParsing="false" text="Custom" textFill="#646464" toggleGroup="$gameDifficultyButtons">
                      <font>
                         <Font name="DejaVu Sans" size="16.0" />
@@ -119,7 +119,7 @@
             <Font name="DejaVu Sans" size="18.0" />
          </font>
          <graphic>
-            <FontAwesomeIconView glyphName="REPLY" size="60" style="-fx-fill: #eeeeee;" />
+            <FontAwesomeIconView glyphName="REPLY" size="60" />
          </graphic>
       </Button>
       <Label layoutX="362.0" layoutY="52.0" styleClass="whiteTitleText" text="New Game" />

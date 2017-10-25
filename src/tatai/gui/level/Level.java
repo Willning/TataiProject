@@ -14,6 +14,7 @@ import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import tatai.StateSingleton;
 import tatai.game.Game;
+import tatai.game.GameDifficulty;
 import tatai.gui.endGameScreen.EndGameView;
 import tatai.gui.userDashboardScreen.UserDashboardView;
 

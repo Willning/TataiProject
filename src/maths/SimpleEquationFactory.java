@@ -52,9 +52,7 @@ public class SimpleEquationFactory implements EquationFactory {
 	 * This only goes up to the 10 times table as per the NZ curriculum standards.
 	 */
 	private void createEquation() {
-		operator = generateOperator();
 
-		
 		if (operator == Operator.ADD) {
 			firstNumber = randomNumber(1, max);
 			answer = randomNumber(firstNumber, max);
@@ -92,11 +90,22 @@ public class SimpleEquationFactory implements EquationFactory {
 	/**
 	 * return a equation generated, in type Equation
 	 */
+	@Override
 	public Equation generate() {
+		operator = generateOperator();
 		createEquation();
 
 		return new Equation(firstNumber + operator.toString() + secondNumber +"=?", answer);
 	}
+
+	@Override
+	public Equation generate(Operator operator) {
+		this.operator = operator;
+
+		createEquation();
+		return new Equation(firstNumber + operator.toString() + secondNumber +"=?", answer);
+	}
+
 
 	/**
 	 * randomly generate the operator used for the equation

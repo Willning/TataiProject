@@ -1,14 +1,12 @@
 package tatai.gui.gameFeaturesScreen;
 
+import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
-import maths.EquationFactory;
-import maths.MultiEquationFactory;
-import maths.SimpleEquationFactory;
-import maths.SingleNumberEquationFactory;
+import maths.*;
 import tatai.StateSingleton;
 import tatai.game.Game;
 import tatai.game.GameDifficulty;
@@ -29,6 +27,9 @@ public class GameFeaturesScreen implements Initializable{
     @FXML
     RadioButton normalRadio, timeLimitRadio, survivalRadio, easyRadio, mediumRadio, hardRadio, practiceRadio, customRadio;
 
+    @FXML
+    MaterialDesignIconView mediumLock, hardLock;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //create radio groups
@@ -45,6 +46,25 @@ public class GameFeaturesScreen implements Initializable{
         practiceRadio.setToggleGroup(equationTypeGroup);
         customRadio.setToggleGroup(equationTypeGroup);
         easyRadio.setSelected(true);
+
+        checkUserlevels();
+    }
+
+    /**
+     * Check which levels the user has access to.
+     */
+    private void checkUserlevels(){
+        boolean canMedium = StateSingleton.instance().getUser().canPlayNextLevel(GameType.NORMAL,GameDifficulty.EASY);
+        boolean canHard = StateSingleton.instance().getUser().canPlayNextLevel(GameType.NORMAL,GameDifficulty.MEDIUM);
+
+        if (canMedium){
+            mediumLock.setVisible(false);
+            mediumRadio.setDisable(false);
+        }
+        if (canHard){
+            hardLock.setVisible(false);
+            hardRadio.setDisable(false);
+        }
     }
 
     @FXML
@@ -73,12 +93,10 @@ public class GameFeaturesScreen implements Initializable{
             equationFactory.setMax(9);
             gameDifficulty = GameDifficulty.PRACTICE;
         } else if (mediumRadio.isSelected()) {
-            equationFactory = new SimpleEquationFactory();
-            equationFactory.setMax(99);
+            equationFactory = new MediumEquationFactory();
             gameDifficulty = GameDifficulty.MEDIUM;
         } else if (hardRadio.isSelected()) {
-            equationFactory = new MultiEquationFactory();
-            equationFactory.setMax(99);
+            equationFactory = new HardEquationFactory();
             gameDifficulty = GameDifficulty.HARD;
         }
 

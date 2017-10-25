@@ -21,12 +21,17 @@ public class MultiEquationFactory implements EquationFactory{
 	private int max;
 	private int min;
 
+	@Override
+	public Equation generate(Operator operator) {
+		//Again most likely going to be a dummy method for the sake of the interface.
+		return null;
+	}
 
 	@Override
 	public Equation generate() {
 		CreateMultiEquation();
 
-		return new Equation("("+partOne+")"+InitialOperator.toString()+"("+partTwo+")  =?",answer);
+		return new Equation("("+partOne+")"+InitialOperator.toString()+"("+partTwo+") =?",answer);
 	}
 
 	/**
@@ -47,7 +52,6 @@ public class MultiEquationFactory implements EquationFactory{
 			firstNumber = componentMaker.getFirstNumber();
 			secondNumber = componentMaker.getSecondNumner();
 
-
 		}
 
 		//from these two ints, spawn two more equations.
@@ -59,6 +63,8 @@ public class MultiEquationFactory implements EquationFactory{
 
 
 		answer = initial.answer();
+
+		System.out.println(answer);
 
 	}
 

@@ -94,6 +94,5 @@ public class UserDashboard implements Initializable{
     public void playHit() {
         StateSingleton.instance().changeCenter(new GameFeaturesView());
 
-
     }
 }

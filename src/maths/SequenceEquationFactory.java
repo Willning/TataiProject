@@ -11,6 +11,13 @@ import java.util.Random;
 public class SequenceEquationFactory implements EquationFactory {
 
     private int max;
+
+    @Override
+    public Equation generate(Operator operator) {
+        //kinda messy but this is probably just a dummy method for the sake of the interface.
+        return null;
+    }
+
     private int min;
 
     private int answer;
@@ -27,6 +34,7 @@ public class SequenceEquationFactory implements EquationFactory {
             output = String.format("%d, %d, %d, ?", sequence.get(0), sequence.get(1), sequence.get(2));
         }
 
+        System.out.println(answer);
 
         return new Equation(output, answer) ;
     }
@@ -35,8 +43,6 @@ public class SequenceEquationFactory implements EquationFactory {
         //create a seed number which will be the answer.
         Random random = new Random();
         answer  = random.nextInt(max - min) +min;
-
-        answer = 6;
 
         //need to make a better step size generation
         //Maximum step that should be counted is 5. This may change in future.

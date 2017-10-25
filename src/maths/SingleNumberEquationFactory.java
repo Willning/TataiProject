@@ -11,6 +11,8 @@ public class SingleNumberEquationFactory implements EquationFactory {
 	private int max;
 	private int min;
 
+
+
 	public SingleNumberEquationFactory() {
 		max = 9;
 		min = 1;
@@ -50,5 +52,11 @@ public class SingleNumberEquationFactory implements EquationFactory {
 	@Override
 	public void setMin(int min) {
 		this.min = min;
+	}
+
+	@Override
+	public Equation generate(Operator operator) {
+		//Dummy method
+		return null;
 	}
 }

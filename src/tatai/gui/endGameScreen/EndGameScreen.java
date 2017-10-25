@@ -34,7 +34,7 @@ public class EndGameScreen implements Initializable{
     Button dashButton, newGameButton;
 
     @FXML
-    Label greetLabel, scoreLabel, unlockLabel;
+    Label greetLabel, scoreLabel, unlockLabel, listLabel, modeLabel;
 
     @FXML
     TableView statsTable;
@@ -63,7 +63,9 @@ public class EndGameScreen implements Initializable{
             setUpTable();
         }
 
-        scoreLabel.setText(data.getScore() + " out of 10");
+        scoreLabel.setText(data.getScore()+"");
+        listLabel.setText("List: " + data.getGameDifficulty());
+        modeLabel.setText("Mode: " + data.getGameType());
 
         //Switch statement based on score.
 
@@ -94,7 +96,6 @@ public class EndGameScreen implements Initializable{
 
                 TableRow<RoundData> currentRow = this.getTableRow();
 
-
                 if (empty || item == null) {
                 } else {
                     if(item){
@@ -107,7 +108,7 @@ public class EndGameScreen implements Initializable{
                     }else{
                         setText("Incorrect");
                         if (currentRow!= null){
-                            Color vColor= new Color(1, 0.1098, 0.3451, 1);
+                            Color vColor= new Color(1, 0.4667, 0.5529, 1);
                             currentRow.setBackground(new Background(new BackgroundFill(vColor, CornerRadii.EMPTY,Insets.EMPTY)));
                             //throws a lot of exceptions.
                         }

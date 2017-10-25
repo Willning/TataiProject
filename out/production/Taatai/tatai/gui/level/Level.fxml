@@ -55,13 +55,13 @@
             </HBox>
          </children>
       </AnchorPane>
-      <HBox fx:id="questionBox" alignment="CENTER" layoutX="152.0" layoutY="219.0" prefHeight="271.0" prefWidth="688.0" styleClass="greyBackground">
+      <HBox fx:id="questionBox" alignment="CENTER" layoutX="85.0" layoutY="230.0" prefHeight="271.0" prefWidth="818.0" styleClass="greyBackground">
          <children>
-            <VBox alignment="BOTTOM_CENTER" prefHeight="271.0" prefWidth="419.0">
+            <VBox alignment="BOTTOM_CENTER" prefHeight="271.0" prefWidth="817.0">
                <children>
-                  <Label fx:id="equationText" alignment="CENTER" prefHeight="166.0" prefWidth="382.0" text="10 - 10" textFill="#646464">
+                  <Label fx:id="equationText" alignment="CENTER" prefHeight="166.0" prefWidth="826.0" text="10 - 10" textFill="#646464">
                      <font>
-                        <Font name="DejaVu Sans Bold" size="96.0" />
+                        <Font size="78.0" />
                      </font>
                   </Label>
                   <Label fx:id="statusText" alignment="CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="419.0" styleClass="greyBackground" text="Press the microphone to begin recording">
