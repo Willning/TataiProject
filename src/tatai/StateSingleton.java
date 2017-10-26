@@ -15,6 +15,8 @@ public class StateSingleton {
     public static final String USERS_DIR = "users/";
     public static final String CUSTOM_LIST_DIR = "custom/";
     public static final String SOUND_DIR = "";
+    public static final int WIDTH = 1000;
+    public static final int HEIGHT = 700;
     private static StateSingleton stateSingleton;
     private User user;
     private Stage stage;

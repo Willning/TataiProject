@@ -25,7 +25,7 @@
             <ColorAdjust brightness="0.84" />
          </effect>
       </ImageView>
-      <Label fx:id="roundText" layoutX="343.0" layoutY="76.0" styleClass="whiteTitleText" text="RAPANGA 1" textFill="#d00000">
+      <Label fx:id="roundText" alignment="CENTER" layoutX="-1.0" layoutY="76.0" prefHeight="59.0" prefWidth="1000.0" styleClass="whiteTitleText" text="RAPANGA 1" textAlignment="CENTER" textFill="#d00000">
          <font>
             <Font size="36.0" />
          </font>

@@ -93,10 +93,22 @@
                 </Label>
             </children>
         </AnchorPane>
-        <Button alignment="CENTER" layoutX="16.0" layoutY="599.0" mnemonicParsing="false" onAction="#editCustomListHit" prefHeight="65.0" prefWidth="228.0" styleClass="invisibleButton" textFill="#646464">
+        <Button alignment="CENTER" layoutX="16.0" layoutY="582.0" mnemonicParsing="false" onAction="#editCustomListHit" prefHeight="65.0" prefWidth="228.0" styleClass="invisibleButton" textFill="#646464">
             <font>
                 <Font size="16.0" />
             </font>
+         <graphic>
+                <AnchorPane prefHeight="55.0" prefWidth="126.0">
+                    <children>
+                        <FontAwesomeIconView glyphName="EDIT" layoutY="57.0" size="60" wrappingWidth="49.14285659790039" />
+                        <Label layoutX="65.0" layoutY="19.0" styleClass="greyMediumText" text="Edit Custom Lists" textFill="#646464">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+         </graphic>
         </Button>
         <Button fx:id="startButton" layoutX="350.0" layoutY="574.0" mnemonicParsing="false" onAction="#startHit" prefHeight="100.0" prefWidth="300.0" text="Start!" textFill="#646464">
             <font>
@@ -115,16 +127,6 @@
                 <FontAwesomeIconView glyphName="REPLY" size="100" />
             </graphic>
         </Button>
-        <Label layoutX="362.0" layoutY="52.0" styleClass="whiteTitleText" text="New Game" />
-          <AnchorPane layoutX="29.0" layoutY="590.0" prefHeight="55.0" prefWidth="126.0">
-              <children>
-                  <FontAwesomeIconView glyphName="EDIT" layoutY="57.0" size="60" wrappingWidth="49.14285659790039" />
-                  <Label layoutX="65.0" layoutY="19.0" styleClass="greyMediumText" text="Edit Custom Lists" textFill="#646464">
-                      <font>
-                          <Font size="16.0" />
-                      </font>
-                  </Label>
-              </children>
-          </AnchorPane>
+        <Label alignment="CENTER" layoutY="52.0" prefHeight="59.0" prefWidth="1000.0" styleClass="whiteTitleText" text="New Game" />
     </children>
 </AnchorPane>

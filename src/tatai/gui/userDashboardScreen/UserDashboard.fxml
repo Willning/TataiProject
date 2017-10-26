@@ -35,17 +35,17 @@
             <ColorAdjust brightness="0.4" />
          </effect>
       </ImageView>
-      <Label fx:id="welcomeLabel" layoutX="283.0" layoutY="28.0" styleClass="redTitleText" text="Haere Mai, Zob!" textFill="#d00000">
+      <Label fx:id="welcomeLabel" alignment="CENTER" layoutX="283.0" layoutY="28.0" styleClass="redTitleText" text="Haere Mai, Zob!" textFill="#d00000">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Label layoutX="283.0" layoutY="107.0" styleClass="blackMediumText" text="You last played Tātai: ">
+      <Label alignment="CENTER_RIGHT" layoutX="1.0" layoutY="107.0" prefHeight="30.0" prefWidth="508.0" styleClass="blackMediumText" text="You last played Tātai: " textAlignment="RIGHT">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="lastPlayedLabel" layoutX="585.0" layoutY="107.0" styleClass="blackMediumText" text="3 days ago" textFill="#d00000">
+      <Label fx:id="lastPlayedLabel" layoutX="532.0" layoutY="107.0" prefHeight="30.0" prefWidth="467.0" styleClass="blackMediumText" text="3 days ago" textFill="#d00000">
          <font>
             <Font size="24.0" />
          </font>

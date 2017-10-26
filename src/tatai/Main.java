@@ -25,7 +25,8 @@ public class Main extends Application {
         WelcomeScreen welcomeScreen = (WelcomeScreen)welcomeScreenView.controller();
     	welcomeScreen.setUpStage(primaryStage);
     	primaryStage.setTitle("Tatai!");
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(new Scene(root, StateSingleton.WIDTH, StateSingleton.HEIGHT));
+        primaryStage.setResizable(false);
         primaryStage.show();
         primaryStage.getIcons().add(new Image("resources/images/maori.png"));
     }

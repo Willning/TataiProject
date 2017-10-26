@@ -26,7 +26,7 @@
             <Font size="82.0" />
          </font>
       </Text>
-      <Button fx:id="newPlayerButton" layoutX="143.0" layoutY="470.0" mnemonicParsing="false" onAction="#newPlayerHit" prefHeight="100.0" prefWidth="200.0" styleClass="userSelectButtons" text="New Player" textFill="#646464">
+      <Button fx:id="newPlayerButton" layoutX="87.0" layoutY="470.0" mnemonicParsing="false" onAction="#newPlayerHit" prefHeight="100.0" prefWidth="238.0" styleClass="greyMediumText" text="New Player" textFill="#646464">
          <font>
             <Font size="16.0" />
          </font>
@@ -34,7 +34,7 @@
             <FontAwesomeIconView glyphName="USER_PLUS" size="50" text="" />
          </graphic>
       </Button>
-      <Button fx:id="selectPlayerButton" disable="true" layoutX="402.0" layoutY="470.0" mnemonicParsing="false" onAction="#selectPlayerHit" prefHeight="100.0" prefWidth="219.0" style=": ;" styleClass="userSelectButtons" text="Select Player">
+      <Button fx:id="selectPlayerButton" disable="true" layoutX="371.0" layoutY="470.0" mnemonicParsing="false" onAction="#selectPlayerHit" prefHeight="100.0" prefWidth="263.0" style=": ;" styleClass="greyMediumText" text="Select Player">
          <font>
             <Font size="16.0" />
          </font>
@@ -42,7 +42,7 @@
             <FontAwesomeIconView glyphName="USER_PLUS" size="50" text="" />
          </graphic>
       </Button>
-      <Button fx:id="removePlayerButton" disable="true" layoutX="676.0" layoutY="470.0" mnemonicParsing="false" onAction="#removePlayerHit" prefHeight="100.0" prefWidth="232.0" styleClass="userSelectButtons" text="Remove Player">
+      <Button fx:id="removePlayerButton" disable="true" layoutX="685.0" layoutY="470.0" mnemonicParsing="false" onAction="#removePlayerHit" prefHeight="100.0" prefWidth="295.0" styleClass="greyMediumText" text="Remove Player">
          <font>
             <Font size="16.0" />
          </font>
