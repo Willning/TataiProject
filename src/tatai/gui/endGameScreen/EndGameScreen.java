@@ -12,6 +12,7 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 import tatai.StateSingleton;
 import tatai.game.GameDifficulty;
+import tatai.gui.Controller;
 import tatai.gui.gameFeaturesScreen.GameFeaturesView;
 import tatai.gui.userDashboardScreen.UserDashboardView;
 import tatai.user.GameData;
@@ -25,27 +26,20 @@ import java.util.ResourceBundle;
  * Controller for the end gamme screen which will pop up after a game is finished.
  */
 
-public class EndGameScreen implements Initializable{
+public class EndGameScreen implements Initializable, Controller{
 
     @FXML
-    Button dashButton, newGameButton;
-
+    private Button dashButton, newGameButton;
     @FXML
-    Label greetLabel, scoreLabel, unlockLabel, listLabel, modeLabel;
-
+    private Label greetLabel, scoreLabel, unlockLabel, listLabel, modeLabel;
     @FXML
-    TableView statsTable;
-
+    private TableView statsTable;
     @FXML
-    TableColumn<RoundData,String> roundNumber, question, correctAnswer, userAnswer;
-
+    private TableColumn<RoundData,String> roundNumber, question, correctAnswer, userAnswer;
     @FXML
-    TableColumn<RoundData,Boolean> correct;
-
+    private TableColumn<RoundData,Boolean> correct;
     private GameData data;
-
     private ArrayList<RoundData> roundInfo;
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -94,9 +88,7 @@ public class EndGameScreen implements Initializable{
         correct.setCellFactory(col -> new TableCell<RoundData,Boolean>(){
             @Override
             protected void updateItem(Boolean item, boolean empty) {
-
                 TableRow<RoundData> currentRow = this.getTableRow();
-
                 if (empty || item == null) {
                 } else {
                     if(item){
@@ -118,10 +110,8 @@ public class EndGameScreen implements Initializable{
                 }
             }
         });
-
         statsTable.setItems(FXCollections.observableList(roundInfo));
         statsTable.getSortOrder().add(roundNumber);
-
     }
 
     @FXML

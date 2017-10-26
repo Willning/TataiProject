@@ -5,12 +5,12 @@ import java.util.HashMap;
 /**
  * Used for processing whether the received pronunciation was correct.
  */
-public class Pronunciation {
+public class PronunciationHandler {
 
 	private String text;
 	private HashMap<Integer, String> numberMap;
 
-	public Pronunciation() {
+	public PronunciationHandler() {
 		numberMap = new HashMap<>();
 
 		// Set up hashMap to retrieve Maori number representations as strings.

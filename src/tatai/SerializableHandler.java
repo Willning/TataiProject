@@ -1,4 +1,4 @@
-package tatai.user;
+package tatai;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -33,8 +33,8 @@ public class SerializableHandler implements Serializable {
 		return toLoad;
 	}
 	
-	public List<Object> loadObjectsInDirectory(String dirPath) {
-		List<Object> objects = new ArrayList<Object>();
+	public <T> ArrayList<T> loadObjectsInDirectory(String dirPath, Class<T> clazz) {
+		ArrayList<T> objects = new ArrayList<>();
 		
 		File dir = new File(dirPath);
 		if (!dir.exists()) {
@@ -44,7 +44,7 @@ public class SerializableHandler implements Serializable {
             for (File file : files) {
                 try {
                 	String pathToFile = dirPath + file.getName();
-                	objects.add(loadObject(pathToFile)); 
+                	objects.add(clazz.cast(loadObject(pathToFile)));
     			} catch (FileNotFoundException e) {
     				e.printStackTrace();
     			}

@@ -1,41 +1,30 @@
 package tatai.game;
 
 
-import javafx.concurrent.Service;
-import javafx.concurrent.WorkerStateEvent;
-import javafx.event.EventHandler;
 import maths.Equation;
 import maths.EquationFactory;
-import maths.Pronunciation;
-import processBuilder.Process;
-import processBuilder.ProcessOutput;
-import tatai.SpeechRecognitionServiceFactory;
+import maths.PronunciationHandler;
 import tatai.gui.level.Level;
 import tatai.user.GameData;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public abstract class Game {
-    public static final String SOUND_FILE = "foo.wav";
-    public static final String RECOUT_FILE = "recout.mlf";
-    public static final String SOUND_DIR = ".";
+
     private EquationFactory equationFactory;
     private int currentRound;
-    private Pronunciation pronunciation;
+    private PronunciationHandler pronunciationHandler;
     private Equation currentEquation;
     private int score = 0;
     private Level level;
     private GameData gameData;
     private String receivedAnswer;
-    private SpeechRecognitionServiceFactory serviceFactory;
     private int currentAttempt;
     private GameType gameType;
     private GameDifficulty gameDifficulty;
+    private SoundHandler soundHandler;
 
     /**
      * Constructor, it takes the equationFactory that will be used and how many rounds the game will be.
@@ -49,83 +38,45 @@ public abstract class Game {
         this.gameData = new GameData(gameType, gameDifficulty);
         this.gameType = gameType;
         this.gameDifficulty = gameDifficulty;
-        pronunciation = new Pronunciation();
+        this.soundHandler = new SoundHandler(this);
+        pronunciationHandler = new PronunciationHandler();
         currentEquation = equationFactory.generate();
-        serviceFactory = new SpeechRecognitionServiceFactory();
+
     }
 
     /**
-     * Turns the MLF file created by HTK to a string that usable by the game.
-     *
-     * @return
+     * Called the start playing.
      */
-    public ArrayList<String> mlfToString() {
-        ArrayList<String> wordsSpoken = new ArrayList<>();
-        try {
-            // Read the recout file
-            File recoutFile = new File(SOUND_DIR + "/" + RECOUT_FILE);
-            FileInputStream fileInputStream = new FileInputStream(recoutFile);
-            byte[] data = new byte[(int) recoutFile.length()];
-            fileInputStream.read(data);
-            fileInputStream.close();
-            String fullFile = new String(data, "UTF-8");
-            String[] fileLines = fullFile.split("\n");
-
-            // Remove the "sil" and the first two lines and the last line (see the for loop parameters).
-            for (int i = 2; i < fileLines.length - 1; i++) {
-                if (!fileLines[i].equals("sil")) {
-                    wordsSpoken.add(fileLines[i]);
-                }
-            }
-        } catch (IOException e) {
-            wordsSpoken.add("Nothing heard");
-        }
-        return wordsSpoken;
-    }
+    public void play() {soundHandler.play();}
 
     /**
-     * Process that is called by the Controller when the user presses the record button, on finishing it will call the Controller's recordingDone() function.
+     * Called to start recording.
      */
-    public void record() {
-        Service<ProcessOutput> recordService = serviceFactory.makeService(SOUND_DIR, SpeechRecognitionServiceFactory.RECORD, new EventHandler<WorkerStateEvent>() {
-            @Override
-            public void handle(WorkerStateEvent event) {
-                level.recordingDone();
-            }
-        });
-        recordService.start();
-    }
+    public void record() {soundHandler.record();}
 
     /**
-     * Process that called by the Controller, it will parse the sound file "foo.wav" and create a MLF file. On finishing it will called processingDone() on 'this'.
+     * Called to start processing the sound file
      */
-    public void process() {
-        Service<ProcessOutput> processService = serviceFactory.makeService(SOUND_DIR, SpeechRecognitionServiceFactory.PROCESS, new EventHandler<WorkerStateEvent>() {
-            @Override
-            public void handle(WorkerStateEvent event) {
-                processingDone();
-            }
-        });
-        processService.start();
-    }
+    public void process() {soundHandler.process();}
 
     /**
-    * Process that is called and will try to play the created file.
-    */
-
-    public void play() {
-        Service<ProcessOutput> playService = serviceFactory.makeService(SOUND_DIR, SpeechRecognitionServiceFactory.PLAY, new EventHandler<WorkerStateEvent>() {
-            @Override
-            public void handle(WorkerStateEvent event) { level.playEnd(); }
-        });
-        playService.start();
-    }
-
-    /**
-     * Process that is called when processing (creation of MLF file) is finished. It checks the MLF file and decides on the next action based of whether
-     * the user answer the question correctly and the current state of the game.
+     * Called to indicate sound has finished playing
      */
-    private void processingDone() {
+    public void playDone() {
+        level.playDone();
+    }
+
+    /**
+     * Called to indicate recording has finished
+     */
+    public void recordingDone() {
+        level.recordingDone();
+    }
+
+    /**
+     * Process whether the answer is correct or not and take the appropriate action.
+     */
+    public void processAnswer() {
         boolean answerCorrect = checkAnswer();
 
         if (answerCorrect) {
@@ -137,20 +88,10 @@ public abstract class Game {
             level.failedAttempt();
         }
 
-
         // Tell the controller that processing is now done.
         level.processingDone();
     }
 
-    public void deleteSound(){
-        // Delete the created files.
-        File soundDir = new File(SOUND_DIR);
-        for (File file : soundDir.listFiles()) {
-            if (file.getName().equals(RECOUT_FILE) || file.getName().equals(SOUND_FILE)) {
-                file.delete();
-            }
-        }
-    }
 
     /**
      * Method that checks the parsed user input against the actual answer and returns whether they got it right or wrong.
@@ -158,14 +99,19 @@ public abstract class Game {
      * @return
      */
     private boolean checkAnswer() {
-        ArrayList<String> lines = mlfToString();
+        // Get user input
+        ArrayList<String> lines = soundHandler.getTextFromMLF();
         String userAnswer = "";
+
+        // Turn the user input into a single String
         for (String line : lines) {
             userAnswer += " " + line;
             System.out.println(line);
         }
+
+        // Check the received answer against the actual answer from the pronunciation handler
         receivedAnswer = userAnswer;
-        String answer = pronunciation.getPronunciation(currentEquation.answer());
+        String answer = pronunciationHandler.getPronunciation(currentEquation.answer());
         List<String> answers = Arrays.asList(answer.split(" "));
         if (lines.containsAll(answers)) {
             return true;
@@ -179,7 +125,7 @@ public abstract class Game {
      */
     private void winRound() {
         score++;
-        gameData.addRound(currentRound, true, receivedAnswer + "", pronunciation.getPronunciation(currentEquation.answer()) + "", currentEquation.toString(), currentAttempt);
+        gameData.addRound(currentRound, true, receivedAnswer + "", pronunciationHandler.getPronunciation(currentEquation.answer()) + "", currentEquation.toString(), currentAttempt);
         level.answerCorrect();
         endRound();
 
@@ -189,7 +135,7 @@ public abstract class Game {
      * Method that is called when the user has gotten the wrong answer twice.
      */
     protected void loseRound() {
-        gameData.addRound(currentRound, false, receivedAnswer + "", pronunciation.getPronunciation(currentEquation.answer()) + "", currentEquation.toString(), currentAttempt);
+        gameData.addRound(currentRound, false, receivedAnswer + "", pronunciationHandler.getPronunciation(currentEquation.answer()) + "", currentEquation.toString(), currentAttempt);
         level.answerWrong();
         endRound();
     }
@@ -198,7 +144,7 @@ public abstract class Game {
      * Method that is called when the current round is over.
      */
     private void endRound() {
-        deleteSound();
+        soundHandler.deleteSound();
         currentAttempt = 1;
         currentRound++;
         currentEquation = equationFactory.generate();
@@ -212,71 +158,35 @@ public abstract class Game {
     abstract boolean endGameCondition();
 
     /**
-     * Gets the current round number.
-     *
-     * @return
+     * Setters and Getters
      */
+
     public int getCurrentRound() {
         return currentRound;
     }
 
-    /**
-     * Gets the score as an int
-     *
-     * @return
-     */
     public int getScore() {
         return score;
     }
 
-    /**
-     * Get the GameData which is the saved data regarding how the user did on this game.
-     *
-     * @return
-     */
     public GameData gameData() {
         return gameData;
     }
 
-
-    /**
-     * Gets the current attempt that the user is on (how many tries they've had at this question.
-     *
-     * @return
-     */
     public int getCurrentAttempt() {
         return currentAttempt;
     }
 
-    /**
-     * Gets the received answer (the string is the result of the user's answer).
-     *
-     * @return
-     */
     public String getReceivedAnswer() {
         return receivedAnswer;
     }
 
-    /**
-     * Set a level controller.
-     *
-     * @param level
-     */
     public void setLevel(Level level) {
         this.level = level;
     }
 
-    /**
-     * Gets the question that the user will be asked in a String form.
-     *
-     * @return
-     */
     public String equationText() {
         return currentEquation.toString();
-    }
-
-    public EquationFactory getEquationFactory() {
-        return equationFactory;
     }
 
     public GameType getGameType() {

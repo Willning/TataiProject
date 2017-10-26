@@ -5,42 +5,30 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import tatai.SerializableHandler;
 import tatai.StateSingleton;
+import tatai.gui.ComboBoxHandler;
 import tatai.user.User;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 /**
- * Created by Winston on 10/16/2017.
+ * Created by Winston, William and Victoria on 10/16/2017.
  */
 public class UserSelectScreen {
     @FXML
-    Button newPlayerButton, selectPlayerButton, removePlayerButton;
+    private Button newPlayerButton, selectPlayerButton, removePlayerButton;
     @FXML
-    ComboBox<String> nameBox;
-    private ArrayList<String> users;
-
+    private ComboBox<String> nameBox;
+    private ArrayList<User> users;
 
     @FXML
     public void initialize() {
-        File usersDir = new File("users");
-        if (!usersDir.exists()) {
-            usersDir.mkdir();
-        }
-        File soundDir = new File(StateSingleton.SOUND_DIR);
-        if (!soundDir.exists()) {
-            soundDir.mkdir();
-        }
-        users = new ArrayList<>();
         loadNamesIntoComboBox();
-
         nameBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -66,8 +54,8 @@ public class UserSelectScreen {
         if (result.isPresent()) {
             String lowerResult = result.get().toLowerCase();
             boolean exists = false;
-            for (String name : users) {
-                if (name.toLowerCase().equals(lowerResult)) {
+            for (User user : users) {
+                if (user.getUsername().toLowerCase().equals(lowerResult)) {
                     exists = true;
                 }
             }
@@ -116,20 +104,15 @@ public class UserSelectScreen {
         }
 
         // If they have selected a user
-        String username = nameBox.getSelectionModel().getSelectedItem();
-        User user = null;
-        // Create the user object by parsing the output serialization file.
-        try {
-            ObjectInputStream objectInputStream = new ObjectInputStream(
-                    new FileInputStream(StateSingleton.USERS_DIR + username));
-            user = (User) objectInputStream.readObject();
-            objectInputStream.close();
-        } catch (IOException e) {
-            // HANDLE ERROR
-        } catch (ClassNotFoundException e) {
-            // HANDLE ERROR
+        String selectedUsername = nameBox.getSelectionModel().getSelectedItem();
+        User selectedUser = null;
+        for (User user: users) {
+            if (user.getUsername().equals(selectedUsername)) {
+                selectedUser = user;
+                break;
+            }
         }
-        StateSingleton.instance().setUser(user);
+        StateSingleton.instance().setUser(selectedUser);
     }
 
     @FXML
@@ -175,12 +158,9 @@ public class UserSelectScreen {
     }
 
     private void loadNamesIntoComboBox() {
-        File usersDir = new File("users");
-        nameBox.getItems().removeAll(nameBox.getItems());
-        File[] usersFiles = usersDir.listFiles();
-        for (File userFile : usersFiles) {
-            nameBox.getItems().add(userFile.getName());
-            users.add(userFile.getName());
-        }
+        SerializableHandler serializableHandler = new SerializableHandler();
+        users = serializableHandler.loadObjectsInDirectory(StateSingleton.USERS_DIR, User.class);
+        ComboBoxHandler comboBoxHandler = new ComboBoxHandler(nameBox);
+        comboBoxHandler.populateBox(users, User::getUsername);
     }
 }

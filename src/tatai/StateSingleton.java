@@ -3,10 +3,13 @@ package tatai;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import tatai.gui.Controller;
 import tatai.gui.View;
 import tatai.gui.userDashboardScreen.UserDashboardView;
 import tatai.gui.userSelectScreen.UserSelectScreenView;
 import tatai.user.User;
+
+import java.io.Serializable;
 
 /**
  * Created by Winston on 10/16/2017.
@@ -53,9 +56,10 @@ public class StateSingleton {
     }
 
 
-    public void changeCenter(View view) {
+    public <T extends Controller> T changeCenter(View view) {
         Parent root = (Parent)view.view();
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        return (T)view.controller();
     }
 }

@@ -17,6 +17,7 @@ import javafx.util.Duration;
 import tatai.StateSingleton;
 import tatai.game.Game;
 import tatai.game.GameType;
+import tatai.gui.Controller;
 import tatai.gui.endGameScreen.EndGameView;
 import tatai.gui.userDashboardScreen.UserDashboardView;
 
@@ -29,29 +30,21 @@ import java.util.ResourceBundle;
 /**
  * Created by Winston on 10/16/2017.
  */
-public class Level implements Initializable{
+public class Level implements Initializable, Controller{
 
     @FXML
-    AnchorPane anchorPane;
-
+    private AnchorPane anchorPane;
     @FXML
-    Label equationText, roundText, statusText, scoreText, lifeText;
-
+    private Label equationText, roundText, statusText, scoreText, lifeText;
     @FXML
-    Button backButton, recordButton, continueButton, playButton;
-
+    private Button backButton, recordButton, continueButton, playButton;
     @FXML
-    HBox questionBox;
-
+    private HBox questionBox;
     @FXML
-    Text timeText;
-
+    private Text timeText;
     @FXML
-    FontAwesomeIconView lifeOne, lifeTwo, lifeThree;
-
-
+    private FontAwesomeIconView lifeOne, lifeTwo, lifeThree;
     private Game game;
-
     private Integer attempts;
     private boolean correct =false;
     private boolean lastTurn = false;
@@ -210,8 +203,6 @@ public class Level implements Initializable{
             endGame();
 
         } else {
-            //delete all created sound files before moving on to the next level.
-            game.deleteSound();
             LevelView levelView = new LevelView();
             StateSingleton.instance().changeCenter(levelView);
             Level level = (Level) levelView.controller();
@@ -228,7 +219,7 @@ public class Level implements Initializable{
         continueButton.setDisable(true);
     }
 
-    public void playEnd(){
+    public void playDone(){
         playButton.setDisable(false);
         System.out.println(attempts);
 

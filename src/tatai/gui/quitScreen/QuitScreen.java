@@ -9,6 +9,7 @@ import maths.SimpleEquationFactory;
 import maths.SingleNumberEquationFactory;
 import tatai.StateSingleton;
 import tatai.game.*;
+import tatai.gui.Controller;
 import tatai.gui.gameFeaturesScreen.GameFeaturesView;
 import tatai.gui.level.Level;
 import tatai.gui.level.LevelView;
@@ -19,12 +20,10 @@ import java.util.ResourceBundle;
 /**
  * Created by Winston on 10/16/2017.
  */
-public class QuitScreen implements Initializable{
+public class QuitScreen implements Initializable, Controller{
     @FXML
-    Button newGameButton, restartButton;
-
+    private Button newGameButton, restartButton;
     private Game previousGame;
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

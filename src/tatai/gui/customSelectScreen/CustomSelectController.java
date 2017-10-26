@@ -2,11 +2,7 @@ package tatai.gui.customSelectScreen;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,11 +10,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import maths.*;
 import tatai.StateSingleton;
+import tatai.gui.Controller;
 import tatai.gui.customListSelect.CustomListView;
 import tatai.user.CustomList;
-import tatai.user.SerializableHandler;
+import tatai.SerializableHandler;
 
-public class CustomSelectController {
+public class CustomSelectController implements Controller{
 
 	private static final String DEFAULT_LIST_NAME = "My Custom List";
 	
@@ -36,16 +33,12 @@ public class CustomSelectController {
 	private Button addEquationButton;
 	@FXML
 	private Button removeEquationButton;
-	
 	private CustomList customList;
 	private String pathToList;
 	private Equation equationSelected;
-
 	private SimpleEquationFactory simple = new SimpleEquationFactory();
-
 	private SequenceEquationFactory sequences = new SequenceEquationFactory();
-	
-	
+
 	public void setUpExistingList(String customListName) {	
 		loadCustomList(customListName);
 		setUpListeners();
@@ -84,8 +77,8 @@ public class CustomSelectController {
 		ObservableList<Equation> customEquations =
 	            FXCollections.observableArrayList(customList.getEquations());
 		
-		equationColumn.setCellValueFactory(new PropertyValueFactory<Equation, String>("representationView"));
-		solutionColumn.setCellValueFactory(new PropertyValueFactory<Equation, String>("answerView"));
+		equationColumn.setCellValueFactory(new PropertyValueFactory<>("representationView"));
+		solutionColumn.setCellValueFactory(new PropertyValueFactory<>("answerView"));
 		customEquationTable.setItems(customEquations);
 	}
 	
@@ -275,15 +268,12 @@ public class CustomSelectController {
 			return;
 
 		}else {
-
 			File oldFile = new File(pathToList);
 			oldFile.delete();
 
 			String newPathToList = StateSingleton.CUSTOM_LIST_DIR + customList.getListName();
 			new SerializableHandler().saveObject(customList, newPathToList);
-
-			CustomListView newScreen = new CustomListView();
-			StateSingleton.instance().changeCenter(newScreen);
+			StateSingleton.instance().changeCenter(new CustomListView());
 		}
 	}
 }

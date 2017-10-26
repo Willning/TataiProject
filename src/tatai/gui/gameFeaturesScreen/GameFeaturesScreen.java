@@ -48,21 +48,21 @@ public class GameFeaturesScreen implements Initializable{
         customRadio.setToggleGroup(equationTypeGroup);
         easyRadio.setSelected(true);
 
-        checkUserlevels();
+        checkUserLevels();
     }
 
     /**
      * Check which levels the user has access to.
      */
-    private void checkUserlevels(){
-        boolean canMedium = StateSingleton.instance().getUser().canPlayNextLevel(GameType.NORMAL,GameDifficulty.EASY);
-        boolean canHard = StateSingleton.instance().getUser().canPlayNextLevel(GameType.NORMAL,GameDifficulty.MEDIUM);
+    private void checkUserLevels(){
+        boolean canPlayMedium = StateSingleton.instance().getUser().canPlayNextLevel(GameType.NORMAL,GameDifficulty.EASY);
+        boolean canPlayHard = StateSingleton.instance().getUser().canPlayNextLevel(GameType.NORMAL,GameDifficulty.MEDIUM);
 
-        if (canMedium){
+        if (canPlayMedium){
             mediumLock.setVisible(false);
             mediumRadio.setDisable(false);
         }
-        if (canHard){
+        if (canPlayHard){
             hardLock.setVisible(false);
             hardRadio.setDisable(false);
         }
@@ -78,6 +78,7 @@ public class GameFeaturesScreen implements Initializable{
     public void startHit() {
         Game game = null;
         EquationFactory equationFactory = null;
+
         GameDifficulty gameDifficulty = GameDifficulty.EASY;
         if (easyRadio.isSelected()) {
             equationFactory = new SimpleEquationFactory();
@@ -94,6 +95,7 @@ public class GameFeaturesScreen implements Initializable{
             equationFactory = new HardEquationFactory();
             gameDifficulty = GameDifficulty.HARD;
         }
+
         GameType gameType = GameType.NORMAL;
         if (normalRadio.isSelected()) {
             gameType = GameType.NORMAL;
@@ -111,7 +113,6 @@ public class GameFeaturesScreen implements Initializable{
             return;
         }
 
-
         if (normalRadio.isSelected()) {
             game = new NormalGame(gameType, equationFactory, gameDifficulty);
         } else if (timeLimitRadio.isSelected()) {
@@ -120,18 +121,14 @@ public class GameFeaturesScreen implements Initializable{
             game = new SurvivalGame(gameType, equationFactory, gameDifficulty);
         }
 
-
-        LevelView levelView = new LevelView();
-        StateSingleton.instance().changeCenter(levelView);
-        Level level = (Level)levelView.controller();
+        Level level = StateSingleton.instance().changeCenter(new LevelView());
         level.setGame(game);
     }
 
 
     @FXML
     public void editCustomListHit() {
-    	CustomListView newScreen = new CustomListView();		
-		StateSingleton.instance().changeCenter(newScreen);
+		StateSingleton.instance().changeCenter(new CustomListView());
     }
 
 

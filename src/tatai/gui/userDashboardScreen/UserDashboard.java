@@ -2,8 +2,11 @@ package tatai.gui.userDashboardScreen;
 
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import javafx.beans.InvalidationListener;
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableIntegerValue;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -17,44 +20,36 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.text.Text;
 import tatai.StateSingleton;
 import tatai.game.GameDifficulty;
+import tatai.gui.Controller;
 import tatai.gui.gameFeaturesScreen.GameFeaturesView;
 import tatai.user.GameData;
-import tatai.user.SerializableHandler;
+import tatai.SerializableHandler;
 import tatai.user.User;
-import tatai.user.trophies.FirstFiveQuestionAnsweredCorrectly;
 import tatai.user.trophies.Trophy;
 
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.*;
 
 /**
  * Created by Winston on 10/16/2017.
  */
-public class UserDashboard implements Initializable{
+public class UserDashboard implements Initializable, Controller{
 
     @FXML
-    Label welcomeLabel, lastPlayedLabel, gamesPlayedLabel;
+    private Label welcomeLabel, lastPlayedLabel, gamesPlayedLabel;
     @FXML
-    TableView<User> gamesTable;
-
+    private TableView<User> gamesTable;
     @FXML
-    BarChart easyChart, mediumChart, hardChart,customChart;
-
+    private BarChart easyChart, mediumChart, hardChart,customChart;
     @FXML
-    GridPane trophiesGrid;
-
+    private GridPane trophiesGrid;
     private int trophyCount;
-
     @FXML
-    CategoryAxis axis,axis1,axis2,axis3;
-
+    private CategoryAxis axis,axis1,axis2,axis3;
     @FXML
-    NumberAxis scoreAxis, scoreAxis1, scoreAxis2,scoreAxis3;
-
+    private NumberAxis scoreAxis, scoreAxis1, scoreAxis2,scoreAxis3;
     private User user;
     private ArrayList<GameData> games;
 
@@ -177,16 +172,12 @@ public class UserDashboard implements Initializable{
     private void setupTable() {
         // Get users
         SerializableHandler handler = new SerializableHandler();
-        List<Object> usersAsObjects = handler.loadObjectsInDirectory(StateSingleton.USERS_DIR);
-        List<User> users = new ArrayList<>();
+        List<User> users = handler.loadObjectsInDirectory(StateSingleton.USERS_DIR, User.class);
 
-        for (Object user: usersAsObjects) {
-            users.add((User)user);
-        }
 
         // Create Columns
         TableColumn<User, Number> rankColumn = new TableColumn<>("Rank");
-        rankColumn.setCellValueFactory(column-> new ReadOnlyObjectWrapper<Number>(gamesTable.getItems().indexOf(column.getValue())+1));
+        rankColumn.setCellValueFactory(column-> new ReadOnlyObjectWrapper<>(gamesTable.getItems().indexOf(column.getValue())+1));
         rankColumn.setMinWidth(100);
 
         TableColumn<User, String> usernameColumn = new TableColumn<>("Player");
@@ -194,38 +185,8 @@ public class UserDashboard implements Initializable{
         usernameColumn.setMinWidth(150);
 
         TableColumn<User, Integer> gamesPlayedColumn = new TableColumn<>("Games Played");
-        gamesPlayedColumn.setCellValueFactory(u -> new ObservableValue<Integer>() {
-            @Override
-            public void addListener(ChangeListener<? super Integer> listener) {
-
-            }
-
-            @Override
-            public void removeListener(ChangeListener<? super Integer> listener) {
-
-            }
-
-            @Override
-            public Integer getValue() {
-                return u.getValue().getGames().size();
-            }
-
-            @Override
-            public void addListener(InvalidationListener listener) {
-
-            }
-
-            @Override
-            public void removeListener(InvalidationListener listener) {
-
-            }
-        });
-        gamesPlayedColumn.setComparator(new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return o2.compareTo(o1);
-            }
-        });
+        gamesPlayedColumn.setCellValueFactory(u -> new SimpleIntegerProperty(u.getValue().getGames().size()).asObject());
+        gamesPlayedColumn.setComparator((o1, o2) -> o2.compareTo(o1));
         gamesPlayedColumn.setMinWidth(150);
 
         gamesTable.setItems(FXCollections.observableList(users));

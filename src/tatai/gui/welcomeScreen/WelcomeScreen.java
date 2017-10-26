@@ -10,6 +10,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import tatai.StateSingleton;
+import tatai.gui.Controller;
 import tatai.gui.customSelectScreen.CustomSelectController;
 import tatai.gui.customSelectScreen.CustomSelectView;
 import tatai.gui.userSelectScreen.UserSelectScreenView;
@@ -27,7 +28,7 @@ import java.util.TimerTask;
 /**
  * Created by Winston on 10/16/2017.
  */
-public class WelcomeScreen implements Initializable{
+public class WelcomeScreen implements Initializable, Controller{
     private  Timer timer;
     private Stage stage;
 
@@ -53,16 +54,13 @@ public class WelcomeScreen implements Initializable{
     }
 
     private void fadeOutCurrentScene() {
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
+        Platform.runLater(() -> {
                 //fade the current scene out
                 Scene originalScene = stage.getScene();
                 FadeTransition fadeOut = new FadeTransition(Duration.millis(1500), originalScene.getRoot());
                 fadeOut.setFromValue(1.0);
                 fadeOut.setToValue(0);
                 fadeOut.play();
-            }
         });
         timer.schedule(new TimerTask() {
             @Override
@@ -73,28 +71,15 @@ public class WelcomeScreen implements Initializable{
     }
 
     private void fadeInNewScene() {
-        Platform.runLater(new Runnable() {
-        @Override
-            public void run() {
-            // fade user select screen into the stage
-        	
+        Platform.runLater(() -> {
             UserSelectScreenView userSelectScreenView = new UserSelectScreenView();
             AnchorPane root = (AnchorPane)userSelectScreenView.view();
-            
-            // DELETE THIS AND UNCOMMENT THE ABOVE
-        	/*CustomSelectView view = new CustomSelectView();
-            AnchorPane root = (AnchorPane)view.view();
-            CustomSelectController controller = (CustomSelectController) view.controller();
-            controller.setUpNewList();*/
-            
-            
             FadeTransition fadeIn = new FadeTransition(Duration.millis(3000), root);
             fadeIn.setFromValue(0.0);
             fadeIn.setToValue(1.0);
             Scene newScene = new Scene(root);
             stage.setScene(newScene);
             fadeIn.play();
-            }
         });
         timer.cancel();
     }
