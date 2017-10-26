@@ -13,7 +13,10 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -24,24 +27,32 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" styleClass="greyBackground" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatai.gui.userDashboardScreen.UserDashboard">
    <children>
-      <Label fx:id="welcomeLabel" layoutX="263.0" layoutY="39.0" styleClass="titleText" text="Haere Mai, Zob!" textFill="#d00000">
+      <ImageView fitHeight="750.0" fitWidth="750.0" layoutX="160.0" layoutY="-20.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.2;">
+         <image>
+            <Image url="@../../../resources/images/taniwha2.png" />
+         </image>
+         <effect>
+            <ColorAdjust brightness="0.4" />
+         </effect>
+      </ImageView>
+      <Label fx:id="welcomeLabel" layoutX="283.0" layoutY="28.0" styleClass="redTitleText" text="Haere Mai, Zob!" textFill="#d00000">
          <font>
-            <Font name="DejaVu Sans" size="36.0" />
+            <Font size="36.0" />
          </font>
       </Label>
-      <Label layoutX="239.0" layoutY="107.0" styleClass="blackMediumText" text="You last played Tātai: ">
+      <Label layoutX="283.0" layoutY="107.0" styleClass="blackMediumText" text="You last played Tātai: ">
          <font>
-            <Font name="DejaVu Sans" size="24.0" />
+            <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="lastPlayedLabel" layoutX="523.0" layoutY="106.0" styleClass="blackMediumText" text="3 days ago" textFill="#d00000">
+      <Label fx:id="lastPlayedLabel" layoutX="585.0" layoutY="107.0" styleClass="blackMediumText" text="3 days ago" textFill="#d00000">
          <font>
-            <Font name="DejaVu Sans" size="24.0" />
+            <Font size="24.0" />
          </font>
       </Label>
-      <Button alignment="CENTER" layoutX="519.0" layoutY="635.0" mnemonicParsing="false" onAction="#playHit" style="-fx-border-color: #D00000;" text=" Start Learning!" textFill="#d00000">
+      <Button alignment="CENTER" layoutX="539.0" layoutY="623.0" mnemonicParsing="false" onAction="#playHit" prefHeight="59.0" prefWidth="268.0" style="-fx-border-color: #D00000;" styleClass="redMediumText" text=" Start Game" textFill="#d00000">
          <font>
-            <Font name="DejaVu Sans" size="18.0" />
+            <Font size="18.0" />
          </font>
       </Button>
       <HBox alignment="CENTER" layoutX="33.0" layoutY="28.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #d00000; -fx-background-insets: -4; -fx-background-radius: 1000; -fx-border-color: #646464; -fx-border-width: 2; -fx-border-insets: -5; -fx-border-radius: 10000;">
@@ -53,14 +64,14 @@
          </children>
       </HBox>
       <TableView fx:id="gamesTable" layoutX="544.0" layoutY="204.0" prefHeight="400.0" prefWidth="397.0" style="-fx-background-color: WHITE; -fx-border-color: #646464; -fx-border-radius: 3;" />
-      <Label fx:id="gamesPlayedLabel" alignment="CENTER" layoutX="545.0" layoutY="160.0" prefHeight="34.0" prefWidth="397.0" style="-fx-background-color: WHITE; -fx-border-color: #646464; -fx-border-radius: 3;" text="Games Played:" textFill="#646464">
+      <Label fx:id="gamesPlayedLabel" alignment="CENTER" layoutX="545.0" layoutY="160.0" prefHeight="34.0" prefWidth="397.0" style="-fx-background-color: WHITE; -fx-border-color: #646464; -fx-border-radius: 3;" styleClass="greyMediumText" text="Games Played:" textFill="#646464">
          <font>
-            <Font name="DejaVu Sans" size="16.0" />
+            <Font size="16.0" />
          </font>
       </Label>
-      <Button alignment="CENTER" layoutX="275.0" layoutY="635.0" mnemonicParsing="false" onAction="#logoutHit" prefHeight="20.0" prefWidth="168.0" style="-fx-border-color: #D00000;" text="Log Out" textFill="#d00000">
+      <Button alignment="CENTER" layoutX="192.0" layoutY="623.0" mnemonicParsing="false" onAction="#logoutHit" prefHeight="59.0" prefWidth="268.0" style="-fx-border-color: #D00000;" styleClass="redMediumText" text="Log Out" textFill="#d00000">
          <font>
-            <Font name="DejaVu Sans" size="18.0" />
+            <Font size="18.0" />
          </font>
       </Button>
       <Polygon fill="#cccccc" layoutX="51.0" layoutY="171.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" visible="false">
@@ -146,9 +157,9 @@
             </TabPane>
          </children>
       </AnchorPane>
-      <Label layoutX="98.0" layoutY="156.0" text="Trophy Cabinet" textFill="#646464">
+      <Label layoutX="98.0" layoutY="156.0" styleClass="greyMediumText" text="Trophy Cabinet" textFill="#646464">
          <font>
-            <Font name="DejaVu Sans" size="24.0" />
+            <Font size="24.0" />
          </font>
       </Label>
       <ScrollPane layoutX="42.0" layoutY="199.0" prefHeight="125.0" prefWidth="448.0" style="-fx-background-radius: 3;">

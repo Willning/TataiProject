@@ -12,7 +12,7 @@ public class SimpleEquationFactory implements EquationFactory {
 	private Operator operator;
 	private int answer;
 	private int max;
-	private int min;
+	private int min = 1;
 
 	/**
 	 * default constructor
@@ -135,6 +135,6 @@ public class SimpleEquationFactory implements EquationFactory {
 	}
 
 	public void setMin(int min) {
-		this.min = min;
+		
 	}
 }

@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import tatai.gui.customListSelect.CustomListView;
 import tatai.gui.customSelectScreen.CustomSelectController;
@@ -15,6 +16,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+    	
+    	// Load the font
+    	Font.loadFont(Main.class.getResource("Schoolbell.ttf").toExternalForm(), 10);
+    	
         WelcomeScreenView welcomeScreenView = new WelcomeScreenView();
         Parent root = (Parent)welcomeScreenView.view();
         WelcomeScreen welcomeScreen = (WelcomeScreen)welcomeScreenView.controller();

@@ -21,9 +21,9 @@
             <ColorAdjust brightness="0.84" />
          </effect>
       </ImageView>
-      <Text fill="WHITE" layoutX="176.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Who Are You?">
+      <Text fill="WHITE" layoutX="2.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="whiteMassiveText" text="Who Are You?" textAlignment="CENTER" wrappingWidth="999.9999941250426">
          <font>
-            <Font name="DejaVu Sans Bold" size="82.0" />
+            <Font size="82.0" />
          </font>
       </Text>
       <Button fx:id="newPlayerButton" layoutX="143.0" layoutY="470.0" mnemonicParsing="false" onAction="#newPlayerHit" prefHeight="100.0" prefWidth="200.0" styleClass="userSelectButtons" text="New Player" textFill="#646464">

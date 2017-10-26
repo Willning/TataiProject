@@ -63,7 +63,7 @@
 }
 
 .whiteBackground {
-	-fx-background-color: #FFFFFF;
+	-fx-background-color: white;
 }
 
 .redBackground {
@@ -83,42 +83,71 @@
 .redText {
 	-fx-text-fill: #D00000;
 	-fx-font-size: 16px;
+	-fx-font-family: "Schoolbell";
 }
 
 .greyText {
 	-fx-text-fill: #646464;
 	-fx-font-size: 16px;
+	-fx-font-family: "Schoolbell";
 }
 
-.headingText {
+.blackMediumText {
+	-fx-text-fill: black;
+	-fx-font-size: 24px;
+	-fx-font-family: "Schoolbell";
+}
+
+.redMediumText {
+	-fx-text-fill: #d00000;
+	-fx-font-size: 24px;
+	-fx-font-family: "Schoolbell";
+}
+
+.greyMediumText {
+	-fx-text-fill: #646464;
+	-fx-font-size: 24px;
+	-fx-font-family: "Schoolbell";
+}
+
+.redHeadingText {
 	-fx-text-fill: #D00000;
 	-fx-font-size: 36px;
+	-fx-font-family: "Schoolbell";
 }
 
 .whiteHeadingText {
 	-fx-text-fill: white;
 	-fx-font-size: 36px;
+	-fx-font-family: "Schoolbell";
 }
 
-.titleText {
+.redTitleText {
 	-fx-text-fill: #D00000;
 	-fx-font-size: 48px;
 	-fx-font-weight: Bold;
+	-fx-font-family: "Schoolbell";
 }
 
 .whiteTitleText {
 	-fx-text-fill: white;
 	-fx-font-size: 48px;
 	-fx-font-weight: Bold;
+	-fx-font-family: "Schoolbell";
 }
 
-
-.blackMediumText {
-	-fx-text-fill: black;
-	-fx-font-size: 24px;
+.whiteMassiveText {
+	-fx-text-fill: white;
+	-fx-font-size: 82px;
+	-fx-font-weight: Bold;
+	-fx-font-family: "Schoolbell";
 }
 
 /* ICONS */
+
+.glyph-icon {
+	-fx-fill: #646464;
+}
 
 .redIcon {
 	-fx-fill: #D00000;
@@ -143,69 +172,40 @@
 	-fx-border-width: 2;
 }
 
-.combo-box-base
-{
+.combo-box-base {
     -fx-background-color: white;
     -fx-background-radius: 5;
     -fx-background-insets:1 1 2 1;
     -fx-padding: 0;
 }
 
-.combo-box .list-cell
-{
+.combo-box .list-cell {
     -fx-text-fill: #646464;
     -fx-padding: 3 0 2 7;
+    -fx-font-size : 28px;
 }
 
-/*
-
-.combo-box-popup .list-view
-{
-    -fx-background-color: #ffffff;
-    -fx-background-insets: 0, 1;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 0 );
+.combo-box-popup .list-view {
+    -fx-background-insets: 2, 2;
+    -fx-border-color: #646464;
+    -fx-border-radius: 5;
+    -fx-border-width: 2;    
 }
 
-.combo-box-popup .list-view .list-cell
-{
-    -fx-padding: 4 0 4 5;
-
-    -fx-background-color: #ffffff;
+.combo-box-popup .list-view .list-cell {
+    -fx-padding: 4 0 0 5;
+    -fx-pref-height: 50;
+    -fx-font-size : 28px;
 }
 
-.combo-box-popup .list-view .list-cell:filled:selected, .combo-box-popup .list-view .list-cell:filled:selected:hover
-{
-    -fx-background: -fx-accent;
-    -fx-background-color: #ffffff;
-    -fx-text-fill: #ffffff;
+.combo-box-popup .list-view .list-cell:filled:selected {
+    -fx-background-color: transparent;
 }
 
-.combo-box-popup .list-view .list-cell:filled:hover
-{
-    -fx-background-color: #ffffff;
-    -fx-text-fill: #000000;
+.combo-box-popup .list-view .list-cell:filled:hover {
+    -fx-background-color: #ffcccc;
+    -fx-text-fill: black;
 }
-
-
-.combo-box-base:hover
-{
-    -fx-background-color: #6d0300;
-}
-
-.combo-box-base:showing
-{
-    -fx-background-color: #ffffff;
-}
-
-.combo-box-base:focused {
-    -fx-background-color: #ffffff;
-    -fx-background-radius: 0;
-    -fx-background-insets: -1.4, 0, 1, 2;
-}
-
-.combo-box-base:disabled {
-    -fx-opacity: .4;
-}*/
 
 /* TABLES */
 

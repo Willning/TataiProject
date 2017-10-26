@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" styleClass="redBackground" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatai.gui.playCustomList.PlayCustomListController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" styleClass="redBackground" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatai.gui.playCustomList.PlayCustomListController">
    <children>
       <ImageView fitHeight="750.0" fitWidth="750.0" layoutX="160.0" layoutY="-20.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.2;">
          <image>
@@ -20,20 +20,20 @@
             <ColorAdjust brightness="0.84" />
          </effect>
       </ImageView>
-      <Button fx:id="backButton" layoutX="57.0" layoutY="53.0" mnemonicParsing="false" onAction="#backHit" styleClass="invisibleButton" textFill="#646464">
+      <Button fx:id="backButton" layoutX="66.0" layoutY="88.0" mnemonicParsing="false" onAction="#backHit" styleClass="invisibleButton" textFill="#646464">
          <font>
-            <Font name="DejaVu Sans" size="18.0" />
+            <Font size="18.0" />
          </font>
          <graphic>
-            <FontAwesomeIconView glyphName="REPLY" size="60" />
+            <FontAwesomeIconView glyphName="REPLY" size="100" />
          </graphic>
       </Button>
-      <Button fx:id="startButton" layoutX="300.0" layoutY="536.0" mnemonicParsing="false" onAction="#startHit" prefHeight="100.0" prefWidth="400.0" styleClass="greyBackground" text="Start!" textFill="#646464">
+      <Button fx:id="startButton" layoutX="300.0" layoutY="534.0" mnemonicParsing="false" onAction="#startHit" prefHeight="100.0" prefWidth="400.0" styleClass="greyBackground" text="Start!" textFill="#646464">
          <font>
-            <Font name="DejaVu Sans" size="24.0" />
+            <Font size="24.0" />
          </font>
       </Button>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="310.0" layoutY="66.0" prefHeight="53.0" prefWidth="380.0" styleClass="whiteHeadingText" text="Select a Custom List" />
-      <ComboBox fx:id="listSelectBox" layoutX="255.0" layoutY="299.0" prefHeight="64.0" prefWidth="534.0" promptText="Select List" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="167.0" layoutY="53.0" prefHeight="257.0" prefWidth="724.0" styleClass="whiteMassiveText" text="Select a Custom List" textAlignment="CENTER" wrapText="true" />
+      <ComboBox fx:id="listSelectBox" layoutX="255.0" layoutY="350.0" prefHeight="100.0" prefWidth="534.0" promptText="Select List" />
    </children>
 </AnchorPane>
