@@ -1,0 +1,362 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+/* BUTTONS */
+
+.button:hover .glyph-icon {
+	-fx-fill: #000000;
+}
+
+.button:hover .label {
+	-fx-text-fill: #000000;
+}
+
+.button {
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+	-fx-background-color: #ffffff;
+	-fx-border-color: #646464;
+	-fx-background-insets:1 1 2 0;
+	-fx-border-width: 2;
+}
+
+.button:hover {
+	/*-fx-padding: -10 -10 -25 -10;
+    -fx-border-insets: -10 -10 -25 -10;
+    -fx-background-insets: -10 -10 -25 -10;*/
+    -fx-background-color: #ffcccc;
+    -fx-text-fill: black;
+    -fx-border-color: black;
+}
+
+.invisibleButton {
+	-fx-border-color: transparent;
+	-fx-background-color: transparent;
+}
+
+.invisibleButton:hover {
+	/*-fx-padding: -10 -10 -25 -10;
+    -fx-border-insets: -10 -10 -25 -10;
+    -fx-background-insets: -10 -10 -25 -10;*/
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.invisibleButton:hover .label {
+	-fx-text-fill: #ffcccc;
+}
+
+.invisibleButton:hover .glyph-icon {
+	-fx-fill: #ffcccc;
+}
+
+.invisibleFlashButton {
+	-fx-border-color: transparent;
+	-fx-background-color: transparent;
+}
+
+/* BACKGROUNDS */
+
+.greyBackground {
+	-fx-background-radius: 3;
+	-fx-background-color: #eeeeee;
+	-fx-background-insets:1 1 2 1;
+}
+
+.whiteBackground {
+	-fx-background-color: white;
+}
+
+.redBackground {
+    -fx-background-color: #790009;
+}
+
+.boxGreyOutline {
+	-fx-border-color: #646464;
+	-fx-border-radius: 3;
+	-fx-border-width: 2;
+	-fx-background-color: white;
+	-fx-background-insets:1 1 2 1;
+}
+
+/* TEXT */
+
+.redText {
+	-fx-text-fill: #D00000;
+	-fx-font-size: 16px;
+	-fx-font-family: "Schoolbell";
+}
+
+.greyText {
+	-fx-text-fill: #646464;
+	-fx-font-size: 16px;
+	-fx-font-family: "Schoolbell";
+}
+
+.blackMediumText {
+	-fx-text-fill: black;
+	-fx-font-size: 24px;
+	-fx-font-family: "Schoolbell";
+}
+
+.redMediumText {
+	-fx-text-fill: #d00000;
+	-fx-font-size: 24px;
+	-fx-font-family: "Schoolbell";
+}
+
+.greyMediumText {
+	-fx-text-fill: #646464;
+	-fx-font-size: 24px;
+	-fx-font-family: "Schoolbell";
+}
+
+.redHeadingText {
+	-fx-text-fill: #D00000;
+	-fx-font-size: 36px;
+	-fx-font-family: "Schoolbell";
+}
+
+.whiteHeadingText {
+	-fx-text-fill: white;
+	-fx-font-size: 36px;
+	-fx-font-family: "Schoolbell";
+}
+
+.redTitleText {
+	-fx-text-fill: #D00000;
+	-fx-font-size: 48px;
+	-fx-font-weight: Bold;
+	-fx-font-family: "Schoolbell";
+}
+
+.whiteTitleText {
+	-fx-text-fill: white;
+	-fx-font-size: 48px;
+	-fx-font-weight: Bold;
+	-fx-font-family: "Schoolbell";
+}
+
+.whiteMassiveText {
+	-fx-text-fill: white;
+	-fx-font-size: 82px;
+	-fx-font-weight: Bold;
+	-fx-font-family: "Schoolbell";
+}
+
+/* ICONS */
+
+.glyph-icon {
+	-fx-fill: #646464;
+}
+
+.redIcon {
+	-fx-fill: #D00000;
+}
+
+.greyIcon {
+	-fx-fill: #646464;
+}
+
+.glowIcon {
+	-fx-fill: #FFD700;
+	-fx-effect: dropshadow(one-pass-box, #444444, 10, 0.5, 0, 0);
+}
+
+/* COMBO BOXES */
+
+.combo-box {
+	-fx-border-color:  #646464;
+	-fx-border-radius: 5;
+	-fx-background-insets:1 1 2 1;
+	-fx-background-color: WHITE;
+	-fx-border-width: 2;
+}
+
+.combo-box-base {
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-background-insets:1 1 2 1;
+    -fx-padding: 0;
+}
+
+.combo-box .list-cell {
+    -fx-text-fill: #646464;
+    -fx-padding: 3 0 2 7;
+    -fx-font-size : 28px;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-insets: 2, 2;
+    -fx-border-color: #646464;
+    -fx-border-radius: 5;
+    -fx-border-width: 2;    
+}
+
+.combo-box-popup .list-view .list-cell {
+    -fx-padding: 4 0 0 5;
+    -fx-pref-height: 50;
+    -fx-font-size : 28px;
+}
+
+.combo-box-popup .list-view .list-cell:filled:selected {
+    -fx-background-color: transparent;
+}
+
+.combo-box-popup .list-view .list-cell:filled:hover {
+    -fx-background-color: #ffcccc;
+    -fx-text-fill: black;
+}
+
+/* TABLES */
+
+.table-view{
+    -fx-background-color: transparent;
+}
+
+.table-view:focused{
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #646464;
+}
+
+.table-view .column-header-background .label {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 24px;
+    -fx-font-family: "Schoolbell";
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell{
+    -fx-text-fill: black;
+    -fx-font-size: 18px;
+    -fx-font-family: "Schoolbell";
+}
+
+.table-row-cell{
+    -fx-background-color: -fx-table-cell-border-color, white;
+    -fx-background-insets: 0, 0 0 1 0;
+    /*-fx-border-color: #838288;*/
+    -fx-padding: 0.0em;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: -fx-table-cell-border-color, #eeeeee;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #ffcccc;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
+}
+
+.table-view > .virtual-flow > .scroll-bar:vertical,
+.table-view > .virtual-flow > .scroll-bar:vertical > .track,
+.table-view > .virtual-flow > .scroll-bar:vertical > .track-background,
+.table-view > .virtual-flow > .scroll-bar:horizontal,
+.table-view > .virtual-flow > .scroll-bar:horizontal > .track,
+.table-view > .virtual-flow > .scroll-bar:horizontal > .track-background {
+    -fx-background-color: transparent;
+}
+
+
+
+.table-view > .virtual-flow > .scroll-bar > .increment-button,
+.table-view > .virtual-flow > .scroll-bar > .decrement-button {
+    -fx-opacity: 0;
+}
+
+/* SCROLL PANE */
+
+.scroll-pane {
+	-fx-border-color: #646464;
+	-fx-border-radius: 3;
+	-fx-background-color: white;
+}
+
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: white;
+    -fx-background-radius: 5em;
+}
+
+/* CHART */
+
+.axis {
+    -fx-tick-label-fill: #d00000;
+    -fx-tick-length: 20;
+    -fx-minor-tick-length: 10;
+}
+
+/* RADIO BUTTONS */
+
+.radio-button .radio {
+    -fx-border-width: 3px;
+    -fx-border-color: #ffffff;
+    -fx-border-insets: -2;
+    -fx-background-color: #ffcccccc;
+    -fx-background-image: null;
+    -fx-border-radius: 15px;
+    -fx-padding: 4px;
+}
+
+.radio-button:disabled .radio {
+	-fx-background-color: transparent;
+	-fx-border-color:transparent;
+}
+
+.radio-button:selected .radio {
+    -fx-background-color: #d00000;
+    -fx-background-image: null;
+}
+
+.radio-button .dot {
+    -fx-background-radius: 15px;
+    -fx-padding: 8px;
+    -fx-background-color: transparent;
+}
+
+/* TABS */
+
+.tab .tab-label { 
+    -fx-alignment: CENTER;
+    -fx-text-fill: #646464;
+    -fx-font-size: 18px;
+    -fx-font-family: "Schoolbell";
+}
+
+.tab:selected .tab-label { 
+    -fx-alignment: CENTER;
+    -fx-text-fill: black;
+}
+
+/* BAR CHARTS */
+
+.chart-title {
+  -fx-text-fill: #d00000;
+  -fx-font-family: "Schoolbell";
+  -fx-font-size: 24px;
+}
+ 
+.axis-label {
+  -fx-text-fill: #646464;
+  -fx-font-family: "Schoolbell";
+  -fx-font-size: 18px;
