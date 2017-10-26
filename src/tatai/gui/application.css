@@ -2,6 +2,7 @@
 
 /* BUTTONS */
 
+
 .button:hover .glyph-icon {
   -fx-fill: #000000;
 }
@@ -79,6 +80,15 @@
 }
 
 /* TEXT */
+.text {
+
+  -fx-font-family: "Schoolbell";
+}
+
+.label {
+
+  -fx-font-family: "Schoolbell";
+}
 
 .redText {
   -fx-text-fill: #D00000;

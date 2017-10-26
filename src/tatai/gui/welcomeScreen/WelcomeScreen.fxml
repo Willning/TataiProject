@@ -18,7 +18,7 @@
             <ColorAdjust brightness="1.0" />
          </effect>
       </ImageView>
-      <Label alignment="CENTER" layoutX="243.0" layoutY="190.0" maxHeight="-Infinity" prefHeight="309.0" prefWidth="521.0" style=": ;" text="Tātai!" textFill="WHITE">
+      <Label alignment="CENTER" layoutX="248.0" layoutY="188.0" maxHeight="-Infinity" prefHeight="309.0" prefWidth="521.0" style=": ;" text="Tātai!" textFill="WHITE">
          <font>
             <Font name="DejaVu Sans Bold" size="84.0" />
          </font>
