@@ -10,6 +10,8 @@ import java.util.Random;
  */
 public class SequenceEquationFactory implements EquationFactory {
 
+	private static final int MINIMUM = 1;
+	
     private int max;
 
     @Override
@@ -18,7 +20,7 @@ public class SequenceEquationFactory implements EquationFactory {
         return null;
     }
 
-    private int min;
+    private int min = MINIMUM;
 
     private int answer;
 
@@ -80,6 +82,6 @@ public class SequenceEquationFactory implements EquationFactory {
 
     @Override
     public void setMin(int min) {
-        this.min = min;
+        
     }
 }

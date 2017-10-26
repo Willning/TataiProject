@@ -8,8 +8,6 @@ import maths.Equation;
 
 public class CustomList implements Serializable {
 	
-	private static final long serialVersionUID = 1L;
-	
 	private String listName;
 	private ArrayList<Equation> equations = new ArrayList<Equation>();
 	

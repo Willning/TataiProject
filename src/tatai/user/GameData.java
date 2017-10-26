@@ -1,6 +1,5 @@
 package tatai.user;
 
-import tatai.game.Game;
 import tatai.game.GameDifficulty;
 import tatai.game.GameType;
 
@@ -12,7 +11,8 @@ import java.util.HashSet;
  * Class that represents the saved data of a completed game.
  */
 public class GameData implements Serializable {
-    private HashSet<RoundData> rounds;
+	
+	private HashSet<RoundData> rounds;
     private LocalDate time;
     private int totalRounds = 0;
     private int score = 0;

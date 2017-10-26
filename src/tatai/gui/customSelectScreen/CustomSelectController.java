@@ -258,7 +258,7 @@ public class CustomSelectController {
 
 	@FXML
 	private void backHit() {
-		if (listNameTextField.getText().length()>=20) {
+		if (listNameTextField.getText().length() >= 20) {
 			Alert alert = new Alert(Alert.AlertType.WARNING);
 			alert.setTitle("List name invalid!");
 			alert.setHeaderText("Please enter a different list name");
@@ -266,7 +266,7 @@ public class CustomSelectController {
 			alert.showAndWait();
 			return;
 
-		}else if (listNameTextField.getText().matches("^.*[^a-zA-Z0-9 ].*$")){
+		} else if (listNameTextField.getText().matches("^.*[^a-zA-Z0-9 ].*$")){
 			Alert alert = new Alert(Alert.AlertType.WARNING);
 			alert.setTitle("List name invalid!");
 			alert.setHeaderText("Please enter a different list name");
@@ -274,7 +274,7 @@ public class CustomSelectController {
 			alert.showAndWait();
 			return;
 
-		}else {
+		} else {
 
 			File oldFile = new File(pathToList);
 			oldFile.delete();

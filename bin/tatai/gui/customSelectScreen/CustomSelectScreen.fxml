@@ -85,7 +85,7 @@
             <FontAwesomeIconView glyphName="REPLY" size="60" />
          </graphic>
       </Button>
-      <TextField fx:id="listNameTextField" alignment="CENTER" layoutX="199.0" layoutY="21.0" prefHeight="79.0" prefWidth="622.0" promptText="Jed's List" styleClass="titleText">
+      <TextField fx:id="listNameTextField" alignment="CENTER" layoutX="199.0" layoutY="21.0" prefHeight="79.0" prefWidth="622.0" promptText="My List" styleClass="titleText">
          <font>
             <Font name="DejaVu Sans Bold" size="13.0" />
          </font>

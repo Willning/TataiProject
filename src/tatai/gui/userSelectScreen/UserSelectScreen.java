@@ -123,11 +123,17 @@ public class UserSelectScreen {
             ObjectInputStream objectInputStream = new ObjectInputStream(
                     new FileInputStream(StateSingleton.USERS_DIR + username));
             user = (User) objectInputStream.readObject();
+            
+            if (user == null) {
+            	System.out.println("null");
+            }
+            
+            
             objectInputStream.close();
         } catch (IOException e) {
-            // HANDLE ERROR
+            e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            // HANDLE ERROR
+            e.printStackTrace();
         }
         StateSingleton.instance().setUser(user);
     }
