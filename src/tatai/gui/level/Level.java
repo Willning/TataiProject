@@ -20,6 +20,7 @@ import tatai.game.GameType;
 import tatai.gui.Controller;
 import tatai.gui.endGameScreen.EndGameView;
 import tatai.gui.quitScreen.QuitScreenView;
+import tatai.gui.quitScreen.QuitScreen;
 import tatai.gui.userDashboardScreen.UserDashboardView;
 
 
@@ -91,8 +92,6 @@ public class Level implements Initializable, Controller{
         } else {
             // ... user chose CANCEL or closed the dialog
         }
-    	//QuitScreenView quitScreen = new QuitScreenView();
-    	//StateSingleton.instance().changeCenter(quitScreen);
     }
 
     @FXML

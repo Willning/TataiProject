@@ -25,7 +25,7 @@
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" styleClass="greyBackground" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatai.gui.userDashboardScreen.UserDashboard">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" styleClass="greyBackground" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatai.gui.userDashboardScreen.UserDashboard">
    <children>
       <ImageView fitHeight="750.0" fitWidth="750.0" layoutX="160.0" layoutY="-20.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.2;">
          <image>
@@ -93,7 +93,7 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <BarChart fx:id="easyChart" layoutY="-2.0" prefHeight="241.0" prefWidth="439.0" title="Normal mode">
+                              <BarChart fx:id="easyChart" layoutY="-2.0" prefHeight="241.0" prefWidth="439.0" title="Easy mode">
                                 <xAxis>
                                   <CategoryAxis fx:id="axis" side="BOTTOM" />
                                 </xAxis>
@@ -109,7 +109,7 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <BarChart fx:id="mediumChart" layoutY="-2.0" prefHeight="241.0" prefWidth="439.0" title="Normal mode">
+                              <BarChart fx:id="mediumChart" layoutY="-2.0" prefHeight="241.0" prefWidth="439.0" title="Medium mode">
                                  <xAxis>
                                     <CategoryAxis fx:id="axis1" side="BOTTOM" />
                                  </xAxis>
@@ -125,7 +125,7 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <BarChart fx:id="hardChart" layoutY="-2.0" prefHeight="241.0" prefWidth="439.0" title="Normal mode">
+                              <BarChart fx:id="hardChart" layoutY="-2.0" prefHeight="241.0" prefWidth="439.0" title="Hard mode">
                                  <xAxis>
                                     <CategoryAxis fx:id="axis2" side="BOTTOM" />
                                  </xAxis>
@@ -141,7 +141,7 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <BarChart fx:id="customChart" layoutY="-2.0" prefHeight="241.0" prefWidth="439.0" title="Normal mode">
+                              <BarChart fx:id="customChart" layoutY="-2.0" prefHeight="241.0" prefWidth="439.0" title="Custom mode">
                                  <xAxis>
                                     <CategoryAxis fx:id="axis3" side="BOTTOM" />
                                  </xAxis>

@@ -84,6 +84,13 @@ public class EndGameScreen implements Initializable, Controller{
         correctAnswer.setCellValueFactory(new PropertyValueFactory<>("correctAnswer"));
         userAnswer.setCellValueFactory(new PropertyValueFactory<>("userAnswer"));
         correct.setCellValueFactory(new PropertyValueFactory<>("correct"));
+        
+        // Size columns
+        roundNumber.setMinWidth(150);
+        question.setMinWidth(150);
+        correctAnswer.setMinWidth(200);
+        userAnswer.setMinWidth(200);
+        correct.setMinWidth(200);
 
         correct.setCellFactory(col -> new TableCell<RoundData,Boolean>(){
             @Override
