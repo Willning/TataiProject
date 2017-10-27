@@ -25,6 +25,7 @@ public class Main extends Application {
         primaryStage.setTitle("Tatai!");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+        primaryStage.setResizable(false);
         primaryStage.getIcons().add(new Image("resources/images/maori.png"));
     }
 
