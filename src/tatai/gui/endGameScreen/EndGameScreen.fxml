@@ -6,50 +6,62 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" styleClass="greyBackground" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatai.gui.endGameScreen.EndGameScreen">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" styleClass="greyBackground" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatai.gui.endGameScreen.EndGameScreen">
     <children>
-        <Label fx:id="greetLabel" alignment="CENTER" layoutX="385.0" layoutY="45.0" text="Ka Pai, Zob!" textFill="#d00000">
+      <ImageView fitHeight="750.0" fitWidth="750.0" layoutX="150.0" layoutY="-30.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.2;">
+         <image>
+            <Image url="@../../../resources/images/taniwha2.png" />
+         </image>
+         <effect>
+            <ColorAdjust brightness="0.4" />
+         </effect>
+      </ImageView>
+        <Label fx:id="greetLabel" alignment="CENTER" layoutX="330.0" layoutY="42.0" styleClass="redTitleText" text="Ka Pai, Zob!" textFill="#d00000">
             <font>
-                <Font name="DejaVu Sans" size="36.0" />
+                <Font size="36.0" />
             </font>
         </Label>
-        <HBox alignment="CENTER" layoutX="299.0" layoutY="41.0" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #d00000; -fx-background-insets: -4; -fx-background-radius: 1000; -fx-border-color: #646464; -fx-border-width: 2; -fx-border-insets: -5; -fx-border-radius: 10000;">
+        <HBox alignment="CENTER" layoutX="58.0" layoutY="39.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #d00000; -fx-background-insets: -4; -fx-background-radius: 1000; -fx-border-color: #646464; -fx-border-width: 2; -fx-border-insets: -5; -fx-border-radius: 10000;">
             <children>
-                <OctIconView glyphName="TELESCOPE" size="50" style="-fx-fill: WHITE;" wrappingWidth="45.5">
+                <OctIconView glyphName="TELESCOPE" size="150" style="-fx-fill: WHITE;" wrappingWidth="135.5">
                     <effect>
                         <DropShadow />
                     </effect>
             </OctIconView>
             </children>
         </HBox>
-        <Button fx:id="dashButton" layoutX="573.0" layoutY="522.0" mnemonicParsing="false" onAction="#dashHit" prefHeight="65.0" styleClass="userSelectButtons" text="My Dashboard" textFill="#646464">
+        <Button fx:id="dashButton" layoutX="564.0" layoutY="577.0" mnemonicParsing="false" onAction="#dashHit" prefHeight="100.0" prefWidth="264.0" styleClass="greyMediumText" text="My Dashboard" textFill="#646464">
             <font>
-                <Font name="DejaVu Sans" size="18.0" />
+                <Font size="18.0" />
             </font>
             <graphic>
                 <OctIconView glyphName="TELESCOPE" size="50">
                     <effect>
                         <DropShadow color="#000000b2" />
-                    </effect></OctIconView>
+                    </effect>
+            </OctIconView>
             </graphic>
         </Button>
-        <Button fx:id="newGameButton" layoutX="279.0" layoutY="522.0" mnemonicParsing="false" onAction="#newGameHit" prefHeight="65.0" styleClass="userSelectButtons" text=" New Game" textFill="#646464">
+        <Button fx:id="newGameButton" layoutX="206.0" layoutY="579.0" mnemonicParsing="false" onAction="#newGameHit" prefHeight="100.0" prefWidth="250.0" styleClass="greyMediumText" text=" New Game" textFill="#646464">
             <font>
-                <Font name="DejaVu Sans" size="18.0" />
+                <Font size="18.0" />
             </font>
             <graphic>
                 <FontAwesomeIconView glyphName="PLUS" size="50" styleClass="greyIcon" />
             </graphic>
         </Button>
-          <AnchorPane layoutX="200.0" layoutY="226.0" minHeight="0.0" minWidth="0.0" prefHeight="214.0" prefWidth="600.0">
+          <AnchorPane layoutX="54.0" layoutY="226.0" minHeight="0.0" minWidth="0.0" prefHeight="318.0" prefWidth="906.0">
               <children>
-                  <TableView fx:id="statsTable" prefHeight="200.0" prefWidth="479.0" style="-fx-background-color: WHITE; -fx-border-color: #646464; -fx-border-radius: 3;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="statsTable" prefHeight="318.0" prefWidth="600.0" style="-fx-background-color: WHITE; -fx-border-color: #646464; -fx-border-radius: 3;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <columns>
                   <TableColumn fx:id="roundNumber" text="Round" />
                   <TableColumn fx:id="question" prefWidth="150.0" text="Question" />
@@ -65,28 +77,28 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <VBox alignment="TOP_CENTER" layoutX="195.0" layoutY="101.0" prefHeight="121.0" prefWidth="567.0">
+      <VBox alignment="TOP_CENTER" layoutX="215.0" layoutY="117.0" prefHeight="97.0" prefWidth="567.0">
          <children>
             <HBox alignment="CENTER" prefHeight="31.0" prefWidth="567.0">
                <children>
-                    <Label text="You scored: ">
+                    <Label styleClass="blackMediumText" stylesheets="@../application.css" text="You scored: ">
                         <font>
-                            <Font name="DejaVu Sans" size="24.0" />
+                            <Font size="24.0" />
                         </font>
                     </Label>
                     <Label fx:id="scoreLabel" text="3/10" textFill="#d00000">
                         <font>
-                            <Font name="DejaVu Sans" size="24.0" />
+                            <Font size="24.0" />
                         </font>
                     </Label>
                </children>
             </HBox>
-            <Label fx:id="listLabel" alignment="CENTER" text="Label">
+            <Label fx:id="listLabel" alignment="CENTER" styleClass="greyMediumText" text="Label">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label fx:id="modeLabel" text="Label">
+            <Label fx:id="modeLabel" styleClass="greyMediumText" text="Label">
                <font>
                   <Font size="24.0" />
                </font>

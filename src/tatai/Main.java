@@ -28,8 +28,6 @@ public class Main extends Application {
         primaryStage.getIcons().add(new Image("resources/images/maori.png"));
     }
 
-
-
     public static void main(String[] args) {
         launch(args);
     }

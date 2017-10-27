@@ -23,49 +23,37 @@
             <ColorAdjust brightness="0.84" />
          </effect>
       </ImageView>
-      <Text fill="WHITE" layoutX="176.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Custom Lists">
+      <Text fill="WHITE" layoutX="263.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="whiteMassiveText" text="Your Custom Lists" textAlignment="CENTER" wrappingWidth="474.99998553376645">
          <font>
-            <Font name="DejaVu Sans Bold" size="82.0" />
+            <Font size="82.0" />
          </font>
       </Text>
-      <ComboBox fx:id="listSelectBox" layoutX="300.0" layoutY="300.0" onAction="#selectList" prefHeight="80.0" prefWidth="400.0" />
-      <HBox alignment="CENTER" layoutX="167.0" layoutY="444.0" prefHeight="100.0" prefWidth="665.0" spacing="10.0">
+      <ComboBox fx:id="listSelectBox" layoutX="301.0" layoutY="322.0" onAction="#selectList" prefHeight="80.0" prefWidth="400.0" />
+      <HBox alignment="CENTER" layoutX="1.0" layoutY="491.0" prefHeight="100.0" prefWidth="1000.0" spacing="40.0">
          <children>
-            <Button fx:id="newListButton" mnemonicParsing="false" onAction="#newListHit" prefHeight="100.0" prefWidth="200.0" text="New List" textFill="#646464">
+            <Button fx:id="newListButton" mnemonicParsing="false" onAction="#newListHit" prefHeight="100.0" prefWidth="200.0" styleClass="greyMediumText" text="New List" textFill="#646464">
                <font>
-                  <Font name="DejaVu Sans" size="18.0" />
+                  <Font size="18.0" />
                </font>
-               <graphic>
-                  <FontAwesomeIconView glyphName="USER_PLUS" size="50" text="" />
-               </graphic>
             </Button>
-            <Button fx:id="editListButton" disable="true" mnemonicParsing="false" onAction="#editListHit" prefHeight="100.0" prefWidth="200.0" text="Edit List" textFill="#646464">
+            <Button fx:id="editListButton" disable="true" mnemonicParsing="false" onAction="#editListHit" prefHeight="100.0" prefWidth="200.0" styleClass="greyMediumText" text="Edit List" textFill="#646464">
                <font>
-                  <Font name="DejaVu Sans" size="18.0" />
+                  <Font size="18.0" />
                </font>
-               <graphic>
-                  <FontAwesomeIconView size="50" text="" />
-               </graphic>
             </Button>
-            <Button fx:id="removeListButton" disable="true" mnemonicParsing="false" onAction="#removeListHit" prefHeight="100.0" prefWidth="216.0" text="Remove List" textFill="#646464">
+            <Button fx:id="removeListButton" disable="true" mnemonicParsing="false" onAction="#removeListHit" prefHeight="100.0" prefWidth="254.0" styleClass="greyMediumText" text="Remove List" textFill="#646464">
                <font>
-                  <Font name="DejaVu Sans" size="18.0" />
+                  <Font size="18.0" />
                </font>
-               <graphic>
-                  <FontAwesomeIconView size="50" text="" />
-               </graphic>
             </Button>
          </children>
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
-         <padding>
-            <Insets right="10.0" />
-         </padding>
       </HBox>
-      <Button layoutX="37.0" layoutY="60.0" mnemonicParsing="false" onAction="#backHit" prefHeight="74.0" prefWidth="63.0" styleClass="invisibleButton">
+      <Button layoutX="37.0" layoutY="59.0" mnemonicParsing="false" onAction="#backHit" prefHeight="74.0" prefWidth="63.0" styleClass="invisibleButton">
          <graphic>
-            <FontAwesomeIconView glyphName="REPLY" size="60" text="" />
+            <FontAwesomeIconView glyphName="REPLY" size="100" text="" />
          </graphic></Button>
    </children>
    <stylesheets>

@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" styleClass="redBackground" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatai.gui.quitScreen.QuitScreen">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" styleClass="redBackground" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tatai.gui.quitScreen.QuitScreen">
    <children>
       <ImageView fitHeight="750.0" fitWidth="750.0" layoutX="170.0" layoutY="-10.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.2;">
          <image>
@@ -23,34 +23,26 @@
       </ImageView>
       <AnchorPane layoutX="226.0" layoutY="167.0" prefHeight="436.0" prefWidth="550.0" styleClass="greyBackground">
          <children>
-            <Label layoutX="147.0" layoutY="49.0" styleClass="titleText" text="EXIT GAME" textFill="#d00000">
+            <Label layoutX="128.0" layoutY="63.0" styleClass="redTitleText" text="EXIT GAME" textFill="#d00000">
                <font>
-                  <Font name="DejaVu Sans" size="36.0" />
+                  <Font size="36.0" />
                </font>
             </Label>
-            <Label layoutX="160.0" layoutY="173.0" styleClass="headingText" text="Be careful:" />
-            <Button layoutX="38.0" layoutY="47.0" mnemonicParsing="false" prefHeight="65.0" styleClass="invisibleButton" textFill="#646464">
-               <font>
-                  <Font name="DejaVu Sans" size="18.0" />
-               </font>
-               <graphic>
-                  <FontAwesomeIconView glyphName="REPLY" size="50" styleClass="greyIcon" />
-               </graphic>
-            </Button>
-            <Label layoutX="44.0" layoutY="226.0" styleClass="headingText" text="Your progress will be lost!" />
-            <HBox layoutX="79.0" layoutY="329.0" spacing="80.0">
+            <Label layoutX="160.0" layoutY="173.0" styleClass="redHeadingText" text="Be careful:" />
+            <Label layoutX="44.0" layoutY="226.0" styleClass="redHeadingText" text="Your progress will be lost!" />
+            <HBox layoutX="40.0" layoutY="330.0" spacing="80.0">
                <children>
-                  <Button fx:id="newGameButton" mnemonicParsing="false" onAction="#newGameHit" prefHeight="65.0" styleClass="userSelectButtons" text=" New Game" textFill="#646464">
+                  <Button fx:id="newGameButton" mnemonicParsing="false" onAction="#newGameHit" prefHeight="65.0" styleClass="greyMediumText" text=" New Game" textFill="#646464">
                      <font>
-                        <Font name="DejaVu Sans" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                      <graphic>
                         <FontAwesomeIconView glyphName="PLUS" size="50" styleClass="greyIcon" />
                      </graphic>
                   </Button>
-                  <Button fx:id="restartButton" mnemonicParsing="false" onAction="#restartHit" prefHeight="65.0" styleClass="userSelectButtons" text=" Restart" textFill="#646464">
+                  <Button fx:id="restartButton" mnemonicParsing="false" onAction="#restartHit" prefHeight="65.0" styleClass="greyMediumText" text=" Restart" textFill="#646464">
                      <font>
-                        <Font name="DejaVu Sans" size="18.0" />
+                        <Font size="18.0" />
                      </font>
                      <graphic>
                         <FontAwesomeIconView glyphName="REPEAT" size="50" text="" />
@@ -60,6 +52,14 @@
             </HBox>
          </children>
       </AnchorPane>
+      <Button layoutX="34.0" layoutY="40.0" mnemonicParsing="false" prefHeight="65.0" styleClass="invisibleButton" textFill="#646464">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIconView glyphName="REPLY" size="100" styleClass="greyIcon" />
+         </graphic>
+      </Button>
    </children>
    <stylesheets>
       <URL value="@../application.css" />

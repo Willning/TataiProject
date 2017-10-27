@@ -9,6 +9,7 @@ import javafx.scene.control.ToggleGroup;
 import maths.*;
 import tatai.StateSingleton;
 import tatai.game.*;
+import tatai.gui.Controller;
 import tatai.gui.customListSelect.CustomListView;
 import tatai.gui.level.Level;
 import tatai.gui.level.LevelView;
@@ -22,7 +23,7 @@ import java.util.ResourceBundle;
 /**
  * Created by Winston on 10/16/2017.
  */
-public class GameFeaturesScreen implements Initializable{
+public class GameFeaturesScreen implements Initializable, Controller {
     @FXML
     Button backButton, startButton;
     @FXML
